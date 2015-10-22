@@ -2,43 +2,48 @@
 
 */
 fecha::fecha(){
-  sec = 0;
-  min = 0;
-  hour = 0;
-  (*this).mday = 0;
-  this->mon = 0;
-  year = 0;
+  // @todo implementar esta funcion
 }
 
 fecha::fecha(const fecha & x){
-  sec = x.sec;
-  min = x.min;
-  hour = x.hour;
-  mday = x.mday;
-  mon = x.mon;
-  year = x.year;
-}
-
-fecha & operator=(const fecha & f){
-	this->sec = f.sec;
-	this->min = f.min;
-	hour = f.hour;
-	mday = f.mday;
-	mon = f.mon;
-	year = f.year;
+ // @todo implementar esta funcion
 }
   
     
  
  ostream& operator<< ( ostream& os, const fecha & f){
    // @todo implementa esta funcion
-   if(f.hour < 12)
-   	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " AM";
-   else
-    os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " PM";
      
+   // os << f.getYear() ;
    return os;
  }
    
    
- 
+ bool operator>=(const fecha & f) const{
+	if(this->year >= f.year)
+		return true;
+	else{
+		if(this->mon >= f.mon)
+			return true;
+		else{
+			if(this->mday >= f.mday)
+				return true;
+			else{
+				if(this->hour >= f.hour)
+					return true;
+				else{
+					if(this->min >= f.min)
+						return true;
+					else{
+						if(this->sec >= f.sec)
+							return true;
+						else
+							return false;
+					}
+				}
+			}
+		
+		}
+
+	}
+ }
