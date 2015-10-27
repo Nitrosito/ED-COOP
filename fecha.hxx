@@ -16,7 +16,7 @@ aux = s.substr(0,2);
 sec = stoi(aux);
 aux = s.substr(3,2);
 min = stoi(aux);
-aux = s.substr(6,4)
+aux = s.substr(6,4);
 if(aux.compare("AM") == 0)
 	hour = stoi(aux);
 else
@@ -29,16 +29,7 @@ aux = s.substr(17.2);
 year = stoi(aux);
 }
 
-fecha::fecha(const fecha & x){
-  sec = x.sec;
-  min = x.min;
-  hour = x.hour;
-  mday = x.mday;
-  mon = x.mon;
-  year = x.year;
-}
-
-fecha & operator=(const fecha & f){
+fecha & fecha::operator=(const fecha & f){
 	this->sec = f.sec;
 	this->min = f.min;
 	hour = f.hour;
@@ -47,17 +38,17 @@ fecha & operator=(const fecha & f){
 	year = f.year;
 }
 
-fecha & operator=(const string & s){
+fecha & fecha::operator=(const string & s){
 	fecha f;
 	string aux;
 	int tam;
-	tam = 
+	//tam =  @FIXME @nitrosito @ismael
 	aux = s.substr(0,2);
 	f.mon = atoi(aux);
 }
     
  
- ostream& operator<< ( ostream& os, const fecha & f){
+fecha ostream&::operator<< ( ostream& os, const fecha & f){
    // @todo implementa esta funcion
    if(f.hour < 12)
    	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " AM";
