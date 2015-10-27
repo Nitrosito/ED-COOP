@@ -63,7 +63,7 @@ public:
          */
 	typedef unsigned int size_type;
 	/** @brief constructor primitivo. 
-	@post define la entrada nula como el par ("",-1)
+	
 	*/
 	conjunto( );
 	
@@ -96,7 +96,7 @@ public:
         A = C.findIUCR("0460");
 	\endverbatim
 	*/
-	conjunto<conjunto::entrada>  findIUCR( const string & iucr) const;
+	conjunto   findIUCR( const string & iucr) const;
 
 /** @brief busca los crimenes que contienen una determinada descripcion 
 	@param descr string que representa la descripcion del delito buscar
@@ -108,7 +108,7 @@ public:
         A = C.findDESCR("BATTERY");
 	\endverbatim
 	*/
-	conjunto<conjunto::entrada>  findDESCR( const string & descr) const;
+	conjunto   findDESCR( const string & descr) const;
 
 /** @brief Inserta una entrada en el conjunto
 @param e entrada a insertar
@@ -199,6 +199,7 @@ private:
 	*/
 ostream &  operator << ( ostream & sal, const conjunto & D);
 
-	
+#include "conjunto.hxx"
 
 #endif
+ 

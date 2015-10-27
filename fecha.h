@@ -1,13 +1,11 @@
 /**
  * @file fecha.h
  * @brief Fichero cabecera para fecha
-/* 
- * meteorito.h
  * 
- * Copyright  (C) Juan F. Huete
+ *
 */
-#ifndef __CRIMEN_H
-#define __CRIMEN_H
+#ifndef __FECHA_H
+#define __FECHA_H
 
 #include <string>
 #include <iostream> 
