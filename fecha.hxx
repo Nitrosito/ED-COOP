@@ -44,11 +44,11 @@ fecha & fecha::operator=(const string & s){
 	int tam;
 	//tam =  @FIXME @nitrosito @ismael
 	aux = s.substr(0,2);
-	f.mon = atoi(aux);
+	//f.mon = atoi(aux);
 }
     
  
-fecha ostream&::operator<< ( ostream& os, const fecha & f){
+ostream& operator<<( ostream& os, const fecha & f){
    // @todo implementa esta funcion
    if(f.hour < 12)
    	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " AM";
@@ -58,7 +58,7 @@ fecha ostream&::operator<< ( ostream& os, const fecha & f){
    return os;
  }
    
-fecha::bool operator>=(const fecha & f) const{
+bool fecha::operator>=(const fecha & f) const{
      	if(this->year > f.year)
 		return true;
 	else if(this->year < f.year)
@@ -100,7 +100,7 @@ fecha::bool operator>=(const fecha & f) const{
 }
  
 //Compara fechas, sin UNA ES ANTERIOR A otra
-  fecha::bool operator<(const fecha & f)const{
+bool fecha::operator<(const fecha & f)const{
     if(this->year < f.year){
       return true;
     }else if(this->year > f.year){
@@ -139,7 +139,7 @@ fecha::bool operator>=(const fecha & f) const{
   }
 
   // Compara fechas, si una es ANTERIOR O IGUAL A otra
- fecha::bool operator<=(const fecha & f) const{
+ bool fecha::operator<=(const fecha & f) const{
    if(this->year < f.year){
      return true;
    }else if(this->year > f.year){
@@ -177,7 +177,7 @@ fecha::bool operator>=(const fecha & f) const{
    }
  }
   //Compara fechas, si UNA ES IGUAL A OTRA
-  fecha::bool operator==(const fecha & f) const{
+bool fecha::operator==(const fecha & f) const{
     if(this->year == f.year && this->mon == f.mon && this->mday == f.mday && this->hour == f.hour && this->min == f.min && this->sec == f.sec){
       return true;
     }else{
@@ -185,8 +185,8 @@ fecha::bool operator>=(const fecha & f) const{
     }
   }
 
- bool operator!=(const fecha & f)const {
-	   if(this==f)
+ bool fecha::operator!=(const fecha & f)const {
+	   if(*this==f)
 		         return false;
 	     else
 		           return true;
