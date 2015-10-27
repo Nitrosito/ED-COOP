@@ -25,10 +25,20 @@ public:
   /**@brief Constructor sin parametros
    */
  fecha (); //Constructor de fecha por defecto
+   
+   /**@brief Constructor de copia
+  *@param fecha f
+  */
+ fecha(const fecha& f);//Constructor de copia
+
  /**@brief Constructor con parametros: Recibe un string
   * @param fecha formato mm/dd/aaaa  hh:mm:ss AM/PM
   */
+
  fecha (const string & s); // s es un string con el formato mm/dd/aaaa  hh:mm:ss AM/PM
+
+ 
+
 
  /**@brief operador de asignación
   * @param fecha fecha origen

@@ -30,7 +30,7 @@ fecha::fecha(const string & s){
 
 }
 
-fecha::fecha(const fecha &f){
+fecha::fecha(const fecha& f){
   sec = f.sec;
   min = f.min;
   hour = f.hour;
