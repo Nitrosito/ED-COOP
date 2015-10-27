@@ -18,7 +18,7 @@
  @todo Implementar esta clase
 
 */
-
+using namespace std;
 class fecha {
 
 public:
