@@ -30,6 +30,15 @@ fecha::fecha(const string & s){
 
 }
 
+fecha::fecha(const fecha &f){
+  sec = f.sec;
+  min = f.min;
+  hour = f.hour;
+  mday = f.mday;
+  mon = f.mon;
+  year = f.year;
+}
+
 fecha & fecha::operator=(const fecha & f){
 	this->sec = f.sec;
 	this->min = f.min;
