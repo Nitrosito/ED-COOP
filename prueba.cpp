@@ -35,6 +35,6 @@ int main(){
 	cout << "año: " << aux << endl;
 
 	//cout << s.find_first_of(",") << endl;*/
-	fecha una_fecha();
-	cout << una_fecha << endl;
+	fecha una_fecha("11/03/1988 07:30:40 AM");
+	cout << "fecha: " << una_fecha << endl;
 } 

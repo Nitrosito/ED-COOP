@@ -11,22 +11,23 @@ fecha::fecha(){
 }
 
 fecha::fecha(const string & s){
-string aux;
-aux = s.substr(0,2);
-sec = stoi(aux);
-aux = s.substr(3,2);
-min = stoi(aux);
-aux = s.substr(6,4);
-if(aux.compare("AM") == 0)
-	hour = stoi(aux);
-else
-	hour = 12+(stoi(aux));
-aux = s.substr(11,2);
-mday = stoi(aux);
-aux = s.substr(14,2);
-mon = stoi(aux);
-aux = s.substr(17.2);
-year = stoi(aux);
+  string aux;
+  aux = s.substr(0,2);
+  mon = stoi(aux);
+  aux = s.substr(3,2);
+  mday = stoi(aux);
+  aux = s.substr(6,4);
+  year = stoi(aux);
+  aux = s.substr(11,2);
+  hour = stoi(aux);
+  aux = s.substr(14,2);
+  min = stoi(aux);
+  aux = s.substr(17,2);
+  sec = stoi(aux);
+  aux = s.substr(20,2);
+  if(aux.compare("PM") == 0)
+    hour = 12+hour;
+
 }
 
 fecha & fecha::operator=(const fecha & f){
@@ -48,7 +49,7 @@ fecha & fecha::operator=(const string & s){
 }
     
  
-ostream& operator<<( ostream& os, const fecha & f){
+ostream& operator<<( ostream &os, const fecha & f){
    // @todo implementa esta funcion
    if(f.hour < 12)
    	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " AM";

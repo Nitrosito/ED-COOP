@@ -85,12 +85,12 @@ private:
    * @param ostream &os
    * @param fecha &f
    */
-friend  ostream& operator<< ( ostream& os, const fecha & f); 
+friend  ostream& operator<< ( ostream &os, const fecha & f); 
 };
 
 /* @brief imprime fecha con el formato  mm/dd/aaaa hh:mm:ss AM/PM
 */
- ostream& operator<< ( ostream& os, const fecha & f); 
+ ostream& operator<<( ostream& os, const fecha & f); 
 
 #include "fecha.hxx" // Incluimos la implementacion.
 
