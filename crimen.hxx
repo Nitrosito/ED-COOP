@@ -10,43 +10,81 @@ using namespace std;
 
   void setDate(const fecha & d);
 
-  void setIucr(const string & s);
+  void crimen::setIucr(const string & s){
+    iucr = s;
+  }
 
-  void setPrimaryType(const string & s);
+  void crimen::setPrimaryType(const string & s){
+    primarytype = s;
+  }
 
-  void setDescription(const string & s);
+  void crimen::setDescription(const string & s){
+    description = s;
+  }
 
-  void setLocationDescription(const string & s);
+  void crimen::setLocationDescription(const string & s){
+    location_descrip = s;
+  }
 
-  void setArrest(bool a);
+  void crimen::setArrest(bool a){
+    arrest = a;
+  }
 
-  void setDomestic(bool d); 
+  void crimen::setDomestic(bool d){
+    domestic = d;
+  } 
 
-  void setLatitude(double & lat);
+  void crimen::setLatitude(double & lat){
+    latitude = lat;
+  }
 
-  void setLongitude(double & lon);
+  void crimen::setLongitude(double & lon){
+    longitude = lon;
+  }
   
-  long int getID( ) const;
+  long int crimen::getID( ) const{
+    return ID;
+  }
 
-  string getCaseNumber( ) const;
+  string crimen::getCaseNumber( ) const{
+    return casenumber;
+  }
 
-  fecha getDate( ) const;
+  fecha crimen::getDate( ) const{
+    return date;
+  }
 
-  string getIucr( ) const;
+  string crimen::getIucr( ) const{
+    return iucr;
+  }
 
-  string getPrimaryType( ) const;
+  string crimen::getPrimaryType( ) const{
+    return primarytype;
+  }
 
-  string getDescription( ) const;
+  string crimen::getDescription( ) const{
+    return description;
+  }
 
-  string getLocationDescription( ) const;
+  string crimen::getLocationDescription( ) const{
+    return location_descrip;
+  }
 
-  bool getArrest( ) const;
+  bool crimen::getArrest( ) const{
+    return arrest;
+  }
 
-  bool getDomestic( ) const;
+  bool crimen::getDomestic( ) const{
+    return domestic;
+  }
 
-  double getLatitude( ) const;
+  double crimen::getLatitude( ) const{
+    return latitude;
+  }
 
-  double getLongitude( ) const;
+  double crimen::getLongitude( ) const{
+    return longitude;
+  }
 
    crimen & operator=(const crimen & c);
    bool operator==(const crimen & x) const;
