@@ -116,38 +116,96 @@ bool fecha::operator<(const fecha & f)const{
     }
   }
 
-bool operator>(const fecha & f) const; //Pendiente
+bool fecha::operator>(const fecha & f) const{
+  if(year > f.year){
+    return true;
+  }
+  else if(year < f.year){
+    return false;
+  }
+  else{
+    if(mon > f.mon){
+    return true;
+    }
+    else if(mon < f.mon){
+      return false;
+    }
+    else{
+      if(mday > f.mday){
+      return true;
+      }
+      else if(mday < f.mday){
+        return false;
+      }
+      else{
+        if(hour > f.hour){
+        return true;
+        }
+        else if(hour < f.hour){
+          return false;
+        }
+        else{
+          if(min > f.min){
+          return true;
+          }
+          else if(min < f.min){
+            return false;
+          }
+          else{
+            if(sec > f.sec){
+            return true;
+            }
+            else{
+              return false;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 // Compara fechas, si una es ANTERIOR O IGUAL A otra
 bool fecha::operator<=(const fecha & f) const{
  if(this->year < f.year){
    return true;
- }else if(this->year > f.year){
+  }
+  else if(this->year > f.year){
    return false;
- }else{
+  }
+  else{
    if(this->mon < f.mon){
      return true;
-   }else if(this->mon < f.mon){
+    }
+    else if(this->mon < f.mon){
      return false;
-   }else{
+    }
+    else{
      if(this->mday < f.mday){
        return true;
-     }else if(this-> mday > f.mday){
+      }
+      else if(this-> mday > f.mday){
        return false;
-     }else{
+      }
+      else{
        if(this->hour < f.hour){
          return true;
-       }else if(this->hour > f.hour){
+        }
+        else if(this->hour > f.hour){
          return false;
-       }else{
+        }
+        else{
          if(this->min < f.min){
            return true;
-         }else if(this->min > f.min){
+          }
+          else if(this->min > f.min){
            return false;
-         }else{
+          }
+          else{
            if(this->sec <= f.sec){
              return true;
-           }else if(this->sec >f.sec){
+            }
+            else if(this->sec >f.sec){
              return false;
             }
           }

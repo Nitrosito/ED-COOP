@@ -49,5 +49,7 @@ int main(){
 	cout << "fecha.toString: " << p << endl;
 	otra_fecha = s;
 	cout << "otra_fecha: " << otra_fecha << endl;
+	bool comp = otra_fecha == otra_fecha;
+	cout << "Comparar fechas >: " << comp << endl;
 
 } 
