@@ -130,22 +130,25 @@ using namespace std;
     longitude=x.longitude;
   }
 
-   bool crimen::operator==(const crimen & x) const{
-    if(this->ID == x.ID && this-> casenumber == x.casenumber && this->date == x.date && this->iucr == x.iucr && this->primarytype == x.primarytype && this->description == x.description 
-      && this->location_descrip == x.location_descrip && this->arrest == x.arrest && this->domestic == x.domestic && this->latitude == x.latitude && this->longitude == x.longitude){
-        return true;
-    }
-    else{
-        return false;
-    }
-   }
+  bool crimen::operator==(const crimen & x) const{
+  if(this->ID == x.ID && this-> casenumber == x.casenumber && this->date == x.date && this->iucr == x.iucr && this->primarytype == x.primarytype && this->description == x.description 
+    && this->location_descrip == x.location_descrip && this->arrest == x.arrest && this->domestic == x.domestic && this->latitude == x.latitude && this->longitude == x.longitude){
+      return true;
+  }
+  else{
+      return false;
+  }
+  }
 
-   bool operator<(const crimen & x) const{
-      if(date < x.date)
-        return true;
-      else
-        return false;
-   }
-  
-    ostream& operator<< ( ostream& , const crimen& );
+  bool operator<(const crimen & x) const{
+    if(date < x.date)
+      return true;
+    else
+      return false;
+  }
+
+  ostream& operator<< ( ostream &os , const crimen& c){
+    os << c.ID << "," << c.casenumber << "," << c.date << "," << c.iucr << "," << c.primarytype << "," << c.description << "," << c.location_descrip << "," << c.arrest << "," << c.domestic << "," << c.latitude << "," << c.longitude;
+    return os;
+  }
   
