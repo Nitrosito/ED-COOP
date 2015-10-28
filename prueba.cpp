@@ -36,7 +36,7 @@ int main(){
 
 	//cout << s.find_first_of(",") << endl;*/
 	fecha una_fecha("11/03/1988 07:30:40 AM");
-	string s = "11/04/1988 07:30:40 AM";
+	string s = "11/04/1988 15:30:40 AM";
 	cout << "fecha: " << una_fecha << endl;
 	fecha otra_fecha;
 	cout << "otra_fecha: " << otra_fecha << endl;
@@ -44,4 +44,10 @@ int main(){
 	cout << "otra_fecha: " << otra_fecha << endl;
 	otra_fecha = s;
 	cout << "otra_fecha: " << otra_fecha << endl;
+
+	string p = otra_fecha.toString();
+	cout << "fecha.toString: " << p << endl;
+	otra_fecha = s;
+	cout << "otra_fecha: " << otra_fecha << endl;
+
 } 

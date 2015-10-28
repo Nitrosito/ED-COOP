@@ -53,14 +53,27 @@ fecha & fecha::operator=(const string & s){
   *this = f;	
 }
 
-string toString( ) const; //convierte la fecha a un string    
+string fecha::toString(){
+  string s = to_string(mon)+"/"+to_string(mday)+"/"+to_string(year)+" ";
+  string m;
+  if(hour < 12){
+    s = s+to_string(hour);
+    m = " AM";
+  }
+  else{
+    s = s+to_string(hour-12);
+    m = " PM";
+  }
+  s = s+":"+to_string(min)+":"+to_string(sec)+m;
+  return s;
+}    
  
 ostream& operator<<( ostream &os, const fecha & f){
    // @todo implementa esta funcion
-   if(f.hour < 12)
-   	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " AM";
-   else
-    os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " PM";
+   //if(f.hour < 12)
+   	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec;// << " AM";
+   //else
+    //os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " PM";
      
    return os;
  }

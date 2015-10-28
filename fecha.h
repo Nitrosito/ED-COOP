@@ -48,7 +48,7 @@ public:
   * @param cadena con formato mm/dd/aaaa  hh:mm:ss AM/PM
   */
  fecha & operator=(const string & s); // s es un string con el formato mm/dd/aaaa hh:mm:ss AM/PM
- string toString( ) const; //convierte la fecha a un string
+ string toString(); //convierte la fecha a un string
 
 // Operadores relacionales
 /**@brief operador ==
