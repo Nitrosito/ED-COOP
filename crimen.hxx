@@ -117,7 +117,15 @@ using namespace std;
   }
 
    crimen & operator=(const crimen & c);
-   bool operator==(const crimen & x) const;
+   bool crimen::operator==(const crimen & x) const{
+    if(this->ID == x.ID && this-> casenumber == x.casenumber && this->date == x.date && this->iucr == x.iucr && this->primarytype == x.primarytype && this->description == x.description 
+      && this->location_descrip == x.location_descrip && this->arrest == x.arrest && this->domestic == x.domestic && this->latitude == x.latitude && this->longitude == x.longitude){
+        return true;
+    }
+    else{
+        return false;
+    }
+   }
 
    bool operator<(const crimen & x) const;
   

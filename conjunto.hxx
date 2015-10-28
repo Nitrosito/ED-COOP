@@ -1,3 +1,7 @@
+	
+
+
+
 	typedef crimen entrada;
 	
 	typedef unsigned int size_type;
