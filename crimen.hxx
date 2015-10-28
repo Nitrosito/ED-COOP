@@ -14,7 +14,7 @@ using namespace std;
   	longitude=0;
   } 
 
-  crimen(const crimen& x){
+  crimen::crimen(const crimen& x){
   	ID=x.ID;
   	casenumber=x.casenumber;
   	date=x.date;	
@@ -116,7 +116,20 @@ using namespace std;
     return longitude;
   }
 
-   crimen & operator=(const crimen & c);
+  crimen & crimen::operator=(const crimen & x){
+    ID=x.ID;
+    casenumber=x.casenumber;
+    date=x.date;  
+    iucr=x.iucr;
+    primarytype=x.primarytype;
+    description=x.description;
+    location_descrip=x.location_descrip;
+    arrest=x.arrest;
+    domestic=x.domestic;
+    latitude=x.latitude;
+    longitude=x.longitude;
+  }
+
    bool crimen::operator==(const crimen & x) const{
     if(this->ID == x.ID && this-> casenumber == x.casenumber && this->date == x.date && this->iucr == x.iucr && this->primarytype == x.primarytype && this->description == x.description 
       && this->location_descrip == x.location_descrip && this->arrest == x.arrest && this->domestic == x.domestic && this->latitude == x.latitude && this->longitude == x.longitude){
@@ -127,7 +140,12 @@ using namespace std;
     }
    }
 
-   bool operator<(const crimen & x) const;
+   bool operator<(const crimen & x) const{
+      if(date < x.date)
+        return true;
+      else
+        return false;
+   }
   
     ostream& operator<< ( ostream& , const crimen& );
   
