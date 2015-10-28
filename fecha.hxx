@@ -53,7 +53,7 @@ fecha & fecha::operator=(const string & s){
   *this = f;	
 }
 
-string fecha::toString(){
+string fecha::toString()const{
   string s = to_string(mon)+"/"+to_string(mday)+"/"+to_string(year)+" ";
   string m;
   if(hour < 12){
