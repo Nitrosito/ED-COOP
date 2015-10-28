@@ -1,43 +1,43 @@
 #include <iostream>
 using namespace std;
   crimen::crimen(){
-	ID=0;
-	casenumber="0";
-	date=("00/00/0000 00:00:00 AM");	
-	iucr="0000";
-	primarytype="0";
-	description="0";
-	location_descrip="0";
-	arrest=false;
-	domestic=false;
-	latitude=0;
-	longitude=0;
+  	ID=0;
+  	casenumber="0";
+  	date=("00/00/0000 00:00:00 AM");	
+  	iucr="0000";
+  	primarytype="0";
+  	description="0";
+  	location_descrip="0";
+  	arrest=false;
+  	domestic=false;
+  	latitude=0;
+  	longitude=0;
   } 
 
   crimen(const crimen& x){
-	ID=x.ID;
-	casenumber=x.casenumber;
-	date=x.date;	
-	iucr=x.iucr;
-	primarytype=x.primarytype;
-	description=x.description;
-	location_descrip=x.location_descrip;
-	arrest=x.arrest;
-	domestic=x.domestic;
-	latitude=x.latitude;
-	longitude=x.longitude;
+  	ID=x.ID;
+  	casenumber=x.casenumber;
+  	date=x.date;	
+  	iucr=x.iucr;
+  	primarytype=x.primarytype;
+  	description=x.description;
+  	location_descrip=x.location_descrip;
+  	arrest=x.arrest;
+  	domestic=x.domestic;
+  	latitude=x.latitude;
+  	longitude=x.longitude;
   }
 
   void setID(long int & id){
-	this.ID=id;
+	  ID=id;
   }
 
   void setCaseNumber(const string & s){
-	this.casenumber=s;
+	  casenumber=s;
   }
 
   void setDate(const fecha & d){
-	this.date=d;
+	  date=d;
   }
 
   void crimen::setIucr(const string & s){
