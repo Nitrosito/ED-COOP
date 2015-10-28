@@ -49,14 +49,11 @@ fecha & fecha::operator=(const fecha & f){
 }
 
 fecha & fecha::operator=(const string & s){
-	fecha f;
-	string aux;
-	int tam;
-	//tam =  @FIXME @nitrosito @ismael
-	aux = s.substr(0,2);
-	//f.mon = atoi(aux);
+	fecha f(s);
+  *this = f;	
 }
-    
+
+string toString( ) const; //convierte la fecha a un string    
  
 ostream& operator<<( ostream &os, const fecha & f){
    // @todo implementa esta funcion
