@@ -2,12 +2,12 @@
 using namespace std;
   crimen::crimen(){
   	ID=0;
-  	casenumber="0";
-  	date=("00/00/0000 00:00:00 AM");	
-  	iucr="0000";
-  	primarytype="0";
-  	description="0";
-  	location_descrip="0";
+  	casenumber="";
+  	date="";	
+  	iucr="";
+  	primarytype="";
+  	description="";
+  	location_descrip="";
   	arrest=false;
   	domestic=false;
   	latitude=0;
