@@ -217,36 +217,32 @@ bool fecha::operator<=(const fecha & f) const{
 
    
 bool fecha::operator>=(const fecha & f) const{
-     	if(this->year > f.year)
+  if(this->year > f.year)
 		return true;
 	else if(this->year < f.year)
 		return false;
-
 	else{
 		if(this->mon > f.mon)
 			return true;
 		else if(this->mon < f.mon)
 			return false;
-
 		else{
 			if(this->mday > f.mday)
 				return true;
 			else if(this->mday < f.mday)
-				return false;
-			
+				return false;			
 			else{
 				if(this->hour > f.hour)
 					return true;
 				else if(this->hour < f.hour)
 					return false;
-
 				else{
 					if(this->min > f.min)
 						return true;
 					else if(this->hour < f.hour)
 						return false;
 					else{
-						if(this->sec > f.sec)
+						if(this->sec >= f.sec)
 							return true;
 						else if(this->sec < f.sec)
 						       return false;
