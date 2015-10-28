@@ -258,19 +258,14 @@ bool fecha::operator>=(const fecha & f) const{
 }
 
   
- bool fecha::operator!=(const fecha & f)const {
-	   if(*this==f)
-		         return false;
-	     else
-		           return true;
- }
+bool fecha::operator!=(const fecha & f)const {
+  if(*this==f)
+    return false;
+  else
+    return true;
+}
 
-  ostream& operator<<( ostream &os, const fecha & f){
-   // @todo implementa esta funcion
-   //if(f.hour < 12)
-    os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec;// << " AM";
-   //else
-    //os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " PM";
-     
-   return os;
- }
+ostream& operator<<( ostream &os, const fecha & f){
+  os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec; 
+  return os;
+}
