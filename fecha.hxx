@@ -67,16 +67,96 @@ string fecha::toString()const{
   s = s+":"+to_string(min)+":"+to_string(sec)+m;
   return s;
 }    
- 
-ostream& operator<<( ostream &os, const fecha & f){
-   // @todo implementa esta funcion
-   //if(f.hour < 12)
-   	os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec;// << " AM";
-   //else
-    //os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " PM";
-     
-   return os;
- }
+
+  //Compara fechas, si UNA ES IGUAL A OTRA
+bool fecha::operator==(const fecha & f) const{
+  if(this->year == f.year && this->mon == f.mon && this->mday == f.mday && this->hour == f.hour && this->min == f.min && this->sec == f.sec){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+//Compara fechas, sin UNA ES ANTERIOR A otra
+bool fecha::operator<(const fecha & f)const{
+    if(this->year < f.year){
+      return true;
+    }else if(this->year > f.year){
+      return false;
+    }else{
+      if(this->mon < f.mon){
+        return true;
+      }else if(this->mon < f.mon){
+        return false;
+      }else{
+        if(this->mday < f.mday){
+          return true;
+        }else if(this-> mday > f.mday){
+          return false;
+        }else{
+          if(this->hour < f.hour){
+            return true;
+          }else if(this->hour > f.hour){
+            return false;
+          }else{
+            if(this->min < f.min){
+              return true;
+            }else if(this->min > f.min){
+              return false;
+            }else{
+              if(this->sec < f.sec){
+                return true;
+              }else if(this->sec >f.sec){
+                return false;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+bool operator>(const fecha & f) const; //Pendiente
+
+// Compara fechas, si una es ANTERIOR O IGUAL A otra
+bool fecha::operator<=(const fecha & f) const{
+ if(this->year < f.year){
+   return true;
+ }else if(this->year > f.year){
+   return false;
+ }else{
+   if(this->mon < f.mon){
+     return true;
+   }else if(this->mon < f.mon){
+     return false;
+   }else{
+     if(this->mday < f.mday){
+       return true;
+     }else if(this-> mday > f.mday){
+       return false;
+     }else{
+       if(this->hour < f.hour){
+         return true;
+       }else if(this->hour > f.hour){
+         return false;
+       }else{
+         if(this->min < f.min){
+           return true;
+         }else if(this->min > f.min){
+           return false;
+         }else{
+           if(this->sec <= f.sec){
+             return true;
+           }else if(this->sec >f.sec){
+             return false;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
    
 bool fecha::operator>=(const fecha & f) const{
      	if(this->year > f.year)
@@ -118,96 +198,21 @@ bool fecha::operator>=(const fecha & f) const{
 		}
 	}
 }
- 
-//Compara fechas, sin UNA ES ANTERIOR A otra
-bool fecha::operator<(const fecha & f)const{
-    if(this->year < f.year){
-      return true;
-    }else if(this->year > f.year){
-      return false;
-    }else{
-      if(this->mon < f.mon){
-        return true;
-      }else if(this->mon < f.mon){
-        return false;
-      }else{
-        if(this->mday < f.mday){
-          return true;
-        }else if(this-> mday > f.mday){
-          return false;
-        }else{
-          if(this->hour < f.hour){
-            return true;
-          }else if(this->hour > f.hour){
-            return false;
-          }else{
-            if(this->min < f.min){
-              return true;
-            }else if(this->min > f.min){
-              return false;
-            }else{
-              if(this->sec < f.sec){
-                return true;
-              }else if(this->sec >f.sec){
-                return false;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 
-  // Compara fechas, si una es ANTERIOR O IGUAL A otra
- bool fecha::operator<=(const fecha & f) const{
-   if(this->year < f.year){
-     return true;
-   }else if(this->year > f.year){
-     return false;
-   }else{
-     if(this->mon < f.mon){
-       return true;
-     }else if(this->mon < f.mon){
-       return false;
-     }else{
-       if(this->mday < f.mday){
-         return true;
-       }else if(this-> mday > f.mday){
-         return false;
-       }else{
-         if(this->hour < f.hour){
-           return true;
-         }else if(this->hour > f.hour){
-           return false;
-         }else{
-           if(this->min < f.min){
-             return true;
-           }else if(this->min > f.min){
-             return false;
-           }else{
-             if(this->sec <= f.sec){
-               return true;
-             }else if(this->sec >f.sec){
-               return false;
-             }
-           }
-         }
-       }
-     }
-   }
- }
-  //Compara fechas, si UNA ES IGUAL A OTRA
-bool fecha::operator==(const fecha & f) const{
-    if(this->year == f.year && this->mon == f.mon && this->mday == f.mday && this->hour == f.hour && this->min == f.min && this->sec == f.sec){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
+  
  bool fecha::operator!=(const fecha & f)const {
 	   if(*this==f)
 		         return false;
 	     else
 		           return true;
+ }
+
+  ostream& operator<<( ostream &os, const fecha & f){
+   // @todo implementa esta funcion
+   //if(f.hour < 12)
+    os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec;// << " AM";
+   //else
+    //os << f.mon << "/" << f.mday << "/" << f.year << " " << f.hour << ":" << f.min << ":" << f.sec << " PM";
+     
+   return os;
  }
