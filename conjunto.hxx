@@ -11,11 +11,21 @@ conjunto (const conjunto & d){
 }
 	
 pair<conjunto::entrada,bool>  find( const long int & id) const{
-	
+	pair<conjunto::entrada,bool> aux;
+	vector<conjunto::entrada>::iterator it;
+	for(it = vc.begin(); it != vc.end(); it++){
+		if(it->ID == id){
+			aux.first() = it;
+			aux.second() = true;
+		}
+		else
+			aux.second() = false;
+	}
+	return aux;
 }
 
 conjunto findIUCR( const string & iucr) const{
-	for(conjunto::v)
+	
 }
 
 conjunto   findDESCR( const string & descr) const;
