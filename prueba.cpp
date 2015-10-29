@@ -37,8 +37,8 @@ int main(){
 	cout << "año: " << aux << endl;
 
 	//cout << s.find_first_of(",") << endl;*/
-	/*fecha una_fecha("11/03/1988 07:30:40 AM");
-	string s = "11/04/1988 15:30:40 AM";
+	fecha una_fecha("11/03/1988 07:30:40 PM");
+	/*string s = "11/04/1988 15:30:40 AM";
 	cout << "fecha: " << una_fecha << endl;
 	fecha otra_fecha;
 	cout << "otra_fecha: " << otra_fecha << endl;
@@ -58,6 +58,26 @@ int main(){
 	//cout << v.size() << endl;
 
 	crimen un_crimen;
-	cout << un_crimen;
+	cout << un_crimen << endl;
+	un_crimen.setDate(una_fecha);
+	un_crimen.setDomestic(true);
+	long int i = 10230953;
+	un_crimen.setID((i));
+	un_crimen.setCaseNumber("1111111");
+	un_crimen.setArrest(false);
+
+	cout << un_crimen << endl;
+
+	crimen otro_crimen;
+
+	un_crimen = otro_crimen;
+
+	otro_crimen.setArrest(true);
+
+	cout << (un_crimen == otro_crimen) << endl;;
+
+
+
+
 
 } 
