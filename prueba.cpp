@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "fecha.h"
+#include <vector>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ int main(){
 	cout << "año: " << aux << endl;
 
 	//cout << s.find_first_of(",") << endl;*/
-	fecha una_fecha("11/03/1988 07:30:40 AM");
+	/*fecha una_fecha("11/03/1988 07:30:40 AM");
 	string s = "11/04/1988 15:30:40 AM";
 	cout << "fecha: " << una_fecha << endl;
 	fecha otra_fecha;
@@ -50,6 +51,9 @@ int main(){
 	otra_fecha = s;
 	cout << "otra_fecha: " << otra_fecha << endl;
 	bool comp = otra_fecha >= otra_fecha;
-	cout << "Comparar fechas >: " << comp << endl;
+	cout << "Comparar fechas >: " << comp << endl;*/
+
+	vector<int>v;
+	cout << v.size() << endl;
 
 } 

@@ -2,31 +2,38 @@
 
 
 
-	typedef crimen entrada;
+
+conjunto(){
+}
+
+conjunto (const conjunto & d){
+	vc = d.vc; 
+}
 	
-	typedef unsigned int size_type;
-
-	conjunto( );
+pair<conjunto::entrada,bool>  find( const long int & id) const{
 	
-	conjunto (const conjunto & d);
-		
-	pair<conjunto::entrada,bool>  find( const long int & id) const;
+}
 
-	conjunto   findIUCR( const string & iucr) const;
+conjunto findIUCR( const string & iucr) const{
+	for(conjunto::v)
+}
 
-	conjunto   findDESCR( const string & descr) const;
+conjunto   findDESCR( const string & descr) const;
 
-	bool insert( const conjunto::entrada & e);
+bool insert( const conjunto::entrada & e);
 
-	bool erase(const long int & id);
+bool erase(const long int & id);
 
-	bool erase(const  conjunto::entrada & e);
-         
-	conjunto & operator=( const conjunto & org);
 
-	size_type size() const ;
+bool erase(const  conjunto::entrada & e);
+     
+conjunto & operator=( const conjunto & org);
 
-	bool empty() const;
+size_type size() const{
+	return v.size();
+}
+
+bool empty() const;
 
 	
 	 

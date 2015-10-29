@@ -3,11 +3,6 @@
 }
 
 
-Clase fecha, asociada a la.  
-
-
-
-
 {\ttfamily \#include $<$fecha.\+h$>$}
 
 \subsubsection*{Métodos públicos}
@@ -17,12 +12,14 @@ Clase fecha, asociada a la.
 \begin{DoxyCompactList}\small\item\em Constructor sin parametros. \end{DoxyCompactList}\item 
 \hyperlink{classfecha_aed5c22d5eeb15f1f2927d5a2c28b74df}{fecha} (const string \&s)
 \begin{DoxyCompactList}\small\item\em Constructor con parametros\+: Recibe un string. \end{DoxyCompactList}\item 
-\hyperlink{classfecha}{fecha} \& \hyperlink{classfecha_ac7f5398b71cbccc4cd74f8c5e56b80ce}{operator=} (const \hyperlink{classfecha}{fecha} \&f)
+\hyperlink{classfecha_a2cb762c17ba6ea6bcb6b0aabb919bef6}{fecha} (const \hyperlink{classfecha}{fecha} \&f)
+\begin{DoxyCompactList}\small\item\em Constructor de copia. \end{DoxyCompactList}\item 
+\hyperlink{classfecha}{fecha} \& \hyperlink{classfecha_aeb5a68104e936f98eb933b4d6856f841}{operator=} (const \hyperlink{classfecha}{fecha} \&f)
 \begin{DoxyCompactList}\small\item\em operador de asignación \end{DoxyCompactList}\item 
-\hyperlink{classfecha}{fecha} \& \hyperlink{classfecha_adf0cb1494d557581d89e3289ab121bc5}{operator=} (const string \&s)
+\hyperlink{classfecha}{fecha} \& \hyperlink{classfecha_afff8905488f3d97ecfe6141f8521ac22}{operator=} (const string \&s)
 \begin{DoxyCompactList}\small\item\em operador de asignación \end{DoxyCompactList}\item 
 string \hyperlink{classfecha_a26d22b980284408eac0da084f358c43b}{to\+String} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em función que convierte la fecha a un string \end{DoxyCompactList}\item 
 bool \hyperlink{classfecha_ac971e131a6e3edf57c2313468524f364}{operator==} (const \hyperlink{classfecha}{fecha} \&f) const 
 \begin{DoxyCompactList}\small\item\em operador == \end{DoxyCompactList}\item 
 bool \hyperlink{classfecha_a27803300b9698e1a40ef48f2009948c5}{operator$<$} (const \hyperlink{classfecha}{fecha} \&f) const 
@@ -57,15 +54,6 @@ ostream \& \hyperlink{classfecha_a9787de38b43ae62ba2c0812f3dd18394}{operator$<$$
 \begin{DoxyCompactList}\small\item\em operador $<$$<$ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsubsection{Descripción detallada}
-Clase fecha, asociada a la. 
-
-\hyperlink{classfecha_a6775ef84b5838e12e28fd341793f4539}{fecha\+::fecha}, ..... Descripción contiene toda la información asociada a una fecha con el formato mm/dd/aaaa hh\+:mm\+:ss A\+M/\+P\+M \begin{DoxyRefDesc}{Tareas pendientes}
-\item[\hyperlink{todo__todo000001}{Tareas pendientes}]Escribe la documentación de la clase 
-
-Implementar esta clase\end{DoxyRefDesc}
-
-
 \subsubsection{Documentación del constructor y destructor}
 \hypertarget{classfecha_a6775ef84b5838e12e28fd341793f4539}{\index{fecha@{fecha}!fecha@{fecha}}
 \index{fecha@{fecha}!fecha@{fecha}}
@@ -94,6 +82,22 @@ Constructor con parametros\+: Recibe un string.
 {\em fecha} & formato mm/dd/aaaa hh\+:mm\+:ss A\+M/\+P\+M \\
 \hline
 \end{DoxyParams}
+\hypertarget{classfecha_a2cb762c17ba6ea6bcb6b0aabb919bef6}{\index{fecha@{fecha}!fecha@{fecha}}
+\index{fecha@{fecha}!fecha@{fecha}}
+\paragraph[{fecha}]{\setlength{\rightskip}{0pt plus 5cm}fecha\+::fecha (
+\begin{DoxyParamCaption}
+\item[{const {\bf fecha} \&}]{f}
+\end{DoxyParamCaption}
+)}}\label{classfecha_a2cb762c17ba6ea6bcb6b0aabb919bef6}
+
+
+Constructor de copia. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fecha} & f \\
+\hline
+\end{DoxyParams}
 
 
 \subsubsection{Documentación de las funciones miembro}
@@ -114,7 +118,7 @@ operador !=
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-devuelve si es $>$= que f 
+devuelve true si es una fecha posterior o la misma fecha, false en caso contrario 
 \end{DoxyReturn}
 \hypertarget{classfecha_a27803300b9698e1a40ef48f2009948c5}{\index{fecha@{fecha}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!fecha@{fecha}}
@@ -133,7 +137,7 @@ operador $<$
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-devuelve si es == que f 
+devuelve true si es la misma fecha, false en caso contrario 
 \end{DoxyReturn}
 \hypertarget{classfecha_a8dfb2f2a7424bdb1dacc6df122b0a0c8}{\index{fecha@{fecha}!operator$<$=@{operator$<$=}}
 \index{operator$<$=@{operator$<$=}!fecha@{fecha}}
@@ -152,15 +156,15 @@ operador $<$=
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-devuelve si es $>$ que f 
+devuelve true si es una fecha posterior, false en caso contrario 
 \end{DoxyReturn}
-\hypertarget{classfecha_ac7f5398b71cbccc4cd74f8c5e56b80ce}{\index{fecha@{fecha}!operator=@{operator=}}
+\hypertarget{classfecha_aeb5a68104e936f98eb933b4d6856f841}{\index{fecha@{fecha}!operator=@{operator=}}
 \index{operator=@{operator=}!fecha@{fecha}}
-\paragraph[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fecha}\& fecha\+::operator= (
+\paragraph[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fecha} \& fecha\+::operator= (
 \begin{DoxyParamCaption}
 \item[{const {\bf fecha} \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{classfecha_ac7f5398b71cbccc4cd74f8c5e56b80ce}
+)}}\label{classfecha_aeb5a68104e936f98eb933b4d6856f841}
 
 
 operador de asignación 
@@ -170,13 +174,13 @@ operador de asignación
 {\em fecha} & fecha origen \\
 \hline
 \end{DoxyParams}
-\hypertarget{classfecha_adf0cb1494d557581d89e3289ab121bc5}{\index{fecha@{fecha}!operator=@{operator=}}
+\hypertarget{classfecha_afff8905488f3d97ecfe6141f8521ac22}{\index{fecha@{fecha}!operator=@{operator=}}
 \index{operator=@{operator=}!fecha@{fecha}}
-\paragraph[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fecha}\& fecha\+::operator= (
+\paragraph[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fecha} \& fecha\+::operator= (
 \begin{DoxyParamCaption}
 \item[{const string \&}]{s}
 \end{DoxyParamCaption}
-)}}\label{classfecha_adf0cb1494d557581d89e3289ab121bc5}
+)}}\label{classfecha_afff8905488f3d97ecfe6141f8521ac22}
 
 
 operador de asignación 
@@ -219,7 +223,7 @@ operador $>$
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-devuelve si es $<$ que f 
+devuelve true si es una fecha anterior, false en caso contrario 
 \end{DoxyReturn}
 \hypertarget{classfecha_a98d0f3009cb7205b5ddb3b81596d9cc7}{\index{fecha@{fecha}!operator$>$=@{operator$>$=}}
 \index{operator$>$=@{operator$>$=}!fecha@{fecha}}
@@ -238,7 +242,7 @@ operador $>$=
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-devuelve si es $<$= que f 
+devuelve true si es una fecha anterior o la misma fecha, false en caso contrario 
 \end{DoxyReturn}
 \hypertarget{classfecha_a26d22b980284408eac0da084f358c43b}{\index{fecha@{fecha}!to\+String@{to\+String}}
 \index{to\+String@{to\+String}!fecha@{fecha}}
@@ -247,6 +251,10 @@ devuelve si es $<$= que f
 {}
 \end{DoxyParamCaption}
 ) const}}\label{classfecha_a26d22b980284408eac0da084f358c43b}
+
+
+función que convierte la fecha a un string 
+
 
 
 \subsubsection{Documentación de las funciones relacionadas y clases amigas}

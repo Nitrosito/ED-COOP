@@ -26,9 +26,9 @@ typedef unsigned int \hyperlink{classconjunto_a855a5893bb0f5a851ab2dbf2b8aa6cc7}
 \begin{DoxyCompactList}\small\item\em constructor de copia \end{DoxyCompactList}\item 
 pair$<$ \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada}, bool $>$ \hyperlink{classconjunto_a64ee1c67331bce15dc029048631dda97}{find} (const long int \&id) const 
 \begin{DoxyCompactList}\small\item\em busca un crimen en el conjunto \end{DoxyCompactList}\item 
-\hyperlink{classconjunto}{conjunto}$<$ \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada} $>$ \hyperlink{classconjunto_a50eb93f152dc973726d184733d7ecd98}{find\+I\+U\+C\+R} (const string \&iucr) const 
+\hyperlink{classconjunto}{conjunto} \hyperlink{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}{find\+I\+U\+C\+R} (const string \&iucr) const 
 \begin{DoxyCompactList}\small\item\em busca los crimenes con el mismo codigo I\+U\+C\+R \end{DoxyCompactList}\item 
-\hyperlink{classconjunto}{conjunto}$<$ \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada} $>$ \hyperlink{classconjunto_a5190c59db573008cc48a8ce734954a96}{find\+D\+E\+S\+C\+R} (const string \&descr) const 
+\hyperlink{classconjunto}{conjunto} \hyperlink{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{find\+D\+E\+S\+C\+R} (const string \&descr) const 
 \begin{DoxyCompactList}\small\item\em busca los crimenes que contienen una determinada descripcion \end{DoxyCompactList}\item 
 bool \hyperlink{classconjunto_aa65b9f7c4cb9bad6d4e40c1973095930}{insert} (const \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada} \&e)
 \begin{DoxyCompactList}\small\item\em Inserta una entrada en el conjunto. \end{DoxyCompactList}\item 
@@ -62,7 +62,7 @@ ostream \& \hyperlink{classconjunto_ae54b721035471d372f29c0335c42734a}{operator$
 \subsubsection{Descripción detallada}
 Clase conjunto. 
 
-Métodos--$>$ conjunto\+:\+: \hyperlink{classconjunto_a16d987f42c679efab01748178ba45891}{conjunto()}, \hyperlink{classconjunto_aa65b9f7c4cb9bad6d4e40c1973095930}{insert()}, \hyperlink{classconjunto_a64ee1c67331bce15dc029048631dda97}{find()}, \hyperlink{classconjunto_a50eb93f152dc973726d184733d7ecd98}{find\+I\+U\+C\+R()}, \hyperlink{classconjunto_a5190c59db573008cc48a8ce734954a96}{find\+D\+E\+S\+C\+R()}, \hyperlink{classconjunto_ad550177fa4454da3a10fa356417e39a7}{erase()}, \hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size()}, \hyperlink{classconjunto_afcf4ff3ff3c1f83b63e901efebe93533}{empty()}
+Métodos--$>$ conjunto\+:\+: \hyperlink{classconjunto_a16d987f42c679efab01748178ba45891}{conjunto()}, \hyperlink{classconjunto_aa65b9f7c4cb9bad6d4e40c1973095930}{insert()}, \hyperlink{classconjunto_a64ee1c67331bce15dc029048631dda97}{find()}, \hyperlink{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}{find\+I\+U\+C\+R()}, \hyperlink{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{find\+D\+E\+S\+C\+R()}, \hyperlink{classconjunto_ad550177fa4454da3a10fa356417e39a7}{erase()}, \hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size()}, \hyperlink{classconjunto_afcf4ff3ff3c1f83b63e901efebe93533}{empty()}
 
 Tipos--$>$ \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada}, \hyperlink{classconjunto_a855a5893bb0f5a851ab2dbf2b8aa6cc7}{conjunto\+::size\+\_\+type}
 
@@ -92,10 +92,10 @@ conjunto DatosChicago, agresion;
 
 \hyperlink{classconjunto}{conjunto}.\hyperlink{classconjunto_aa65b9f7c4cb9bad6d4e40c1973095930}{insert}(cr);
 ...
-agresion = \hyperlink{classconjunto}{conjunto}.\hyperlink{classconjunto_a5190c59db573008cc48a8ce734954a96}{findDESCR}(\textcolor{stringliteral}{"BATTERY"});
+agresion = \hyperlink{classconjunto}{conjunto}.\hyperlink{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{findDESCR}(\textcolor{stringliteral}{"BATTERY"});
 
 \textcolor{keywordflow}{if} (!agresion.empty())\{
- cout <<\textcolor{stringliteral}{"Tenemos "}<< agresion.size() << \textcolor{stringliteral}{" agresiones"} << endl;
+ cout <<\textcolor{stringliteral}{"Tenemos "}<< agresion.\hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size}() << \textcolor{stringliteral}{" agresiones"} << endl;
  cout << agresion << endl;
 \} \textcolor{keywordflow}{else} \textcolor{stringliteral}{"No hay agresiones en el conjunto"} << endl;
 ...
@@ -133,9 +133,6 @@ size\+\_\+type numero de elementos en el conjunto
 
 constructor primitivo. 
 
-\begin{DoxyPostcond}{Postcondición}
-define la entrada nula como el par (\char`\"{}\char`\"{},-\/1) 
-\end{DoxyPostcond}
 \hypertarget{classconjunto_ab0944b1f9a0c959ca314ce0debd5def9}{\index{conjunto@{conjunto}!conjunto@{conjunto}}
 \index{conjunto@{conjunto}!conjunto@{conjunto}}
 \paragraph[{conjunto}]{\setlength{\rightskip}{0pt plus 5cm}conjunto\+::conjunto (
@@ -266,13 +263,13 @@ else cout << "No esta";
 \end{DoxyVerb}
  
 \end{DoxyPostcond}
-\hypertarget{classconjunto_a5190c59db573008cc48a8ce734954a96}{\index{conjunto@{conjunto}!find\+D\+E\+S\+C\+R@{find\+D\+E\+S\+C\+R}}
+\hypertarget{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{\index{conjunto@{conjunto}!find\+D\+E\+S\+C\+R@{find\+D\+E\+S\+C\+R}}
 \index{find\+D\+E\+S\+C\+R@{find\+D\+E\+S\+C\+R}!conjunto@{conjunto}}
-\paragraph[{find\+D\+E\+S\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf conjunto}$<${\bf conjunto\+::entrada}$>$ conjunto\+::find\+D\+E\+S\+C\+R (
+\paragraph[{find\+D\+E\+S\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf conjunto} conjunto\+::find\+D\+E\+S\+C\+R (
 \begin{DoxyParamCaption}
 \item[{const string \&}]{descr}
 \end{DoxyParamCaption}
-) const}}\label{classconjunto_a5190c59db573008cc48a8ce734954a96}
+) const}}\label{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}
 
 
 busca los crimenes que contienen una determinada descripcion 
@@ -293,13 +290,13 @@ no modifica el conjunto. \begin{DoxyVerb}Uso
 \end{DoxyVerb}
  
 \end{DoxyPostcond}
-\hypertarget{classconjunto_a50eb93f152dc973726d184733d7ecd98}{\index{conjunto@{conjunto}!find\+I\+U\+C\+R@{find\+I\+U\+C\+R}}
+\hypertarget{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}{\index{conjunto@{conjunto}!find\+I\+U\+C\+R@{find\+I\+U\+C\+R}}
 \index{find\+I\+U\+C\+R@{find\+I\+U\+C\+R}!conjunto@{conjunto}}
-\paragraph[{find\+I\+U\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf conjunto}$<${\bf conjunto\+::entrada}$>$ conjunto\+::find\+I\+U\+C\+R (
+\paragraph[{find\+I\+U\+C\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf conjunto} conjunto\+::find\+I\+U\+C\+R (
 \begin{DoxyParamCaption}
 \item[{const string \&}]{iucr}
 \end{DoxyParamCaption}
-) const}}\label{classconjunto_a50eb93f152dc973726d184733d7ecd98}
+) const}}\label{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}
 
 
 busca los crimenes con el mismo codigo I\+U\+C\+R 
