@@ -2,6 +2,7 @@
 #include <string>
 #include "fecha.h"
 #include <vector>
+#include "crimen.h"
 
 using namespace std;
 
@@ -55,5 +56,8 @@ int main(){
 
 	vector<int>v;
 	cout << v.size() << endl;
+
+	crimen un_crimen;
+	cout << un_crimen;
 
 } 

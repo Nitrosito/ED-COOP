@@ -46,11 +46,15 @@ fecha & fecha::operator=(const fecha & f){
 	mday = f.mday;
 	mon = f.mon;
 	year = f.year;
+
+  return *this;
 }
 
 fecha & fecha::operator=(const string & s){
 	fecha f(s);
-  *this = f;	
+  *this = f;
+
+  return *this;
 }
 
 string fecha::toString()const{
@@ -106,7 +110,7 @@ bool fecha::operator<(const fecha & f)const{
             }else{
               if(this->sec < f.sec){
                 return true;
-              }else if(this->sec >f.sec){
+              }else if(this->sec >=f.sec){
                 return false;
               }
             }

@@ -130,12 +130,12 @@ class crimen {
    fecha date;              // Fecha en formato mm/dd/aaaa hh:mm:ss AM/PM
    string iucr;             // Código del tipo de delito según Illinois Uniform Crime Reporting, IUCR
    string primarytype;      // Tipo de delito
-   string description       // Descripción más detallada
-   string location_descrip  // Descripción del tipo de localización
-   bool arrest              // Si hay arrestos o no
-   bool domestic            // Si es un crimen domestico o no
-   double latitude          // Coordenada de latitud
-   double longitude         // Coordenada de longitud
+   string description;       // Descripción más detallada
+   string location_descrip;  // Descripción del tipo de localización
+   bool arrest;              // Si hay arrestos o no
+   bool domestic;            // Si es un crimen domestico o no
+   double latitude;          // Coordenada de latitud
+   double longitude;         // Coordenada de longitud
 };
 
   ostream& operator<< ( ostream& , const crimen& );

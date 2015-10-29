@@ -28,15 +28,15 @@ using namespace std;
   	longitude=x.longitude;
   }
 
-  void setID(long int & id){
+  void crimen::setID(long int & id){
 	  ID=id;
   }
 
-  void setCaseNumber(const string & s){
+  void crimen::setCaseNumber(const string & s){
 	  casenumber=s;
   }
 
-  void setDate(const fecha & d){
+  void crimen::setDate(const fecha & d){
 	  date=d;
   }
 
@@ -140,7 +140,7 @@ using namespace std;
   }
   }
 
-  bool operator<(const crimen & x) const{
+  bool crimen::operator<(const crimen & x) const{
     if(date < x.date)
       return true;
     else
