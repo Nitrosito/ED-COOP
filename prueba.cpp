@@ -54,8 +54,8 @@ int main(){
 	bool comp = otra_fecha >= otra_fecha;
 	cout << "Comparar fechas >: " << comp << endl;*/
 
-	vector<int>v;
-	cout << v.size() << endl;
+	//vector<int>v;
+	//cout << v.size() << endl;
 
 	crimen un_crimen;
 	cout << un_crimen;

@@ -2,16 +2,8 @@
 using namespace std;
   crimen::crimen(){
   	ID=0;
-  	casenumber="";
-  	date="";	
-  	iucr="";
-  	primarytype="";
-  	description="";
-  	location_descrip="";
   	arrest=false;
   	domestic=false;
-  	latitude=0;
-  	longitude=0;
   } 
 
   crimen::crimen(const crimen& x){
