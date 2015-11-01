@@ -59,7 +59,14 @@ bool empty() const;
 
 	
 
-bool cheq_rep( ) const;
+bool cheq_rep() const{
+	//Todos los ID de crimen deben ser mayor que 0 , Tienen que estar ordenados de menor a mayor
+	while(int i=0; i < vc.size()-1; i++){
+		if((vc.at(i).getID() > 0) == false || ( vc.at(i).getID() > vc.at(i+1).getID() ) 
+			return false;
+	}
+	return true;
+}
 
 friend ostream &  operator << ( ostream & sal, const conjunto & D);
  
