@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+
   crimen::crimen(){
   	ID=0;
   	arrest=false;

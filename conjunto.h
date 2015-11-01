@@ -65,7 +65,7 @@ public:
 	/** @brief constructor primitivo. 
 	
 	*/
-	conjunto( );
+	conjunto();
 	
 
 	/** @brief constructor de copia
@@ -84,6 +84,7 @@ public:
 	else cout << "No esta";
 	\endverbatim
 	*/
+
 	pair<conjunto::entrada,bool>  find( const long int & id) const;
 
 	/** @brief busca los crimenes con el mismo codigo IUCR

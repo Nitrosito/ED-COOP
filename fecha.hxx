@@ -90,7 +90,7 @@ bool fecha::operator<(const fecha & f)const{
     }else{
       if(this->mon < f.mon){
         return true;
-      }else if(this->mon < f.mon){
+      }else if(this->mon > f.mon){
         return false;
       }else{
         if(this->mday < f.mday){
@@ -114,11 +114,11 @@ bool fecha::operator<(const fecha & f)const{
                 return false;
               }
             }
-          }
+          } 
         }
       }
     }
-  }
+}
 
 bool fecha::operator>(const fecha & f) const{
   if(year > f.year){

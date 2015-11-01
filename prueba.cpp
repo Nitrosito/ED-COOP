@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
-#include "fecha.h"
+//#include "fecha.h"
 #include <vector>
-#include "crimen.h"
+//#include "crimen.h"
+#include "conjunto.h"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ int main(){
 	//cout << v.size() << endl;
 
 	crimen un_crimen;
-	cout << un_crimen << endl;
+	//cout << un_crimen << endl;
 	un_crimen.setDate(una_fecha);
 	un_crimen.setDomestic(true);
 	long int i = 10230953;
@@ -66,18 +67,31 @@ int main(){
 	un_crimen.setCaseNumber("1111111");
 	un_crimen.setArrest(false);
 
-	cout << un_crimen << endl;
+	//cout << un_crimen << endl;
 
 	crimen otro_crimen;
 
-	un_crimen = otro_crimen;
+	otro_crimen = un_crimen;
+	i = i +100;
+	otro_crimen.setID(i);
+
+	i = i -200;
+	crimen otro_crimen2;
+	otro_crimen2.setID(i);
+
+
 
 	otro_crimen.setArrest(true);
+	crimen tres;
 
-	cout << (un_crimen == otro_crimen) << endl;;
+	//cout << (un_crimen == otro_crimen) << endl;
 
-
-
-
+	conjunto un_conjunto;
+	cout << un_conjunto.insert(un_crimen) << endl;
+	cout << un_conjunto.insert(otro_crimen) << endl;
+	cout << un_conjunto.insert(tres) << endl;
+	cout << otro_crimen2.getID() << endl;
+	cout << un_conjunto.insert(otro_crimen2) << endl;
+	cout << un_conjunto << endl;
 
 } 

@@ -1,3 +1,4 @@
+#include <vector>
 
 using namespace std;
 
@@ -14,9 +15,11 @@ pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
 	int ini = 0;
 	int fin = vc.size()-1;
-	int medio  = (fin+ini)/2;
+	
 	aux.second = false;
 	while(fin >= ini && aux.second == false){
+		int medio  = (fin+ini)/2;
+		cout << "Buscando...." << endl;
 		//buqueda binaria
 		if(vc.at(medio).getID() == id){
 			aux.first = vc.at(medio);
@@ -58,8 +61,28 @@ conjunto conjunto::findDESCR( const string & descr) const{
 }
 
 bool conjunto::insert( const conjunto::entrada & e){
-	if(find(e.getID()).second)
-		vc.push_back(e);
+	cout << "h" << endl;
+	if(!find(e.getID()).second){
+		int posicion = vc.size();
+		int i = 0;
+		bool mayor = false;
+		
+		while( i < vc.size() && !mayor){
+			if(e.getID() < vc[i].getID()){
+				posicion = i;
+				mayor = true;
+			}
+			++i;
+			cout << "hola" << endl;
+		}
+		cout << "antes insert:" << posicion <<endl;
+		vc.insert(vc.begin()+posicion,e);
+		return true;
+	}
+	else{
+		return false;
+		cout << "adios" << endl;
+	}
 }
 
 bool conjunto::erase(const long int & id){
@@ -131,7 +154,9 @@ bool conjunto::cheq_rep( ) const{
 }
 
 ostream &  operator << ( ostream & os, const conjunto & D){
-	for(int i = 0; i < D.size(); i++){
-		os << D.vc[i] << endl;
+	for(unsigned int i = 0; i < D.size(); i++){
+		//os << D.vc.size() << endl;
+		os << D.vc.at(i) << endl;
 	}
+	return os;
 }
