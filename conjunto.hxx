@@ -58,19 +58,10 @@ size_type size() const{
 bool empty() const;
 
 	
-	 
-	 
-	   
-	 
-private:
- vector<crimen> vc; 
 
+bool cheq_rep( ) const;
 
-	
-
-  bool cheq_rep( ) const;
-
-  friend ostream &  operator << ( ostream & sal, const conjunto & D);
+friend ostream &  operator << ( ostream & sal, const conjunto & D);
  
 
 };
