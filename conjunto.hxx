@@ -1,8 +1,3 @@
-	
-
-
-
-
 conjunto(){
 }
 
@@ -12,21 +7,38 @@ conjunto (const conjunto & d){
 	
 pair<conjunto::entrada,bool>  find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
-	vector<conjunto::entrada>::iterator it;
-	for(it = vc.begin(); it != vc.end(); it++){
-		if(it->ID == id){
-			aux.first() = it;
-			aux.second() = true;
+	int ini = 0;
+	int fin = vc.size()-1;
+	int medio  = (fin+ini)/2;
+	aux.second = false;
+	while(fin >= ini && aux.second == false){
+		//buqueda binaria
+		if(vc.at(medio) == id){
+			aux.first = vc.at(medio);
+			aux.second = true;
+
 		}
-		else
-			aux.second() = false;
+		else if(vc.at(medio) < id){
+			ini = medio +1;
+		}
+		else{
+			fin = medio -1;
+		}
 	}
 	return aux;
 }
 
 conjunto findIUCR( const string & iucr) const{
-	
+	conjunto aux;
+	vector<conjunto::entrada>::iterator it;
+	for(it = vc.begin(); it != vc.end(); it++){
+		if(it->iucr == iucr){
+			aux.insert(*it);
+		}
+	}	
+	return aux;
 }
+
 
 conjunto   findDESCR( const string & descr) const;
 
