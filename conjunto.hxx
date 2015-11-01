@@ -55,7 +55,12 @@ size_type size() const{
 	return v.size();
 }
 
-bool empty() const;
+bool empty() const{
+	if(vc.size() == 0)
+		return true;
+
+	return false;
+}
 
 	
 
