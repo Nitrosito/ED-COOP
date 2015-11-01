@@ -1,11 +1,16 @@
-conjunto(){
+
+using namespace std;
+
+conjunto::conjunto(){
 }
 
-conjunto (const conjunto & d){
+conjunto::conjunto (const conjunto & d){
 	vc = d.vc; 
 }
+
+
 	
-pair<conjunto::entrada,bool>  find( const long int & id) const{
+pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
 	int ini = 0;
 	int fin = vc.size()-1;
@@ -13,12 +18,12 @@ pair<conjunto::entrada,bool>  find( const long int & id) const{
 	aux.second = false;
 	while(fin >= ini && aux.second == false){
 		//buqueda binaria
-		if(vc.at(medio) == id){
+		if(vc.at(medio).getID() == id){
 			aux.first = vc.at(medio);
 			aux.second = true;
 
 		}
-		else if(vc.at(medio) < id){
+		else if(vc.at(medio).getID() < id){
 			ini = medio +1;
 		}
 		else{
@@ -28,11 +33,11 @@ pair<conjunto::entrada,bool>  find( const long int & id) const{
 	return aux;
 }
 
-conjunto findIUCR( const string & iucr) const{
+conjunto conjunto::findIUCR( const string & iucr) const{		//Preguntar si se deja con it o lo hacemos con []
 	conjunto aux;
-	vector<conjunto::entrada>::iterator it;
+	vector<crimen>::const_iterator it;
 	for(it = vc.begin(); it != vc.end(); it++){
-		if(it->iucr == iucr){
+		if(it->getIucr() == iucr){
 			aux.insert(*it);
 		}
 	}	
@@ -40,43 +45,93 @@ conjunto findIUCR( const string & iucr) const{
 }
 
 
-conjunto   findDESCR( const string & descr) const;
+conjunto conjunto::findDESCR( const string & descr) const{
+	conjunto aux;
+	for (int i = 0; i < vc.size(); i++)
+	{
+		if (vc[i].getDescription() == descr){
+			aux.insert(vc[i]);
+		}
+	}
 
-bool insert( const conjunto::entrada & e);
-
-bool erase(const long int & id);
-
-
-bool erase(const  conjunto::entrada & e);
-     
-conjunto & operator=( const conjunto & org);
-
-size_type size() const{
-	return v.size();
+	return aux;
 }
 
-bool empty() const{
-	if(vc.size() == 0)
-		return true;
+bool conjunto::insert( const conjunto::entrada & e){
+	if(find(e.getID()).second)
+		vc.push_back(e);
+}
 
-	return false;
+bool conjunto::erase(const long int & id){
+	int ini = 0;
+	int fin = vc.size()-1;
+	int medio  = (fin+ini)/2;
+	bool esta = false;
+	conjunto aux;
+	while(fin >= ini){
+		//buqueda binaria
+		if(vc.at(medio).getID() == id){
+			esta = true;
+			vc.erase(vc.begin()+medio);
+		}
+		else if(vc.at(medio).getID() < id){
+			ini = medio +1;
+		}
+		else{
+			fin = medio -1;
+		}
+	}
+	return esta;
+}
+
+
+bool conjunto::erase(const  conjunto::entrada & e){
+	int ini = 0;
+	int fin = vc.size()-1;
+	int medio  = (fin+ini)/2;
+	bool esta = false;
+	conjunto aux;
+	while(fin >= ini){
+		//buqueda binaria
+		if(vc.at(medio).getID() == e.getID()){
+			esta = true;
+			vc.erase(vc.begin()+medio);
+		}
+		else if(vc.at(medio).getID() < e.getID()){
+			ini = medio +1;
+		}
+		else{
+			fin = medio -1;
+		}
+	}
+	return esta;
+}
+     
+conjunto & conjunto::operator=( const conjunto & org){
+	vc = org.vc;
+}
+
+conjunto::size_type conjunto::size() const{
+	return vc.size();
+}
+
+bool conjunto::empty() const{
+	return vc.empty();
 }
 
 	
 
-bool cheq_rep() const{
+bool conjunto::cheq_rep( ) const{
 	//Todos los ID de crimen deben ser mayor que 0 , Tienen que estar ordenados de menor a mayor
-	while(int i=0; i < vc.size()-1; i++){
-		if((vc.at(i).getID() > 0) == false || ( vc.at(i).getID() > vc.at(i+1).getID() ) 
+	for(int i=0; i < vc.size(); i++){
+		if((vc[i].getID() < 0) || ( vc[i].getID() > vc[i+1].getID() ) ) 
 			return false;
 	}
 	return true;
 }
 
-friend ostream &  operator << ( ostream & sal, const conjunto & D);
- 
-
-};
-
-
-ostream &  operator << ( ostream & sal, const conjunto & D);
+ostream &  operator << ( ostream & os, const conjunto & D){
+	for(int i = 0; i < D.size(); i++){
+		os << D.vc[i] << endl;
+	}
+}
