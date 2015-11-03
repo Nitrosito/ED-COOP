@@ -9,6 +9,12 @@ conjunto::conjunto (const conjunto & d){
 	vc = d.vc; 
 }
 
+conjunto::iterator conjunto::begin() const{
+	conjunto::iterator sal;
+		sal.itv = vc.begin();
+	        return sal;
+}
+
 
 	
 pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
