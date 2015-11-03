@@ -74,6 +74,47 @@ bool conjunto::iterator operator!=(const iterator & it){
 		return false;
 }
 
+conjunto::const_iterator const_iterator cbegin() const{
+	conjunto::iterator sal;
+		sal.itv = vc.begin();
+	        return sal;
+}
+
+conjunto::const_iterator const_iterator cend() const{
+	conjunto::iterator sal;
+		sal.itv = vc.end();
+	        return sal;
+}
+
+conjunto::const_iterator(){
+}
+conjunto::const_iterator(const const_iterator & it){
+	itv = it.itv;
+}
+conjunto::const_iterator(const iterator & it){
+	itv = it.itv;
+}
+const conjunto::entrada & conjunto::const_iterator operator*() const{
+
+}
+conjunto::const_iterator const_iterator operator++( int ){
+
+}
+conjunto::const_iterator const_iterator & operator++(){
+
+}
+conjunto::const_iterator const_iterator operator--(int){
+
+}
+conjunto::const_iterator const_iterator & operator--(){
+
+}
+bool conjunto::const_iterator operator==(const const_iterator & it){
+
+}
+bool conjunto::const_iteratoroperator!=(const const_iterator & it){
+	
+}
 	
 pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
@@ -196,6 +237,7 @@ bool conjunto::erase(const  conjunto::entrada & e){
      
 conjunto & conjunto::operator=( const conjunto & org){
 	vc = org.vc;
+	return *this;
 }
 
 conjunto::size_type conjunto::size() const{
