@@ -36,38 +36,38 @@ const conjunto::entrada & operator*() const{
 	return *itv;
 }
 
-iterator operator++( int ){		//Post incremento
+conjunto::iterator iterator operator++( int ){		//Post incremento
 	conjunto::iterator aux;
 	aux = *this;
 	++(*this);
 	return aux;
 }
 
-iterator & operator++(){		//Pre incremento
+conjunto::iterator iterator & operator++(){		//Pre incremento
 	*this = *this+1;
 	return *this;
 }
 
-iterator operator--(int){
+conjunto::iterator iterator operator--(int){
 	conjunto::iterator aux;
 	aux = *this;
 	++(*this);
 	return aux;
 }
 
-iterator & operator--(){
+conjunto::iterator iterator & operator--(){
 	*this = *this-1;
 	return *this;
 }
 
-bool operator==(const iterator & it){
+bool conjunto::iterator operator==(const iterator & it){
 	if(itv == it)
 		return true;
 	else
 		return false;
 }
 
-bool operator!=(const iterator & it){
+bool conjunto::iterator operator!=(const iterator & it){
 	if(itv != it)
 		return true;
 	else
