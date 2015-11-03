@@ -43,8 +43,9 @@ iterator operator++( int ){		//Post incremento
 	return aux;
 }
 
-iterator & operator++(){
+iterator & operator++(){		//Pre incremento
 	*this = *this+1;
+	return *this;
 }
 
 iterator operator--(int){
@@ -56,13 +57,21 @@ iterator operator--(int){
 
 iterator & operator--(){
 	*this = *this-1;
+	return *this;
 }
 
 bool operator==(const iterator & it){
-
+	if(itv == it)
+		return true;
+	else
+		return false;
 }
-bool operator!=(const iterator & it){
 
+bool operator!=(const iterator & it){
+	if(itv != it)
+		return true;
+	else
+		return false;
 }
 
 	
