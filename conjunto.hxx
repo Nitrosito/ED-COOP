@@ -16,6 +16,24 @@ conjunto::iterator conjunto::begin() const{
 }
 
 
+conjunto::iterator conjunto::end() const{
+conjunto::iterator sal;
+	sal.itv = vc.end();
+        return sal;
+}
+/** @brief constructor defecto iterator
+*/
+conjunto::iterator::iterator(){
+
+}
+
+/** @brief constructor copia iterator
+*/
+conjunto::iterator::iterator(const conjunto::iterator & i)
+  itv = i.itv;
+}
+
+
 	
 pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
