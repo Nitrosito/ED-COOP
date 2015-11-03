@@ -10,6 +10,15 @@ Clase conjunto.
 
 {\ttfamily \#include $<$conjunto.\+h$>$}
 
+\subsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator}
+\begin{DoxyCompactList}\small\item\em class \hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator} forward iterador constante sobre el diccionario, Lectura \hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator} ,operator$\ast$, operator++, \hyperlink{classconjunto_1_1const__iterator_a2cd2caa5e80305a5cfd5e49fc4179b63}{operator++(int)} operator=, operator==, operator!= \end{DoxyCompactList}\item 
+class \hyperlink{classconjunto_1_1description__iterator}{description\+\_\+iterator}
+\begin{DoxyCompactList}\small\item\em class \hyperlink{classconjunto_1_1description__iterator}{description\+\_\+iterator} forward iterador constante sobre el diccionario, Lectura \hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator} ,operator$\ast$, operator++, \hyperlink{classconjunto_1_1description__iterator_a64fc4430bdd907e7ee03992c77f419af}{operator++(int)} operator=, operator==, operator!= esta clase itera sobre todos los elementos que emparejan con una descripcion \end{DoxyCompactList}\item 
+class \hyperlink{classconjunto_1_1iterator}{iterator}
+\begin{DoxyCompactList}\small\item\em class iterator forward iterador sobre el conjunto, L\+E\+C\+T\+U\+R\+A \hyperlink{classconjunto_1_1iterator_ae3ade272e78f6888c39ad44a8b4b152a}{iterator()} ,\hyperlink{classconjunto_1_1iterator_a3263a8e5899cf7c89736fa6d05bc0a54}{operator$\ast$()}, operator++, \hyperlink{classconjunto_1_1iterator_af678148966f3d71b566a390e453f401d}{operator++(int)} operator=, operator==, operator!= \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Tipos públicos}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,7 +33,9 @@ typedef unsigned int \hyperlink{classconjunto_a855a5893bb0f5a851ab2dbf2b8aa6cc7}
 \begin{DoxyCompactList}\small\item\em constructor primitivo. \end{DoxyCompactList}\item 
 \hyperlink{classconjunto_ab0944b1f9a0c959ca314ce0debd5def9}{conjunto} (const \hyperlink{classconjunto}{conjunto} \&d)
 \begin{DoxyCompactList}\small\item\em constructor de copia \end{DoxyCompactList}\item 
-pair$<$ \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada}, bool $>$ \hyperlink{classconjunto_a64ee1c67331bce15dc029048631dda97}{find} (const long int \&id) const 
+\hyperlink{classconjunto_1_1iterator}{conjunto\+::iterator} \hyperlink{classconjunto_a2459d07b15a25a474f1be8dc0038feb5}{find} (const long int \&id) const 
+\begin{DoxyCompactList}\small\item\em busca un crimen en el conjunto \end{DoxyCompactList}\item 
+\hyperlink{classconjunto_1_1const__iterator}{conjunto\+::const\+\_\+iterator} \hyperlink{classconjunto_a356285fe75238fd67673eba9c6bf6d24}{find} (const long int \&id) const 
 \begin{DoxyCompactList}\small\item\em busca un crimen en el conjunto \end{DoxyCompactList}\item 
 \hyperlink{classconjunto}{conjunto} \hyperlink{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}{find\+I\+U\+C\+R} (const string \&iucr) const 
 \begin{DoxyCompactList}\small\item\em busca los crimenes con el mismo codigo I\+U\+C\+R \end{DoxyCompactList}\item 
@@ -41,7 +52,19 @@ bool \hyperlink{classconjunto_a77a21ed91f1002f4eaed48d86535a874}{erase} (const \
 \hyperlink{classconjunto_a855a5893bb0f5a851ab2dbf2b8aa6cc7}{size\+\_\+type} \hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size} () const 
 \begin{DoxyCompactList}\small\item\em numero de entradas en el conjunto \end{DoxyCompactList}\item 
 bool \hyperlink{classconjunto_afcf4ff3ff3c1f83b63e901efebe93533}{empty} () const 
-\begin{DoxyCompactList}\small\item\em Chequea si el conjunto esta vacio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Chequea si el conjunto esta vacio. \end{DoxyCompactList}\item 
+\hyperlink{classconjunto_1_1iterator}{iterator} \hyperlink{classconjunto_a2e54b223f217dfb3b175e138fd5901f6}{begin} () const 
+\begin{DoxyCompactList}\small\item\em devuelve iterador al inicio del conjunto \end{DoxyCompactList}\item 
+\hyperlink{classconjunto_1_1iterator}{iterator} \hyperlink{classconjunto_ae143234a24189d96ff6824031a127a28}{end} () const 
+\begin{DoxyCompactList}\small\item\em devuelve iterador al final (posición siguiente al último del conjunto \end{DoxyCompactList}\item 
+\hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator} \hyperlink{classconjunto_a7933f91ed5906a9545f682572cb687f6}{cbegin} () const 
+\item 
+\hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator} \hyperlink{classconjunto_ab29b3d1855e631625dab94db9af9ee9c}{cend} () const 
+\begin{DoxyCompactList}\small\item\em iterador al final \end{DoxyCompactList}\item 
+\hyperlink{classconjunto_1_1description__iterator}{description\+\_\+iterator} \hyperlink{classconjunto_ac40bafea5d9dc529c96cf0e5977100c6}{dbegin} (const string \&descr) const 
+\begin{DoxyCompactList}\small\item\em devolver primera posicion del elemento que empareja con la descripcion descr \end{DoxyCompactList}\item 
+\hyperlink{classconjunto_1_1description__iterator}{description\+\_\+iterator} \hyperlink{classconjunto_aaff3013d49c52c4d3177168338725756}{dend} () const 
+\begin{DoxyCompactList}\small\item\em devolver fin del conjunto \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Métodos privados}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,6 +78,10 @@ vector$<$ \hyperlink{classcrimen}{crimen} $>$ \hyperlink{classconjunto_aed485e92
 \subsubsection*{Amigas}
 \begin{DoxyCompactItemize}
 \item 
+class \hyperlink{classconjunto_a67171474c4da6cc8efe0c7fafefd2b2d}{iterator}
+\item 
+class \hyperlink{classconjunto_ac220ce1c155db1ac44146c12d178056f}{const\+\_\+iterator}
+\item 
 ostream \& \hyperlink{classconjunto_ae54b721035471d372f29c0335c42734a}{operator$<$$<$} (ostream \&sal, const \hyperlink{classconjunto}{conjunto} \&D)
 \begin{DoxyCompactList}\small\item\em imprime todas las entradas del conjunto \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -62,7 +89,7 @@ ostream \& \hyperlink{classconjunto_ae54b721035471d372f29c0335c42734a}{operator$
 \subsubsection{Descripción detallada}
 Clase conjunto. 
 
-Métodos--$>$ conjunto\+:\+: \hyperlink{classconjunto_a16d987f42c679efab01748178ba45891}{conjunto()}, \hyperlink{classconjunto_aa65b9f7c4cb9bad6d4e40c1973095930}{insert()}, \hyperlink{classconjunto_a64ee1c67331bce15dc029048631dda97}{find()}, \hyperlink{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}{find\+I\+U\+C\+R()}, \hyperlink{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{find\+D\+E\+S\+C\+R()}, \hyperlink{classconjunto_ad550177fa4454da3a10fa356417e39a7}{erase()}, \hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size()}, \hyperlink{classconjunto_afcf4ff3ff3c1f83b63e901efebe93533}{empty()}
+Métodos--$>$ conjunto\+:\+: \hyperlink{classconjunto_a16d987f42c679efab01748178ba45891}{conjunto()}, \hyperlink{classconjunto_aa65b9f7c4cb9bad6d4e40c1973095930}{insert()}, \hyperlink{classconjunto_a2459d07b15a25a474f1be8dc0038feb5}{find()}, \hyperlink{classconjunto_a2ca2a7b59bce8369e9d9ccc1c7be9614}{find\+I\+U\+C\+R()}, \hyperlink{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{find\+D\+E\+S\+C\+R()}, \hyperlink{classconjunto_ad550177fa4454da3a10fa356417e39a7}{erase()}, \hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size()}, \hyperlink{classconjunto_afcf4ff3ff3c1f83b63e901efebe93533}{empty()}
 
 Tipos--$>$ \hyperlink{classconjunto_a09cad766dd65de73e51eae21f9d22585}{conjunto\+::entrada}, \hyperlink{classconjunto_a855a5893bb0f5a851ab2dbf2b8aa6cc7}{conjunto\+::size\+\_\+type}
 
@@ -152,6 +179,47 @@ constructor de copia
 
 
 \subsubsection{Documentación de las funciones miembro}
+\hypertarget{classconjunto_a2e54b223f217dfb3b175e138fd5901f6}{\index{conjunto@{conjunto}!begin@{begin}}
+\index{begin@{begin}!conjunto@{conjunto}}
+\paragraph[{begin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator} conjunto\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_a2e54b223f217dfb3b175e138fd5901f6}
+
+
+devuelve iterador al inicio del conjunto 
+
+\hypertarget{classconjunto_a7933f91ed5906a9545f682572cb687f6}{\index{conjunto@{conjunto}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!conjunto@{conjunto}}
+\paragraph[{cbegin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf const\+\_\+iterator} conjunto\+::cbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_a7933f91ed5906a9545f682572cb687f6}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el \hyperlink{classconjunto_1_1const__iterator}{const\+\_\+iterator} a la primera posición del conjunto. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondición}
+no modifica el diccionario 
+\end{DoxyPostcond}
+\hypertarget{classconjunto_ab29b3d1855e631625dab94db9af9ee9c}{\index{conjunto@{conjunto}!cend@{cend}}
+\index{cend@{cend}!conjunto@{conjunto}}
+\paragraph[{cend}]{\setlength{\rightskip}{0pt plus 5cm}{\bf const\+\_\+iterator} conjunto\+::cend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_ab29b3d1855e631625dab94db9af9ee9c}
+
+
+iterador al final 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve el iterador constante a la posición final del conjunto. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondición}
+no modifica el diccionario 
+\end{DoxyPostcond}
 \hypertarget{classconjunto_adb0ff15cf65817b0b279bae4bf06decb}{\index{conjunto@{conjunto}!cheq\+\_\+rep@{cheq\+\_\+rep}}
 \index{cheq\+\_\+rep@{cheq\+\_\+rep}!conjunto@{conjunto}}
 \paragraph[{cheq\+\_\+rep}]{\setlength{\rightskip}{0pt plus 5cm}bool conjunto\+::cheq\+\_\+rep (
@@ -173,6 +241,39 @@ I\+R\+: rep ==$>$ bool
 true si el invariante es correcto, falso en caso contrario 
 \end{DoxyReturn}
 \end{DoxyItemize}
+\hypertarget{classconjunto_ac40bafea5d9dc529c96cf0e5977100c6}{\index{conjunto@{conjunto}!dbegin@{dbegin}}
+\index{dbegin@{dbegin}!conjunto@{conjunto}}
+\paragraph[{dbegin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf description\+\_\+iterator} conjunto\+::dbegin (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{descr}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_ac40bafea5d9dc529c96cf0e5977100c6}
+
+
+devolver primera posicion del elemento que empareja con la descripcion descr 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\mbox{\tt in}  & {\em descr} & descripcion de buscamos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito. 
+\end{DoxyReturn}
+\hypertarget{classconjunto_aaff3013d49c52c4d3177168338725756}{\index{conjunto@{conjunto}!dend@{dend}}
+\index{dend@{dend}!conjunto@{conjunto}}
+\paragraph[{dend}]{\setlength{\rightskip}{0pt plus 5cm}{\bf description\+\_\+iterator} conjunto\+::dend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_aaff3013d49c52c4d3177168338725756}
+
+
+devolver fin del conjunto 
+
+\begin{DoxyReturn}{Devuelve}
+un iterador que apunta a la posicion final 
+\end{DoxyReturn}
 \hypertarget{classconjunto_afcf4ff3ff3c1f83b63e901efebe93533}{\index{conjunto@{conjunto}!empty@{empty}}
 \index{empty@{empty}!conjunto@{conjunto}}
 \paragraph[{empty}]{\setlength{\rightskip}{0pt plus 5cm}bool conjunto\+::empty (
@@ -187,6 +288,17 @@ Chequea si el conjunto esta vacio.
 \begin{DoxyReturn}{Devuelve}
 true si \hyperlink{classconjunto_a863e1e106e35adda47e7c5e2067295b9}{size()}==0, false en caso contrario. 
 \end{DoxyReturn}
+\hypertarget{classconjunto_ae143234a24189d96ff6824031a127a28}{\index{conjunto@{conjunto}!end@{end}}
+\index{end@{end}!conjunto@{conjunto}}
+\paragraph[{end}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator} conjunto\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_ae143234a24189d96ff6824031a127a28}
+
+
+devuelve iterador al final (posición siguiente al último del conjunto 
+
 \hypertarget{classconjunto_ad550177fa4454da3a10fa356417e39a7}{\index{conjunto@{conjunto}!erase@{erase}}
 \index{erase@{erase}!conjunto@{conjunto}}
 \paragraph[{erase}]{\setlength{\rightskip}{0pt plus 5cm}bool conjunto\+::erase (
@@ -235,13 +347,13 @@ true si la entrada se ha podido borrar con éxito. False en caso contrario
 \begin{DoxyPostcond}{Postcondición}
 Si esta en el conjunto su tamaño se decrementa en 1. 
 \end{DoxyPostcond}
-\hypertarget{classconjunto_a64ee1c67331bce15dc029048631dda97}{\index{conjunto@{conjunto}!find@{find}}
+\hypertarget{classconjunto_a2459d07b15a25a474f1be8dc0038feb5}{\index{conjunto@{conjunto}!find@{find}}
 \index{find@{find}!conjunto@{conjunto}}
-\paragraph[{find}]{\setlength{\rightskip}{0pt plus 5cm}pair$<${\bf conjunto\+::entrada},bool$>$ conjunto\+::find (
+\paragraph[{find}]{\setlength{\rightskip}{0pt plus 5cm}{\bf conjunto\+::iterator} conjunto\+::find (
 \begin{DoxyParamCaption}
 \item[{const long int \&}]{id}
 \end{DoxyParamCaption}
-) const}}\label{classconjunto_a64ee1c67331bce15dc029048631dda97}
+) const}}\label{classconjunto_a2459d07b15a25a474f1be8dc0038feb5}
 
 
 busca un crimen en el conjunto 
@@ -252,15 +364,47 @@ busca un crimen en el conjunto
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Devuelve}
-Si existe una entrada en el conjunto devuelve un par con una copia de la entrada en el conjunto y con el segundo valor a true. Si no se encuentra devuelve la entrada con la definicion por defecto y false 
+Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si no se encuentra devuelve \hyperlink{classconjunto_ae143234a24189d96ff6824031a127a28}{end()} 
 \end{DoxyReturn}
 \begin{DoxyPostcond}{Postcondición}
-no modifica el conjunto. \begin{DoxyVerb}Uso
+no modifica el conjunto. 
+\begin{DoxyCode}
+ Ejemplo
    
 
-if (C.find(12345).second ==true) cout << "Esta" ;
-else cout << "No esta";
-\end{DoxyVerb}
+\textcolor{keywordflow}{if} (C.find(12345)!=C.end() ) cout << \textcolor{stringliteral}{"Esta"} ;
+\textcolor{keywordflow}{else} cout << \textcolor{stringliteral}{"No esta"};
+\end{DoxyCode}
+ 
+\end{DoxyPostcond}
+\hypertarget{classconjunto_a356285fe75238fd67673eba9c6bf6d24}{\index{conjunto@{conjunto}!find@{find}}
+\index{find@{find}!conjunto@{conjunto}}
+\paragraph[{find}]{\setlength{\rightskip}{0pt plus 5cm}{\bf conjunto\+::const\+\_\+iterator} conjunto\+::find (
+\begin{DoxyParamCaption}
+\item[{const long int \&}]{id}
+\end{DoxyParamCaption}
+) const}}\label{classconjunto_a356285fe75238fd67673eba9c6bf6d24}
+
+
+busca un crimen en el conjunto 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em id} & identificador del crimen buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si no se encuentra devuelve \hyperlink{classconjunto_ae143234a24189d96ff6824031a127a28}{end()} 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondición}
+no modifica el conjunto. 
+\begin{DoxyCode}
+ Ejemplo
+   
+
+\textcolor{keywordflow}{if} (C.find(12345)!=C.end() ) cout << \textcolor{stringliteral}{"Esta"} ;
+\textcolor{keywordflow}{else} cout << \textcolor{stringliteral}{"No esta"};
+\end{DoxyCode}
  
 \end{DoxyPostcond}
 \hypertarget{classconjunto_afff3e7f4b3d00f422dd7ab2fec935378}{\index{conjunto@{conjunto}!find\+D\+E\+S\+C\+R@{find\+D\+E\+S\+C\+R}}
@@ -372,6 +516,12 @@ No se modifica el conjunto.
 
 
 \subsubsection{Documentación de las funciones relacionadas y clases amigas}
+\hypertarget{classconjunto_ac220ce1c155db1ac44146c12d178056f}{\index{conjunto@{conjunto}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!conjunto@{conjunto}}
+\paragraph[{const\+\_\+iterator}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf const\+\_\+iterator}\hspace{0.3cm}{\ttfamily [friend]}}}\label{classconjunto_ac220ce1c155db1ac44146c12d178056f}
+\hypertarget{classconjunto_a67171474c4da6cc8efe0c7fafefd2b2d}{\index{conjunto@{conjunto}!iterator@{iterator}}
+\index{iterator@{iterator}!conjunto@{conjunto}}
+\paragraph[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf iterator}\hspace{0.3cm}{\ttfamily [friend]}}}\label{classconjunto_a67171474c4da6cc8efe0c7fafefd2b2d}
 \hypertarget{classconjunto_ae54b721035471d372f29c0335c42734a}{\index{conjunto@{conjunto}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!conjunto@{conjunto}}
 \paragraph[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (

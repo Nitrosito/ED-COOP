@@ -24,15 +24,46 @@ conjunto::iterator conjunto::end() const{
 /** @brief constructor defecto iterator
 */
 conjunto::iterator::iterator(){
-
 }
 
 /** @brief constructor copia iterator
 */
-conjunto::iterator::iterator(const conjunto::iterator & i)
-  itv = i.itv;
+conjunto::iterator::iterator(const conjunto::iterator & it)
+  itv = it.itv;
 }
 
+const conjunto::entrada & operator*() const{
+	return *itv;
+}
+
+iterator operator++( int ){		//Post incremento
+	conjunto::iterator aux;
+	aux = *this;
+	++(*this);
+	return aux;
+}
+
+iterator & operator++(){
+	*this = *this+1;
+}
+
+iterator operator--(int){
+	conjunto::iterator aux;
+	aux = *this;
+	++(*this);
+	return aux;
+}
+
+iterator & operator--(){
+	*this = *this-1;
+}
+
+bool operator==(const iterator & it){
+
+}
+bool operator!=(const iterator & it){
+
+}
 
 	
 pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
