@@ -17,9 +17,9 @@ conjunto::iterator conjunto::begin() const{
 
 
 conjunto::iterator conjunto::end() const{
-conjunto::iterator sal;
-	sal.itv = vc.end();
-        return sal;
+	conjunto::iterator sal;
+		sal.itv = vc.end();
+	        return sal;
 }
 /** @brief constructor defecto iterator
 */
