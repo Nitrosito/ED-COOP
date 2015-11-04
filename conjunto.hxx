@@ -203,37 +203,37 @@ const conjunto::entrada & operator*() const{
 
 conjunto::iterator iterator operator++(int){		//Post incremento
 	conjunto::iterator aux;
-	aux = *it;
-	++(*it);													
+	aux = this;
+	++(*this);
 	return aux;
 }
 
 conjunto::iterator iterator & operator++(){		//Pre incremento
-	*it++;
-	return *this;
+	*this++;
+	return this;
 }
 
 conjunto::iterator iterator operator--(int){
 	conjunto::iterator aux;
-	aux = *it;
-	--(*it);
+	aux = this;
+	--(*this);
 	return aux;
 }
 
 conjunto::iterator iterator & operator--(){
-	*it--;
-	return *this;
+	*this--;
+	return this;
 }
 
 bool conjunto::iterator operator==(const iterator & it){
-	if(itv == it)
+	if(itv == it.itv)
 		return true;
 	else
 		return false;
 }
 
 bool conjunto::iterator operator!=(const iterator & it){
-	if(itv != it)
+	if(itv != it.itv)
 		return true;
 	else
 		return false;
@@ -272,7 +272,7 @@ const conjunto::entrada & conjunto::const_iterator operator*() const{
 conjunto::const_iterator const_iterator operator++( int ){
 	conjunto::const_iterator aux;
 	aux = *c_itv;
-	++(*c_itv);													
+	++(*c_itv);
 	return aux;
 }
 conjunto::const_iterator const_iterator & operator++(){
@@ -305,8 +305,8 @@ bool conjunto::const_iteratoroperator!=(const const_iterator & it){
 
 
 // ============================== description iterator ===============================
-	 
-conjunto::description_iterator  dbegin(const string & descr) const{	
+
+conjunto::description_iterator  dbegin(const string & descr) const{
 	conjunto::description_iterator d_it;
 	d_it.c_itv = findDESCR(descr).vc.begin();
 	return d_it;
@@ -326,7 +326,7 @@ conjunto::description_iterator::description_iterator(const description_iterator 
 	descr = it.descr;
   	c_itv = it.c_itv;
 }
-     
+
 const conjunto::entrada & conjunto::description_iterator operator*() const{
   	return *c_itv;																		//NO SE SI ES ESO LO QUE HAY QUE PONER
 }
