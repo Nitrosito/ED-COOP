@@ -2,6 +2,7 @@
 #include "crimen.h"
 #include "fecha.cpp"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 	
