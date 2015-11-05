@@ -209,7 +209,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 
        private:
            friend class conjunto;
-           vector<entradas>::iterator itv;
+           vector<entrada>::iterator itv;
 };
 
  	/** @brief  

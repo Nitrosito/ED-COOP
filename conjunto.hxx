@@ -197,43 +197,43 @@ conjunto::iterator::iterator(const conjunto::iterator & it)
   itv = it.itv;
 }
 
-const conjunto::entrada & operator*() const{
+const conjunto::entrada & conjunto::iterator::operator*() const{
 	return *itv;
 }
 
-conjunto::iterator iterator operator++(int){		//Post incremento
+conjunto::iterator  conjunto::iterator::operator++(int){		//Post incremento
 	conjunto::iterator aux;
-	aux = *it;
-	++(*it);													
+	aux = this;
+	++itv;													
 	return aux;
 }
 
-conjunto::iterator iterator & operator++(){		//Pre incremento
-	*it++;
+conjunto::iterator & conjunto::iterator::operator++(){		//Pre incremento
+	itv++;
 	return *this;
 }
 
-conjunto::iterator iterator operator--(int){
+conjunto::iterator conjunto::iterator::operator--(int){
 	conjunto::iterator aux;
-	aux = *it;
-	--(*it);
+	aux = this;
+	--itv;
 	return aux;
 }
 
-conjunto::iterator iterator & operator--(){
-	*it--;
+conjunto::iterator & conjunto::iterator::operator--(){
+	itv--;
 	return *this;
 }
 
-bool conjunto::iterator operator==(const iterator & it){
-	if(itv == it)
+bool conjunto::iterator::operator==(const conjunto::iterator & it){
+	if(itv == it.itv)
 		return true;
 	else
 		return false;
 }
 
-bool conjunto::iterator operator!=(const iterator & it){
-	if(itv != it)
+bool conjunto::iterator::operator!=(const conjunto::iterator & it){
+	if(itv != it.itv)
 		return true;
 	else
 		return false;
@@ -246,13 +246,13 @@ bool conjunto::iterator operator!=(const iterator & it){
 */
 
 
-conjunto::const_iterator const_iterator cbegin() const{
+conjunto::const_iterator conjunto::cbegin() const{
 	conjunto::iterator sal;
 		sal.c_itv = vc.begin();
 	        return sal;
 }
 
-conjunto::const_iterator const_iterator cend() const{
+conjunto::const_iterator conjunto::cend() const{
 	conjunto::iterator sal;
 		sal.itv = vc.end();
 	        return sal;
@@ -260,43 +260,43 @@ conjunto::const_iterator const_iterator cend() const{
 
 conjunto::const_iterator::const_iterator(){
 }
-conjunto::const_iterator::const_iterator(const const_iterator & it){
-	itv = it.c_itv;
+conjunto::const_iterator::const_iterator(const conjunto::const_iterator & it){
+	c_itv = it.c_itv;
 }
-conjunto::const_iterator::const_iterator(const iterator & it){
-	itv = it.c_itv;
+conjunto::const_iterator::const_iterator(const conjunto::iterator & it){
+	c_itv = it.itv;
 }
-const conjunto::entrada & conjunto::const_iterator operator*() const{
+const conjunto::entrada & conjunto::const_iterator::operator*() const{
 	return *c_itv;
 }
-conjunto::const_iterator const_iterator operator++( int ){
+conjunto::const_iterator conjunto::const_iterator::operator++( int ){
 	conjunto::const_iterator aux;
-	aux = *c_itv;
-	++(*c_itv);													
+	aux = this;
+	++c_itv;													
 	return aux;
 }
-conjunto::const_iterator const_iterator & operator++(){
-	*c_itv++;
+conjunto::const_iterator & conjunto::const_iterator::operator++(){
+	c_itv++;
 	return *this;
 }
-conjunto::const_iterator const_iterator operator--(int){
+conjunto::const_iterator conjunto::const_iterator::operator--(int){
 	conjunto::const_iterator aux;
-	aux = *c_itv;
-	--(*c_itv);
+	aux = this;
+	--c_itv;
 	return aux;
 }
-conjunto::const_iterator const_iterator & operator--(){
-	*c_itv--;
+conjunto::const_iterator & conjunto::const_iterator::operator--(){
+	c_itv--;
 	return *this;
 }
-bool conjunto::const_iterator operator==(const const_iterator & it){
-	if(c_itv == it)
+bool conjunto::const_iterator::operator==(const conjunto::const_iterator & it){
+	if(c_itv == it.c_itv)
 		return true;
 	else
 		return false;
 }
-bool conjunto::const_iteratoroperator!=(const const_iterator & it){
-	if(c_itv != it)
+bool conjunto::const_iterator::operator!=(const conjunto::const_iterator & it){
+	if(c_itv != it.itv)
 		return true;
 	else
 		return false;
@@ -306,16 +306,18 @@ bool conjunto::const_iteratoroperator!=(const const_iterator & it){
 
 // ============================== description iterator ===============================
 	 
-conjunto::description_iterator  dbegin(const string & descr) const{	
+conjunto::description_iterator  conjunto::dbegin(const string & descr) const{	
 	conjunto::description_iterator d_it;
 	d_it.c_itv = findDESCR(descr).vc.begin();
+	d_it.descr = descr;
 	return d_it;
 }
 
 
-conjunto::description_iterator  dend( ) const{
+conjunto::description_iterator  conjunto::dend( ) const{
 	conjunto::description_iterator d_it;
 	d_it.c_itv = findDESCR(descr).vc.end();
+	d_it.descr = descr;
 	return d_it;
 }
 
@@ -327,37 +329,38 @@ conjunto::description_iterator::description_iterator(const description_iterator 
   	c_itv = it.c_itv;
 }
      
-const conjunto::entrada & conjunto::description_iterator operator*() const{
+const conjunto::entrada & conjunto::description_iterator::operator*() const{
   	return *c_itv;																		//NO SE SI ES ESO LO QUE HAY QUE PONER
 }
-description_iterator conjunto::description_iterator operator++( int ){
+
+description_iterator conjunto::description_iterator::operator++( int ){
   	conjunto::description_iterator aux;
-  	aux = c_itv;
+  	aux = this;
   	c_itv++;
   	return aux;
 }
-description_iterator & conjunto::description_iterator operator++(){
+description_iterator & conjunto::description_iterator::operator++(){
   	c_itv++;
   	return *this;
 }
-description_iterator conjunto::description_iterator operator--(int){
+description_iterator conjunto::description_iterator::operator--(int){
 	conjunto::description_iterator aux;
-  	aux = c_itv;
+  	aux = this;
   	c_itv--;
   	return aux;
 }
-description_iterator & conjunto::description_iterator operator--(){
+description_iterator & conjunto::description_iterator::operator--(){
   	c_itv--;
   	return *this;
 }
-bool conjunto::description_iterator operator==(const description_iterator & it){
+bool conjunto::description_iterator::operator==(const description_iterator & it){
   	if(c_itv == it.c_itv && descr.compare(it.descr) == 0)
   		return true;
   	else
   		return false;
 }
-bool conjunto::description_iterator operator!=(const description_iterator & it){
-  	if(c_itv != it.c_itv && descr.compare(it.descr) != 0)
+bool conjunto::description_iterator::operator!=(const description_iterator & it){
+  	if(c_itv != it.c_itv || descr.compare(it.descr) != 0)
   		return true;
   	else
   		return false;
