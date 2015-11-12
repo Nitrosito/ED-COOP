@@ -42,66 +42,66 @@ int ini = 0;
 	return sal;
 }
 
-// conjunto::const_iterator  conjunto::find( const long int & id) const{
-// 	conjunto::const_iterator sal;
-// 	int ini = 0;
-// 		int fin = vc.size()-1;
-// 		int medio;
-// 		bool aux = false;
-// 		while(fin >= ini && aux == false){
-// 			medio  = (fin+ini)/2;
-// 			cout << "Buscando...." << endl;
-// 			//buqueda binaria
-// 			if(vc.at(medio).getID() == id){
-// 				aux = true;
-
-// 			}
-// 			else if(vc.at(medio).getID() < id){
-// 				ini = medio +1;
-// 			}
-// 			else{
-// 				fin = medio -1;
-// 			}
-// 		}
-// 		if(aux)
-// 			sal.c_itv = vc.begin()+medio; 
-// 		else 
-// 			sal.c_itv =vc.end();
-
-// 		return sal;
-// }
-
-pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
-	pair<conjunto::entrada,bool> aux;
+conjunto::const_iterator  conjunto::find( const long int & id) const{
+	conjunto::const_iterator sal;
 	int ini = 0;
-	int fin = vc.size()-1;
+		int fin = vc.size()-1;
+		int medio;
+		bool aux = false;
+		while(fin >= ini && aux == false){
+			medio  = (fin+ini)/2;
+			cout << "Buscando...." << endl;
+			//buqueda binaria
+			if(vc.at(medio).getID() == id){
+				aux = true;
 
-	aux.second = false;
-	while(fin >= ini && aux.second == false){
-		int medio  = (fin+ini)/2;
-		cout << "Buscando...." << endl;
-		//buqueda binaria
-		if(vc.at(medio).getID() == id){
-			aux.first = vc.at(medio);
-			aux.second = true;
+			}
+			else if(vc.at(medio).getID() < id){
+				ini = medio +1;
+			}
+			else{
+				fin = medio -1;
+			}
+		}
+		if(aux)
+			sal.c_itv = vc.begin()+medio; 
+		else 
+			sal.c_itv = vc.end();
 
-		}
-		else if(vc.at(medio).getID() < id){
-			ini = medio +1;
-		}
-		else{
-			fin = medio -1;
-		}
-	}
-	return aux;
+		return sal;
 }
+
+// pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
+// 	pair<conjunto::entrada,bool> aux;
+// 	int ini = 0;
+// 	int fin = vc.size()-1;
+
+// 	aux.second = false;
+// 	while(fin >= ini && aux.second == false){
+// 		int medio  = (fin+ini)/2;
+// 		cout << "Buscando...." << endl;
+// 		//buqueda binaria
+// 		if(vc.at(medio).getID() == id){
+// 			aux.first = vc.at(medio);
+// 			aux.second = true;
+
+// 		}
+// 		else if(vc.at(medio).getID() < id){
+// 			ini = medio +1;
+// 		}
+// 		else{
+// 			fin = medio -1;
+// 		}
+// 	}
+// 	return aux;
+// }
 
 conjunto conjunto::findIUCR( const string & iucr) const{		//Preguntar si se deja con it o lo hacemos con []
 	conjunto aux;
 	vector<crimen>::const_iterator it;
-	for(it->c_itv = vc.begin(); it->c_itv != vc.end(); it->c_itv++){
-		if(it->(*c_itv).getIucr() == iucr){
-			aux.insert(it->(*c_itv);
+	for(it = vc.begin(); it != vc.end(); it++){
+		if((*it).getIucr() == iucr){
+			aux.insert(*it);
 		}
 	}
 	return aux;
@@ -121,7 +121,7 @@ conjunto conjunto::findDESCR( const string & descr) const{
 }
 
 bool conjunto::insert( const conjunto::entrada & e){
-	if(!find(e.getID()).second){
+	if(find(e.getID()).itv == vc.end()) {
 		int posicion = vc.size();
 		int i = 0;
 		bool mayor = false;
@@ -241,8 +241,9 @@ conjunto::iterator::iterator(){
 }
 
 
-conjunto::iterator::iterator(const conjunto::iterator & it)
-  itv = it.itv;
+conjunto::iterator::iterator(const conjunto::iterator & it){
+  *this = it ;
+
 }
 
 const conjunto::entrada & conjunto::iterator::operator*() const{
@@ -251,7 +252,7 @@ const conjunto::entrada & conjunto::iterator::operator*() const{
 
 conjunto::iterator  conjunto::iterator::operator++(int){		//Post incremento
 	conjunto::iterator aux;
-	aux = this;
+	aux = *this;
 	++itv;													
 	return aux;
 }
@@ -263,7 +264,7 @@ conjunto::iterator & conjunto::iterator::operator++(){		//Pre incremento
 
 conjunto::iterator conjunto::iterator::operator--(int){
 	conjunto::iterator aux;
-	aux = this;
+	aux = *this;
 	--itv;
 	return aux;
 }
@@ -295,14 +296,14 @@ bool conjunto::iterator::operator!=(const conjunto::iterator & it){
 
 
 conjunto::const_iterator conjunto::cbegin() const{
-	conjunto::iterator sal;
+	conjunto::const_iterator sal;
 		sal.c_itv = vc.begin();
 	        return sal;
 }
 
 conjunto::const_iterator conjunto::cend() const{
-	conjunto::iterator sal;
-		sal.itv = vc.end();
+	conjunto::const_iterator sal;
+		sal.c_itv = vc.end();
 	        return sal;
 }
 
@@ -319,7 +320,7 @@ const conjunto::entrada & conjunto::const_iterator::operator*() const{
 }
 conjunto::const_iterator conjunto::const_iterator::operator++( int ){
 	conjunto::const_iterator aux;
-	aux = this;
+	aux = *this;
 	++c_itv;													
 	return aux;
 }
@@ -329,7 +330,7 @@ conjunto::const_iterator & conjunto::const_iterator::operator++(){
 }
 conjunto::const_iterator conjunto::const_iterator::operator--(int){
 	conjunto::const_iterator aux;
-	aux = this;
+	aux = *this;
 	--c_itv;
 	return aux;
 }
@@ -344,7 +345,7 @@ bool conjunto::const_iterator::operator==(const conjunto::const_iterator & it){
 		return false;
 }
 bool conjunto::const_iterator::operator!=(const conjunto::const_iterator & it){
-	if(c_itv != it.itv)
+	if(c_itv != it.c_itv)
 		return true;
 	else
 		return false;
@@ -356,16 +357,19 @@ bool conjunto::const_iterator::operator!=(const conjunto::const_iterator & it){
 	 
 conjunto::description_iterator  conjunto::dbegin(const string & descr) const{	
 	conjunto::description_iterator d_it;
-	d_it.c_itv = findDESCR(descr).vc.begin();
+	//d_it.c_itv = findDESCR(descr).vc.begin();
+	d_it.ptr = this;
+	do{
+
+	}while(&& < *ptr.vc.end() != c_itv)
 	d_it.descr = descr;
 	return d_it;
 }
 
 
-conjunto::description_iterator  conjunto::dend( ) const{
+conjunto::description_iterator  conjunto::dend( ){
 	conjunto::description_iterator d_it;
-	d_it.c_itv = findDESCR(descr).vc.end();
-	d_it.descr = descr;
+	d_it.c_itv = vc.end();
 	return d_it;
 }
 
@@ -381,23 +385,23 @@ const conjunto::entrada & conjunto::description_iterator::operator*() const{
   	return *c_itv;																		//NO SE SI ES ESO LO QUE HAY QUE PONER
 }
 
-description_iterator conjunto::description_iterator::operator++( int ){
+conjunto::description_iterator conjunto::description_iterator::operator++( int ){
   	conjunto::description_iterator aux;
-  	aux = this;
+  	aux = *this;
   	c_itv++;
   	return aux;
 }
-description_iterator & conjunto::description_iterator::operator++(){
+conjunto::description_iterator & conjunto::description_iterator::operator++(){
   	c_itv++;
   	return *this;
 }
-description_iterator conjunto::description_iterator::operator--(int){
+conjunto::description_iterator conjunto::description_iterator::operator--(int){
 	conjunto::description_iterator aux;
-  	aux = this;
+  	aux = *this;
   	c_itv--;
   	return aux;
 }
-description_iterator & conjunto::description_iterator::operator--(){
+conjunto::description_iterator & conjunto::description_iterator::operator--(){
   	c_itv--;
   	return *this;
 }

@@ -243,7 +243,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	  bool operator==(const const_iterator & it);
 	  bool operator!=(const const_iterator & it);
 	private:
-	 
+	  friend class conjunto;
 	  vector<entrada>::const_iterator c_itv;
 	  friend class diccionario;
 	  
@@ -282,8 +282,9 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	private:
 	  string descr;  // la descripcion se asigna en con el metodo dbegin
 	  vector<entrada>::const_iterator c_itv;
+	  conjunto *ptr;
 	  friend class diccionario;
-	  
+	  friend class conjunto;
 	};
 
 private:
