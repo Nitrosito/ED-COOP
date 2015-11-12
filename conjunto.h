@@ -254,13 +254,13 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	@param[in] descr descripcion de buscamos
 	@return un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito.
 	*/
-	description_iterator  dbegin(const string & descr) const;
+	description_iterator  dbegin(const string & descr);
 
 	 /**   @brief devolver fin del conjunto
 	 
 	@return un iterador que apunta a la posicion final
 	*/
-	description_iterator  dend( ) const;
+	description_iterator  dend( );
 
 	/** @brief class description_iterator
 	 * forward iterador constante sobre el diccionario, Lectura 

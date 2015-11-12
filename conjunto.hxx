@@ -355,13 +355,14 @@ bool conjunto::const_iterator::operator!=(const conjunto::const_iterator & it){
 
 // ============================== description iterator ===============================
 	 
-conjunto::description_iterator  conjunto::dbegin(const string & descr) const{	
+conjunto::description_iterator  conjunto::dbegin(const string & descr){	
 	conjunto::description_iterator d_it;
-	//d_it.c_itv = findDESCR(descr).vc.begin();
 	d_it.ptr = this;
+	size_t found;
 	do{
-
-	}while(&& < *ptr.vc.end() != c_itv)
+		found = d_it.descr.find(descr);
+		c_itv++;
+	}while(found == string::npos && *ptr.vc.end() != c_itv)
 	d_it.descr = descr;
 	return d_it;
 }
