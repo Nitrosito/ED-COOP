@@ -13,13 +13,63 @@ conjunto::conjunto (const conjunto & d){
 	vc = d.vc;
 }
 
-conjunto::iterator  conjunto::find( const long int & id) const{
+conjunto::iterator  conjunto::find( const long int & id){
+	conjunto::iterator sal;
+int ini = 0;
+	int fin = vc.size()-1;
+	int medio;
+	bool aux = false;
+	while(fin >= ini && aux == false){
+		medio  = (fin+ini)/2;
+		cout << "Buscando...." << endl;
+		//buqueda binaria
+		if(vc.at(medio).getID() == id){
+			aux = true;
 
+		}
+		else if(vc.at(medio).getID() < id){
+			ini = medio +1;
+		}
+		else{
+			fin = medio -1;
+		}
+	}
+	if(aux)
+		sal.itv = vc.begin()+medio; 
+	else 
+		sal.itv =vc.end();
+
+	return sal;
 }
 
-conjunto::const_iterator  conjunto::find( const long int & id) const{
+// conjunto::const_iterator  conjunto::find( const long int & id) const{
+// 	conjunto::const_iterator sal;
+// 	int ini = 0;
+// 		int fin = vc.size()-1;
+// 		int medio;
+// 		bool aux = false;
+// 		while(fin >= ini && aux == false){
+// 			medio  = (fin+ini)/2;
+// 			cout << "Buscando...." << endl;
+// 			//buqueda binaria
+// 			if(vc.at(medio).getID() == id){
+// 				aux = true;
 
-}
+// 			}
+// 			else if(vc.at(medio).getID() < id){
+// 				ini = medio +1;
+// 			}
+// 			else{
+// 				fin = medio -1;
+// 			}
+// 		}
+// 		if(aux)
+// 			sal.c_itv = vc.begin()+medio; 
+// 		else 
+// 			sal.c_itv =vc.end();
+
+// 		return sal;
+// }
 
 pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
@@ -49,9 +99,9 @@ pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 conjunto conjunto::findIUCR( const string & iucr) const{		//Preguntar si se deja con it o lo hacemos con []
 	conjunto aux;
 	vector<crimen>::const_iterator it;
-	for(it = vc.begin(); it != vc.end(); it++){
-		if(it->getIucr() == iucr){
-			aux.insert(*it);
+	for(it->c_itv = vc.begin(); it->c_itv != vc.end(); it->c_itv++){
+		if(it->(*c_itv).getIucr() == iucr){
+			aux.insert(it->(*c_itv);
 		}
 	}
 	return aux;
@@ -71,7 +121,6 @@ conjunto conjunto::findDESCR( const string & descr) const{
 }
 
 bool conjunto::insert( const conjunto::entrada & e){
-	cout << "h" << endl;
 	if(!find(e.getID()).second){
 		int posicion = vc.size();
 		int i = 0;
@@ -85,7 +134,6 @@ bool conjunto::insert( const conjunto::entrada & e){
 			++i;
 			cout << "hola" << endl;
 		}
-		cout << "antes insert:" << posicion <<endl;
 		vc.insert(vc.begin()+posicion,e);
 		return true;
 	}
@@ -176,14 +224,14 @@ ostream &  operator << ( ostream & os, const conjunto & D){
 //////////  CONJUNTO::ITERATOR CLASS //////////////////////////////////
 */
 
-conjunto::iterator conjunto::begin() const{
+conjunto::iterator conjunto::begin(){
 	conjunto::iterator sal;
 		sal.itv = vc.begin();
 	        return sal;
 }
 
 
-conjunto::iterator conjunto::end() const{
+conjunto::iterator conjunto::end(){
 	conjunto::iterator sal;
 		sal.itv = vc.end();
 	        return sal;

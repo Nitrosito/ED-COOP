@@ -90,7 +90,7 @@ public:
 	else cout << "No esta";
 	\endcode
 	*/
-	conjunto::iterator  find( const long int & id) const;
+	conjunto::iterator  find( const long int & id);
 	/** @brief busca un crimen en el conjunto
 	@param id identificador del crimen  buscar
 	@return Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si  no se encuentra devuelve end()
@@ -185,11 +185,11 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 
      /**@brief devuelve iterador al inicio del conjunto
      */
-     iterator begin() const;
+     iterator begin();
 
      /**@brief devuelve iterador al final (posición siguiente al último del conjunto
      */
-     iterator end() const;
+     iterator end();
 /** @brief class iterator
 	 * forward iterador sobre el conjunto, LECTURA
 	 *  iterator() ,operator*(), operator++, operator++(int) operator=, operator==, operator!=
