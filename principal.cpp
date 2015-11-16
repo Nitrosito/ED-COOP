@@ -24,7 +24,7 @@ bool load(conjunto &  C, const string & s) {
  } else {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
    cout << cadena << endl;
-   int i = 1;
+   int i = 50;
     while ( /*!fe.eof()*/i >0 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
@@ -54,7 +54,7 @@ bool load(conjunto &  C, const string & s) {
             aux.setCrimen(cadena);
             //Insertar cadena en el conjunto
             C.insert(aux);
-            cout << C << endl;
+            
          }
          i--;
      }
@@ -74,6 +74,7 @@ int main()
     
 
     load(ChicagoDB, "crimenes.csv");
+    cout << ChicagoDB << endl;
 
    return 0;
 }

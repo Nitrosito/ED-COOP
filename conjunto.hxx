@@ -21,7 +21,6 @@ int ini = 0;
 	bool aux = false;
 	while(fin >= ini && aux == false){
 		medio  = (fin+ini)/2;
-		cout << "Buscando...." << endl;
 		//buqueda binaria
 		if(vc.at(medio).getID() == id){
 			aux = true;
@@ -50,7 +49,6 @@ conjunto::const_iterator  conjunto::find( const long int & id) const{
 		bool aux = false;
 		while(fin >= ini && aux == false){
 			medio  = (fin+ini)/2;
-			cout << "Buscando...." << endl;
 			//buqueda binaria
 			if(vc.at(medio).getID() == id){
 				aux = true;
@@ -132,7 +130,6 @@ bool conjunto::insert( const conjunto::entrada & e){
 				mayor = true;
 			}
 			++i;
-			cout << "hola" << endl;
 		}
 		vc.insert(vc.begin()+posicion,e);
 		return true;
@@ -407,12 +404,16 @@ conjunto::description_iterator & conjunto::description_iterator::operator++(){
 conjunto::description_iterator conjunto::description_iterator::operator--(int){
 	conjunto::description_iterator aux;
   	aux = *this;
+  	vector<entrada>::const_iterator it_aux = c_itv;
   	string d = descr;
 	size_t found;
 	do{
 		found = descr.find(d);	
-		if(c_itv == c_itv.begin())
-	}while(found == string::npos && (*ptr).vc.begin() != c_itv);
+		if(it_aux != (*ptr).vc.begin())
+			it_aux--;
+	}while(found == string::npos && (*ptr).vc.begin() != it_aux);
+	if(found != string::npos)
+		c_itv = it_aux;
 
   	return aux;
 }

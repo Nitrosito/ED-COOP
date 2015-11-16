@@ -1,14 +1,17 @@
+#include <iostream>
+
+using namespace std;
 
   crimen::crimen(){
   	ID=0;
   	arrest=false;
   	domestic=false;
-  } 
+  }
 
   crimen::crimen(const crimen& x){
   	ID=x.ID;
   	casenumber=x.casenumber;
-  	date=x.date;	
+  	date=x.date;
   	iucr=x.iucr;
   	primarytype=x.primarytype;
   	description=x.description;
@@ -53,7 +56,7 @@
 
   void crimen::setDomestic(bool d){
     domestic = d;
-  } 
+  }
 
   void crimen::setLatitude(double & lat){
     latitude = lat;
@@ -62,7 +65,131 @@
   void crimen::setLongitude(double & lon){
     longitude = lon;
   }
-  
+  void crimen::setCrimen(string & cadena){
+    string s;
+    int ini = 0;
+    int fin = cadena.find_first_of(",");
+    s = cadena.substr(ini,fin);
+    if(!s.empty()){
+      long int a = stol(s);
+      setID(a);
+    }
+    //cout << "ID: " << s << endl;
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "CaseNumber: " << s << endl;
+    setCaseNumber(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "IFecha: " << s << endl;
+    fecha f(s);
+    setDate(f);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "IUCR: " << s << endl;
+    setIucr(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "primarytype: " << s << endl;
+    setPrimaryType(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "description: " << s << endl;
+    setDescription(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "location_descrip: " << s << endl;
+    setLocationDescription(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "Arrest: " << s << endl;
+    bool b;
+    (s.compare("true") == 0) ? b = true: b = false;
+    setArrest(b);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    (s.compare("true") == 0) ? b = true: b = false;
+    //cout << "domestic: " << s << endl;
+    setDomestic(b);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    //s = cadena.substr(ini,fin-ini);
+    //c.setBeat(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    //s = cadena.substr(ini,fin-ini);
+    //c.setDistrito(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    //s = cadena.substr(ini,fin-ini);
+    //c.setWard(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    //s = cadena.substr(ini,fin-ini);
+    //c.setComunity(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    //s = cadena.substr(ini,fin-ini);
+    //c.setArea(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    //s = cadena.substr(ini,fin-ini);
+    //c.setFBICode(s);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "latitude: " << s << endl;
+    if(!s.empty()){
+      double d=stod(s);
+      setLatitude(d);
+    }
+
+
+    ini = fin+1;
+    fin = cadena.find_first_of(",",ini);
+    s = cadena.substr(ini,fin-ini);
+    //cout << "longitude: " << s << endl;
+    if(!s.empty()){
+      double d=stod(s);
+      setLongitude(d);
+    }
+  }
+
   long int crimen::getID( ) const{
     return ID;
   }
@@ -110,7 +237,7 @@
   crimen & crimen::operator=(const crimen & x){
     ID=x.ID;
     casenumber=x.casenumber;
-    date=x.date;  
+    date=x.date;
     iucr=x.iucr;
     primarytype=x.primarytype;
     description=x.description;
@@ -122,7 +249,7 @@
   }
 
   bool crimen::operator==(const crimen & x) const{
-  if(this->ID == x.ID && this-> casenumber == x.casenumber && this->date == x.date && this->iucr == x.iucr && this->primarytype == x.primarytype && this->description == x.description 
+  if(this->ID == x.ID && this-> casenumber == x.casenumber && this->date == x.date && this->iucr == x.iucr && this->primarytype == x.primarytype && this->description == x.description
     && this->location_descrip == x.location_descrip && this->arrest == x.arrest && this->domestic == x.domestic && this->latitude == x.latitude && this->longitude == x.longitude){
       return true;
   }
@@ -142,4 +269,3 @@
     os << c.ID << "," << c.casenumber << "," << c.date << "," << c.iucr << "," << c.primarytype << "," << c.description << "," << c.location_descrip << "," << c.arrest << "," << c.domestic << "," << c.latitude << "," << c.longitude;
     return os;
   }
-  
