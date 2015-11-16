@@ -195,6 +195,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	 *  iterator() ,operator*(), operator++, operator++(int) operator=, operator==, operator!=
 	 * */
     class iterator {
+    public:
        iterator();
        iterator (const iterator & it);
        

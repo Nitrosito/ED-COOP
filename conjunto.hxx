@@ -143,10 +143,11 @@ bool conjunto::insert( const conjunto::entrada & e){
 bool conjunto::erase(const long int & id){
 	int ini = 0;
 	int fin = vc.size()-1;
-	int medio  = (fin+ini)/2;
+	int medio;
 	bool esta = false;
-	conjunto aux;
+	//conjunto aux;
 	while(fin >= ini){
+		medio  = (fin+ini)/2;
 		//buqueda binaria
 		if(vc.at(medio).getID() == id){
 			esta = true;
@@ -166,11 +167,12 @@ bool conjunto::erase(const long int & id){
 bool conjunto::erase(const  conjunto::entrada & e){
 	int ini = 0;
 	int fin = vc.size()-1;
-	int medio  = (fin+ini)/2;
+	int medio;
 	bool esta = false;
-	conjunto aux;
+	//conjunto aux;
 	while(fin >= ini){
 		//buqueda binaria
+		medio  = (fin+ini)/2;
 		if(vc.at(medio).getID() == e.getID()){
 			esta = true;
 			vc.erase(vc.begin()+medio);
@@ -240,7 +242,6 @@ conjunto::iterator::iterator(){
 
 conjunto::iterator::iterator(const conjunto::iterator & it){
   *this = it ;
-
 }
 
 const conjunto::entrada & conjunto::iterator::operator*() const{

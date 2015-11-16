@@ -11,7 +11,7 @@ using namespace std;
         @param[in,out] C conjunto sobre el que se lee
 	@return true si la lectura ha sido correcta, false en caso contrario
 	*/
-
+crimen d;
 bool load(conjunto &  C, const string & s) {
  ifstream fe;
  string cadena;
@@ -24,40 +24,24 @@ bool load(conjunto &  C, const string & s) {
  } else {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
    cout << cadena << endl;
-   int i = 50;
-    while ( /*!fe.eof()*/i >0 )
+   crimen aux;
+   int i = 0;
+    while ( /*!fe.eof()*/i<15 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
-	   cout << "leo:: "<< cadena << endl <<endl << endl;
+	   //cout << "leo:: "<< cadena << endl <<endl << endl;
 	    //Convertir cadena a crimen
-            crimen aux;
-            // string s;
-            // int ini = 0;
-            // int fin = cadena.find_first_of(",");
-            // s = cadena.substr(ini,fin);
-            // long int a = stol(s);
-            // aux.setID(a);
-
-            // ini = fin;
-            // fin = cadena.find_first_of(",",ini+1);
-            // s = cadena.substr(ini,fin-ini);
-            // cout << s << endl;
-            // aux.setCaseNumber(s);
-
-
-            // ini = fin;
-            // fin = cadena.find_first_of(",",ini+1);
-            // s = cadena.substr(ini,fin-ini);
-            // cout << s << endl;
-            // fecha f(s);
-            // aux.setDate(f);  
             aux.setCrimen(cadena);
             //Insertar cadena en el conjunto
+
             C.insert(aux);
-            
+            i++;
+            //cout << C << endl;
          }
-         i--;
+
      }
+     cout << C << endl;
+     d = aux;
     fe.close();
     return true;
     }  //else
@@ -67,14 +51,31 @@ bool load(conjunto &  C, const string & s) {
 
 int main()
 {
-    conjunto ChicagoDB;
-    crimen d;
+    conjunto ChicagoDB, D;
+    conjunto::iterator it;
+    
     fecha f;
- 
+    long int n= 10222792;
     
 
     load(ChicagoDB, "crimenes.csv");
-    cout << ChicagoDB << endl;
+    cout << ChicagoDB.empty() << endl;
+    cout << ChicagoDB.size() << endl;
+    cout << ChicagoDB.erase(n) << endl;
+    cout << ChicagoDB.size() << endl;
+    cout << "crimen: " << d << endl;
+    cout << ChicagoDB.erase(d) << endl;
+    cout << ChicagoDB.size() << endl;
+    D = ChicagoDB;
+    it = D.end();
+    it--;
+    D.erase(*it);
+    cout << D.size() << endl;
+    for(int i = D.size(); i >0 ; i--){
+      cout << *it << endl;
+      it--;
+    }
+
 
    return 0;
 }
