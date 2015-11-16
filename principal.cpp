@@ -5,7 +5,7 @@
 #include <fstream>
 
 using namespace std;
-	
+
 	/** @brief lee un fichero de delitos, linea a linea
 	@param[in] s nombre del fichero
         @param[in,out] C conjunto sobre el que se lee
@@ -18,7 +18,7 @@ bool load(conjunto &  C, const string & s) {
 
  cout << "Abrimos "<< s << endl;
  fe.open(s.c_str(), ifstream::in);
- if (fe.fail())    
+ if (fe.fail())
  {
    cerr << "Error al abrir el fichero " << s << endl;
  } else {
@@ -51,10 +51,10 @@ bool load(conjunto &  C, const string & s) {
 int main()
 {
     conjunto ChicagoDB;
-    
+
     fecha f;
     long int n= 10222792;
-    
+
 
     load(ChicagoDB, "crimenes.csv");
     cout << ChicagoDB.empty() << endl;

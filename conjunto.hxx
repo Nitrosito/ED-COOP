@@ -6,16 +6,16 @@ conjunto::conjunto(){
 }
 
 conjunto::conjunto (const conjunto & d){
-	vc = d.vc; 
+	vc = d.vc;
 }
 
 
-	
+
 pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	pair<conjunto::entrada,bool> aux;
 	int ini = 0;
 	int fin = vc.size()-1;
-	
+
 	aux.second = false;
 	while(fin >= ini && aux.second == false){
 		int medio  = (fin+ini)/2;
@@ -40,7 +40,7 @@ pair<conjunto::entrada,bool>  conjunto::find_2( const long int & id, const int &
 	pair<conjunto::entrada,bool> aux;
 	int ini = 0;
 	int fin = i;
-	
+
 	aux.second = false;
 	while(fin >= ini && aux.second == false){
 		int medio  = (fin+ini)/2;
@@ -68,7 +68,7 @@ conjunto conjunto::findIUCR( const string & iucr) const{		//Preguntar si se deja
 		if(it->getIucr() == iucr){
 			aux.insert(*it);
 		}
-	}	
+	}
 	return aux;
 }
 
@@ -111,10 +111,11 @@ bool conjunto::insert( const conjunto::entrada & e){
 bool conjunto::erase(const long int & id){
 	int ini = 0;
 	int fin = vc.size()-1;
-	int medio  = (fin+ini)/2;
+	int medio;
 	bool esta = false;
 	while(ini <= fin){
 		//buqueda binaria
+		medio  = (fin+ini)/2;
 		if(vc.at(medio).getID() == id){
 			esta = true;
 			vc.erase(vc.begin()+medio);
@@ -134,10 +135,11 @@ bool conjunto::erase(const long int & id){
 bool conjunto::erase(const  conjunto::entrada & e){
 	int ini = 0;
 	int fin = vc.size()-1;
-	int medio  = (fin+ini)/2;
+	int medio;
 	bool esta = false;
 	conjunto aux;
 	while(ini <= fin){
+		medio  = (fin+ini)/2;
 		//buqueda binaria
 		if(vc.at(medio).getID() == e.getID()){
 			esta = true;
@@ -153,7 +155,7 @@ bool conjunto::erase(const  conjunto::entrada & e){
 	}
 	return esta;
 }
-     
+
 conjunto & conjunto::operator=( const conjunto & org){
 	vc = org.vc;
 }
@@ -166,12 +168,12 @@ bool conjunto::empty() const{
 	return vc.empty();
 }
 
-	
+
 
 bool conjunto::cheq_rep( ) const{
 	//Todos los ID de crimen deben ser mayor que 0 , Tienen que estar ordenados de menor a mayor
 	for(int i=0; i < vc.size(); i++){
-		if((vc[i].getID() < 0) || ( vc[i].getID() > vc[i+1].getID() ) ) 
+		if((vc[i].getID() < 0) || ( vc[i].getID() > vc[i+1].getID() ) )
 			return false;
 	}
 	return true;
