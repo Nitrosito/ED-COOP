@@ -1,7 +1,8 @@
 #include "conjunto.h"
 #include "crimen.h"
-#include "fecha.cpp"
+#include "fecha.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 	
@@ -23,19 +24,43 @@ bool load(conjunto &  C, const string & s) {
  } else {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
    cout << cadena << endl;
-    while ( !fe.eof() )
+   int i = 1;
+    while ( /*!fe.eof()*/i >0 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
-	   cout << "leo:: "<< cadena << endl;
-	   // Convertir cadena a crimen
-           // crimen aux = cadena;
-           // Insertar cadena en el conjunto
-           // C.insert(aux);
+	   cout << "leo:: "<< cadena << endl <<endl << endl;
+	    //Convertir cadena a crimen
+            crimen aux;
+            // string s;
+            // int ini = 0;
+            // int fin = cadena.find_first_of(",");
+            // s = cadena.substr(ini,fin);
+            // long int a = stol(s);
+            // aux.setID(a);
+
+            // ini = fin;
+            // fin = cadena.find_first_of(",",ini+1);
+            // s = cadena.substr(ini,fin-ini);
+            // cout << s << endl;
+            // aux.setCaseNumber(s);
+
+
+            // ini = fin;
+            // fin = cadena.find_first_of(",",ini+1);
+            // s = cadena.substr(ini,fin-ini);
+            // cout << s << endl;
+            // fecha f(s);
+            // aux.setDate(f);  
+            aux.setCrimen(cadena);
+            //Insertar cadena en el conjunto
+            C.insert(aux);
+            cout << C << endl;
          }
+         i--;
      }
     fe.close();
     return true;
-    } // else
+    }  //else
   fe.close();
   return false;
  }
