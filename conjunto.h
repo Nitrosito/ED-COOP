@@ -87,6 +87,9 @@ public:
 
 	pair<conjunto::entrada,bool>  find( const long int & id) const;
 
+	pair<conjunto::entrada,bool>  find_2( const long int & id, const int &i) const;
+
+
 	/** @brief busca los crimenes con el mismo codigo IUCR
 	@param icur identificador del crimen  buscar
 	@return Devuelve un  conjunto con todos los crimenes con el codigo IUCR. Si no existe ninguno devuelve el conjunto vacio.

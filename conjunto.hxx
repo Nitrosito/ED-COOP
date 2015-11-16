@@ -19,7 +19,32 @@ pair<conjunto::entrada,bool>  conjunto::find( const long int & id) const{
 	aux.second = false;
 	while(fin >= ini && aux.second == false){
 		int medio  = (fin+ini)/2;
-		cout << "Buscando...." << endl;
+		//cout << "Buscando...." << endl;
+		//buqueda binaria
+		if(vc.at(medio).getID() == id){
+			aux.first = vc.at(medio);
+			aux.second = true;
+
+		}
+		else if(vc.at(medio).getID() < id){
+			ini = medio +1;
+		}
+		else{
+			fin = medio -1;
+		}
+	}
+	return aux;
+}
+
+pair<conjunto::entrada,bool>  conjunto::find_2( const long int & id, const int &i) const{
+	pair<conjunto::entrada,bool> aux;
+	int ini = 0;
+	int fin = i;
+	
+	aux.second = false;
+	while(fin >= ini && aux.second == false){
+		int medio  = (fin+ini)/2;
+		//cout << "Buscando...." << endl;
 		//buqueda binaria
 		if(vc.at(medio).getID() == id){
 			aux.first = vc.at(medio);
@@ -60,28 +85,26 @@ conjunto conjunto::findDESCR( const string & descr) const{
 	return aux;
 }
 
+
 bool conjunto::insert( const conjunto::entrada & e){
-	cout << "h" << endl;
 	if(!find(e.getID()).second){
 		int posicion = vc.size();
 		int i = 0;
 		bool mayor = false;
-		
+
 		while( i < vc.size() && !mayor){
 			if(e.getID() < vc[i].getID()){
 				posicion = i;
 				mayor = true;
 			}
 			++i;
-			cout << "hola" << endl;
 		}
-		cout << "antes insert:" << posicion <<endl;
 		vc.insert(vc.begin()+posicion,e);
 		return true;
 	}
 	else{
 		return false;
-		cout << "adios" << endl;
+
 	}
 }
 
@@ -90,8 +113,7 @@ bool conjunto::erase(const long int & id){
 	int fin = vc.size()-1;
 	int medio  = (fin+ini)/2;
 	bool esta = false;
-	conjunto aux;
-	while(fin >= ini){
+	while(ini <= fin){
 		//buqueda binaria
 		if(vc.at(medio).getID() == id){
 			esta = true;
@@ -103,6 +125,7 @@ bool conjunto::erase(const long int & id){
 		else{
 			fin = medio -1;
 		}
+		medio = (ini+fin)/2;
 	}
 	return esta;
 }
@@ -114,7 +137,7 @@ bool conjunto::erase(const  conjunto::entrada & e){
 	int medio  = (fin+ini)/2;
 	bool esta = false;
 	conjunto aux;
-	while(fin >= ini){
+	while(ini <= fin){
 		//buqueda binaria
 		if(vc.at(medio).getID() == e.getID()){
 			esta = true;
@@ -126,6 +149,7 @@ bool conjunto::erase(const  conjunto::entrada & e){
 		else{
 			fin = medio -1;
 		}
+		medio = (ini+fin)/2;
 	}
 	return esta;
 }

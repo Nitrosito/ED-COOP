@@ -10,7 +10,7 @@ using namespace std;
 
 
 int main(){
-	/*string s = "11/03/1988";
+	string s = "11/03/1988";
 	cout << "Imprimo todo el string: " << s << endl;
 
 	int ini = 0;
@@ -37,9 +37,10 @@ int main(){
 	aux = s.substr(6,4);
 	cout << "año: " << aux << endl;
 
-	//cout << s.find_first_of(",") << endl;*/
+	cout << s.find_first_of(",") << endl;
+
 	fecha una_fecha("11/03/1988 07:30:40 PM");
-	/*string s = "11/04/1988 15:30:40 AM";
+	s = "11/04/1988 15:30:40 AM";
 	cout << "fecha: " << una_fecha << endl;
 	fecha otra_fecha;
 	cout << "otra_fecha: " << otra_fecha << endl;
@@ -53,11 +54,11 @@ int main(){
 	otra_fecha = s;
 	cout << "otra_fecha: " << otra_fecha << endl;
 	bool comp = otra_fecha >= otra_fecha;
-	cout << "Comparar fechas >: " << comp << endl;*/
+	cout << "Comparar fechas >: " << comp << endl;
 
 	//vector<int>v;
 	//cout << v.size() << endl;
-
+/*
 	crimen un_crimen;
 	//cout << un_crimen << endl;
 	un_crimen.setDate(una_fecha);
@@ -93,5 +94,5 @@ int main(){
 	cout << otro_crimen2.getID() << endl;
 	cout << un_conjunto.insert(otro_crimen2) << endl;
 	cout << un_conjunto << endl;
-
+*/
 } 

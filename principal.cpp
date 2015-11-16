@@ -1,6 +1,6 @@
 #include "conjunto.h"
 #include "crimen.h"
-#include "fecha.cpp"
+#include "fecha.h"
 #include <iostream>
 #include <fstream>
 
@@ -11,7 +11,7 @@ using namespace std;
         @param[in,out] C conjunto sobre el que se lee
 	@return true si la lectura ha sido correcta, false en caso contrario
 	*/
-
+crimen d;
 bool load(conjunto &  C, const string & s) {
  ifstream fe;
  string cadena;
@@ -24,19 +24,26 @@ bool load(conjunto &  C, const string & s) {
  } else {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
    cout << cadena << endl;
-    while ( !fe.eof() )
+   crimen aux;
+   int i = 0;
+    while ( /*!fe.eof()*/i<5000 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
-	   cout << "leo:: "<< cadena << endl;
-	   // Convertir cadena a crimen
-           // crimen aux = cadena;
-           // Insertar cadena en el conjunto
-           // C.insert(aux);
+	   cout << "leo:: "<< cadena << endl <<endl << endl;
+	    //Convertir cadena a crimen
+            aux.setCrimen(cadena);
+            //Insertar cadena en el conjunto
+
+            C.insert(aux);
+            i++;
+            //cout << C << endl;
          }
+
      }
+     d = aux;
     fe.close();
     return true;
-    } // else
+    }  //else
   fe.close();
   return false;
  }
@@ -44,12 +51,19 @@ bool load(conjunto &  C, const string & s) {
 int main()
 {
     conjunto ChicagoDB;
-    crimen d;
+    
     fecha f;
- 
+    long int n= 10222792;
     
 
     load(ChicagoDB, "crimenes.csv");
+    cout << ChicagoDB.empty() << endl;
+    cout << ChicagoDB.size() << endl;
+    cout << ChicagoDB.erase(n) << endl;
+    cout << ChicagoDB.size() << endl;
+    cout << "crimen: " << d << endl;
+    cout << ChicagoDB.erase(d) << endl;
+    cout << ChicagoDB.size() << endl;
 
    return 0;
 }

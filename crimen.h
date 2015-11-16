@@ -6,7 +6,7 @@
 #ifndef __CRIMEN_H
 #define __CRIMEN_H
 
-#include <string>
+
 #include <iostream> 
 
 #include "fecha.h"
@@ -77,6 +77,14 @@ class crimen {
   void setLatitude(double & lat);
 
   void setLongitude(double & lon);
+
+  /**
+    *@brief Convierte una cadena en un crimen
+    @param cadena Cadena a convertir
+  */
+  void setCrimen(string & cadena);
+
+
   
   /**
    * @brief Obtiene el ID de un caso
