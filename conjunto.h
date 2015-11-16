@@ -65,14 +65,8 @@ public:
 	/** @brief constructor primitivo. 
 	
 	*/
-	conjunto( );
-	//declaraciones previa de los iteradores
-	class iterator;  
-   	class const_iterator;
-   	class arrest_iterator; // Iterador sobre los delitos que implicaron un arresto (Arrest==true)
-   	class const_arrest_iterator;
-   	class description_iterator;  // Iterador sobre los delitos que concuerdan con la descripcion
-   	class const_description_iterator;
+	conjunto();
+	
 
 	/** @brief constructor de copia
 	@param[in] d conjunto a copiar
@@ -81,28 +75,20 @@ public:
 		
 	/** @brief busca un crimen en el conjunto
 	@param id identificador del crimen  buscar
-	@return Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si  no se encuentra devuelve end()
+	@return Si existe una entrada en el conjunto devuelve un par con una copia de la entrada en el conjunto y con el segundo valor a true. Si  no se encuentra devuelve la entrada con la definicion por defecto y false 
 	@post no modifica el conjunto.
-	\code Ejemplo
+	\verbatim Uso
        
 
-	if (C.find(12345)!=C.end() ) cout << "Esta" ;
+	if (C.find(12345).second ==true) cout << "Esta" ;
 	else cout << "No esta";
-	\endcode
+	\endverbatim
 	*/
-	conjunto::iterator  find( const long int & id);
-	/** @brief busca un crimen en el conjunto
-	@param id identificador del crimen  buscar
-	@return Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si  no se encuentra devuelve end()
-	@post no modifica el conjunto.
-	\code Ejemplo
-       
 
-	if (C.find(12345)!=C.end() ) cout << "Esta" ;
-	else cout << "No esta";
-	\endcode
-	*/
-	conjunto::const_iterator  find( const long int & id) const;
+	pair<conjunto::entrada,bool>  find( const long int & id) const;
+
+	pair<conjunto::entrada,bool>  find_2( const long int & id, const int &i) const;
+
 
 	/** @brief busca los crimenes con el mismo codigo IUCR
 	@param icur identificador del crimen  buscar
@@ -114,7 +100,7 @@ public:
         A = C.findIUCR("0460");
 	\endverbatim
 	*/
-	conjunto findIUCR( const string & iucr) const;
+	conjunto   findIUCR( const string & iucr) const;
 
 /** @brief busca los crimenes que contienen una determinada descripcion 
 	@param descr string que representa la descripcion del delito buscar
@@ -181,112 +167,10 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	bool empty() const;
 
 	
-	// ================================= ITERADORES ========================================/
-
-     /**@brief devuelve iterador al inicio del conjunto
-     */
-     iterator begin();
-
-     /**@brief devuelve iterador al final (posición siguiente al último del conjunto
-     */
-     iterator end();
-/** @brief class iterator
-	 * forward iterador sobre el conjunto, LECTURA
-	 *  iterator() ,operator*(), operator++, operator++(int) operator=, operator==, operator!=
-	 * */
-    class iterator {
-       iterator();
-       iterator (const iterator & it);
-       
-       const conjunto::entrada & operator*() const;
-       
-       iterator operator++( int );
-       iterator & operator++();
-       iterator operator--(int);
-       iterator & operator--();
-       bool operator==(const iterator & it);
-       bool operator!=(const iterator & it);
-
-       private:
-           friend class conjunto;
-           vector<entrada>::iterator itv;
-};
-
- 	/** @brief  
-         @return Devuelve el const_iterator a la primera posición del conjunto.
-	@post no modifica el diccionario
-        */
-    
-	 const_iterator cbegin() const;
-	/** @brief iterador al final
-         @return Devuelve el iterador constante a la  posición final del conjunto.
-	@post no modifica el diccionario
-        */
-	const_iterator cend() const;
-
-	/** @brief class const_iterator
-	 * forward iterador constante sobre el diccionario, Lectura 
-	 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
-	 * */
-	class const_iterator {
-	public:
-	  const_iterator();
-	  const_iterator(const const_iterator & it);
-          /** @brief Convierte iterator en const_iterator
-          */
-	  const_iterator(const iterator & it);
-	  const conjunto::entrada & operator*() const;
-	  const_iterator operator++( int );
-	  const_iterator & operator++();
- 	  const_iterator operator--(int);
-          const_iterator & operator--();
-	  bool operator==(const const_iterator & it);
-	  bool operator!=(const const_iterator & it);
-	private:
-	  friend class conjunto;
-	  vector<entrada>::const_iterator c_itv;
-	  friend class diccionario;
-	  
-	};
-        // ============================== description iterator ===============================
 	 
-	/**   @brief devolver primera posicion del elemento que empareja con la descripcion descr
-	@param[in] descr descripcion de buscamos
-	@return un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito.
-	*/
-	description_iterator  dbegin(const string & descr);
-
-	 /**   @brief devolver fin del conjunto
 	 
-	@return un iterador que apunta a la posicion final
-	*/
-	description_iterator  dend( );
-
-	/** @brief class description_iterator
-	 * forward iterador constante sobre el diccionario, Lectura 
-	 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
-         * esta clase itera sobre todos los elementos que emparejan con una descripcion
-	 * */
-	class description_iterator {
-	public:
-	  description_iterator();
-	  description_iterator(const description_iterator & it);
-         
-	  const conjunto::entrada & operator*() const;
-	  description_iterator operator++( int );
-	  description_iterator & operator++();
- 	  description_iterator operator--(int);
-          description_iterator & operator--();
-	  bool operator==(const description_iterator & it);
-	  bool operator!=(const description_iterator & it);
-	private:
-	  string descr;  // la descripcion se asigna en con el metodo dbegin
-	  vector<entrada>::const_iterator c_itv;
-	  conjunto *ptr;
-	  friend class diccionario;
-	  friend class conjunto;
-	};
-
+	   
+	 
 private:
  vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
  /** \invariant
@@ -308,11 +192,6 @@ private:
 
 //  declaracion del operator<< como metodo amigo
   friend ostream &  operator << ( ostream & sal, const conjunto & D);
-
-// Clases amigas  ....
-	friend class iterator;
-	friend class const_iterator;
-
  
 
 };
@@ -327,3 +206,4 @@ ostream &  operator << ( ostream & sal, const conjunto & D);
 #include "conjunto.hxx"
 
 #endif
+ 
