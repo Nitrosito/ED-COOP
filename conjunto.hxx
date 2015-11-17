@@ -355,15 +355,22 @@ bool conjunto::const_iterator::operator!=(const conjunto::const_iterator & it){
 	 
 conjunto::description_iterator  conjunto::dbegin(const string & descr){	
 	conjunto::description_iterator d_it;
+	d_it.descr = descr;
 	d_it.ptr = this;
+	d_it.c_itv = this->vc.begin();
 	size_t found;
 	do{
-		found = d_it.descr.find(descr);
-		if(found == string::npos)
+		found = (d_it.c_itv->getDescription()).find(descr);
+		if(found == string::npos){
 			d_it.c_itv++;
-		else
+		}
+		else{
 			return d_it;
+		}
 	}while(d_it.ptr->vc.end() != d_it.c_itv);
+	// if(d_it.ptr->vc.end() == d_it.c_itv){
+	// 	d_it.c_itv--;
+	//}
 	return d_it;
 }
 
@@ -387,14 +394,20 @@ const conjunto::entrada & conjunto::description_iterator::operator*() const{
 }
 
 conjunto::description_iterator conjunto::description_iterator::operator++( int ){
+
   	conjunto::description_iterator aux;
   	aux = *this;
-  	string d = descr;
 	size_t found;
-	do{
+	do{	
 		c_itv++;
-		found = descr.find(d);	
-	}while(found == string::npos && (*ptr).vc.end() != c_itv);
+		found = (c_itv->getDescription()).find(descr);
+		if(found == string::npos){
+			c_itv++;
+		}
+		else{
+			return aux;
+		}	
+	}while(ptr->vc.end() != c_itv);
 
   	return aux;
 }
@@ -405,16 +418,17 @@ conjunto::description_iterator & conjunto::description_iterator::operator++(){
 conjunto::description_iterator conjunto::description_iterator::operator--(int){
 	conjunto::description_iterator aux;
   	aux = *this;
-  	vector<entrada>::const_iterator it_aux = c_itv;
-  	string d = descr;
 	size_t found;
 	do{
-		found = descr.find(d);	
-		if(it_aux != (*ptr).vc.begin())
-			it_aux--;
-	}while(found == string::npos && (*ptr).vc.begin() != it_aux);
-	if(found != string::npos)
-		c_itv = it_aux;
+		c_itv--;
+		found = (c_itv->getDescription()).find(descr);
+		if(found == string::npos){
+			c_itv--;
+		}
+		else{
+			return aux;
+		}	
+	}while(ptr->vc.begin() != c_itv);
 
   	return aux;
 }

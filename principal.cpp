@@ -26,7 +26,7 @@ bool load(conjunto &  C, const string & s) {
    cout << cadena << endl;
    crimen aux;
    int i = 0;
-    while ( /*!fe.eof()*/i<15 )
+    while ( /*!fe.eof()*/i<100 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
 	   //cout << "leo:: "<< cadena << endl <<endl << endl;
@@ -51,8 +51,8 @@ bool load(conjunto &  C, const string & s) {
 
 int main()
 {
-    conjunto ChicagoDB, D;
-    conjunto::iterator it;
+    conjunto ChicagoDB;
+    
     
     fecha f;
     long int n= 10222792;
@@ -66,16 +66,30 @@ int main()
     cout << "crimen: " << d << endl;
     cout << ChicagoDB.erase(d) << endl;
     cout << ChicagoDB.size() << endl;
-    D = ChicagoDB;
-    it = D.end();
-    it--;
-    D.erase(*it);
+    conjunto D(ChicagoDB);
+    conjunto::description_iterator dit;
+    cout << "a" << endl;
+    dit = D.dbegin("DOMESTIC BATTERY SIMPLE");
+
+    cout << *dit << endl << endl << endl << endl;
+    dit++;
+    cout << *dit << endl << endl << endl << endl;
+
+    dit--;
+    cout << *dit << endl << endl << endl << endl;
+
+    cout << "b" << endl;
+    
+    conjunto::const_iterator it(D.cend());
+    --it;
+    crimen a = (*D.cbegin()) ;
+    D.erase( a);
     cout << D.size() << endl;
     for(int i = D.size(); i >0 ; i--){
       cout << *it << endl;
-      it--;
+      --it;
     }
-
+    cout << (it == D.cend()) << endl;
 
    return 0;
 }
