@@ -288,6 +288,52 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	  friend class conjunto;
 	};
 
+
+
+  // ============================== arrest_iterator ===============================
+  //Iterador sobre los delitos que implicaron un arresto (Arrest==true)
+
+  class arrest_iterator {
+  public:
+  arrest_iterator();
+  arrest_iterator(const arrest_iterator & it);
+
+  const conjunto::entrada & operator*() const;
+  arrest_iterator operator++( int );
+  arrest_iterator & operator++();
+  arrest_iterator operator--(int);
+  arrest_iterator & operator--();
+  bool operator==(const arrest_iterator & it);
+  bool operator!=(const arrest_iterator & it);
+  private:
+  string descr;  // la descripcion se asigna en con el metodo dbegin
+  vector<entrada>::const_iterator c_itv;
+  conjunto *ptr;
+  friend class diccionario;
+  friend class conjunto;
+
+
+  private:
+  vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
+
+  /**   @brief devolver primera posicion del elemento implia un arresto
+  @return un iterador que apunta a la primera posicion de delito que implica arresto
+  */
+  arrest_iterator abegin();
+
+  /**   @brief devolver fin del conjunto
+  @return un iterador que apunta a la posicion final
+  */
+  arrest_iterator  aend( );
+
+  /** @brief class arrest_iterator
+  * forward iterador constante sobre el diccionario, Lectura
+  *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
+   * esta clase itera sobre todos los elementos que impliquen un arresto
+  * */
+  };
+
+
 private:
  vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
  /** \invariant
@@ -333,51 +379,6 @@ private:
 /** @brief imprime todas las entradas del conjunto
 @post  No se modifica el conjunto.*/
 ostream &  operator << ( ostream & sal, const conjunto & D);
-
-
-
-// ============================== arrest_iterator ===============================
-//Iterador sobre los delitos que implicaron un arresto (Arrest==true)
-
-class arrest_iterator {
-public:
-arrest_iterator();
-arrest_iterator(const arrest_iterator & it);
-
-const conjunto::entrada & operator*() const;
-arrest_iterator operator++( int );
-arrest_iterator & operator++();
-arrest_iterator operator--(int);
-arrest_iterator & operator--();
-bool operator==(const arrest_iterator & it);
-bool operator!=(const arrest_iterator & it);
-private:
-string descr;  // la descripcion se asigna en con el metodo dbegin
-vector<entrada>::const_iterator c_itv;
-conjunto *ptr;
-friend class diccionario;
-friend class conjunto;
-};
-
-private:
-vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
-
-/**   @brief devolver primera posicion del elemento implia un arresto
-@return un iterador que apunta a la primera posicion de delito que implica arresto
-*/
-arrest_iterator dbegin();
-
-/**   @brief devolver fin del conjunto
-@return un iterador que apunta a la posicion final
-*/
-arrest_iterator  dend( );
-
-/** @brief class arrest_iterator
-* forward iterador constante sobre el diccionario, Lectura
-*  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
- * esta clase itera sobre todos los elementos que impliquen un arresto
-* */
-};
 
 
 #include "conjunto.hxx"
