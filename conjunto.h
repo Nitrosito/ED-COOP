@@ -1,6 +1,6 @@
-/* 
+/*
  * conjunto.h
- * 
+ *
  * Copyright  (C) Juan F. Huete
 */
 
@@ -8,7 +8,7 @@
 #define __CONJUTO_H
 #include <string>
 #include <vector>
-#include <iostream> 
+#include <iostream>
 
 #include "crimen.h"
 
@@ -28,8 +28,8 @@ using namespace std;
 
 * Además encontraremos el tipo \code conjunto::size_type \endcode que permite hacer referencia al número de elementos en el conjunto.
 
-* El número de elementos en el conjunto puede variar dinámicamente; la gestión de la memoria es automática. 
- 
+* El número de elementos en el conjunto puede variar dinámicamente; la gestión de la memoria es automática.
+
  Ejemplo de su uso:
 \code
 ...
@@ -54,7 +54,7 @@ if (!agresion.empty()){
 
 
 class conjunto
-{  
+{
 public:
         /** @brief entrada permite hacer referencia al elemento  almacenados en cada una de las posiciones del conjunto
          */
@@ -62,12 +62,12 @@ public:
 	/** @brief size_type numero de elementos en el conjunto
          */
 	typedef unsigned int size_type;
-	/** @brief constructor primitivo. 
-	
+	/** @brief constructor primitivo.
+
 	*/
 	conjunto( );
 	//declaraciones previa de los iteradores
-	class iterator;  
+	class iterator;
    	class const_iterator;
    	class arrest_iterator; // Iterador sobre los delitos que implicaron un arresto (Arrest==true)
    	class const_arrest_iterator;
@@ -78,13 +78,13 @@ public:
 	@param[in] d conjunto a copiar
 	*/
 	conjunto (const conjunto & d);
-		
+
 	/** @brief busca un crimen en el conjunto
 	@param id identificador del crimen  buscar
 	@return Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si  no se encuentra devuelve end()
 	@post no modifica el conjunto.
 	\code Ejemplo
-       
+
 
 	if (C.find(12345)!=C.end() ) cout << "Esta" ;
 	else cout << "No esta";
@@ -96,7 +96,7 @@ public:
 	@return Si existe una entrada en el conjunto devuelve un iterador a lo posicion donde está el elemento. Si  no se encuentra devuelve end()
 	@post no modifica el conjunto.
 	\code Ejemplo
-       
+
 
 	if (C.find(12345)!=C.end() ) cout << "Esta" ;
 	else cout << "No esta";
@@ -116,7 +116,7 @@ public:
 	*/
 	conjunto findIUCR( const string & iucr) const;
 
-/** @brief busca los crimenes que contienen una determinada descripcion 
+/** @brief busca los crimenes que contienen una determinada descripcion
 	@param descr string que representa la descripcion del delito buscar
 	@return Devuelve un  conjunto con todos los crimenes  que contengan descr en su descripcionR. Si no existe ninguno devuelve el conjunto vacio.
 	@post no modifica el conjunto.
@@ -135,8 +135,8 @@ public:
 */
 	bool insert( const conjunto::entrada & e);
 
-	
-	
+
+
 /** @brief Borra el delito dado un identificacador.
 
 Busca la entrada con id en el conjunto  y si la encuentra la borra
@@ -160,7 +160,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 */
 
 	bool erase(const  conjunto::entrada & e);
-         
+
 
 /** @brief operador de asignación
 @param[in] org conjunto  a copiar.
@@ -180,7 +180,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 */
 	bool empty() const;
 
-	
+
 	// ================================= ITERADORES ========================================/
 
      /**@brief devuelve iterador al inicio del conjunto
@@ -198,9 +198,9 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
     public:
        iterator();
        iterator (const iterator & it);
-       
+
        const conjunto::entrada & operator*() const;
-       
+
        iterator operator++( int );
        iterator & operator++();
        iterator operator--(int);
@@ -213,11 +213,11 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
            vector<entrada>::iterator itv;
 };
 
- 	/** @brief  
+ 	/** @brief
          @return Devuelve el const_iterator a la primera posición del conjunto.
 	@post no modifica el diccionario
         */
-    
+
 	 const_iterator cbegin() const;
 	/** @brief iterador al final
          @return Devuelve el iterador constante a la  posición final del conjunto.
@@ -226,7 +226,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	const_iterator cend() const;
 
 	/** @brief class const_iterator
-	 * forward iterador constante sobre el diccionario, Lectura 
+	 * forward iterador constante sobre el diccionario, Lectura
 	 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
 	 * */
 	class const_iterator {
@@ -247,10 +247,10 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	  friend class conjunto;
 	  vector<entrada>::const_iterator c_itv;
 	  friend class diccionario;
-	  
+
 	};
         // ============================== description iterator ===============================
-	 
+
 	/**   @brief devolver primera posicion del elemento que empareja con la descripcion descr
 	@param[in] descr descripcion de buscamos
 	@return un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito.
@@ -258,13 +258,13 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	description_iterator  dbegin(const string & descr);
 
 	 /**   @brief devolver fin del conjunto
-	 
+
 	@return un iterador que apunta a la posicion final
 	*/
 	description_iterator  dend( );
 
 	/** @brief class description_iterator
-	 * forward iterador constante sobre el diccionario, Lectura 
+	 * forward iterador constante sobre el diccionario, Lectura
 	 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
          * esta clase itera sobre todos los elementos que emparejan con una descripcion
 	 * */
@@ -272,7 +272,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	public:
 	  description_iterator();
 	  description_iterator(const description_iterator & it);
-         
+
 	  const conjunto::entrada & operator*() const;
 	  description_iterator operator++( int );
 	  description_iterator & operator++();
@@ -291,9 +291,9 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 private:
  vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
  /** \invariant
- 
+
  IR: rep ==> bool
- 
+
 \li Para todo i, 0 <= i < vc.size() se cumple
 	vc[i].ID > 0;
 \li Para todo i, 0 <= i <= D.dic.size()-1 se cumple
@@ -301,11 +301,22 @@ private:
 
 */
 
-	
-  /** @brief Chequea el Invariante de la representacion 
+
+  /** @brief Chequea el Invariante de la representacion
       @return true si el invariante es correcto, falso en caso contrario
 */
   bool cheq_rep( ) const;
+
+  /** \invariant
+
+  IR: rep ==> bool
+
+  \li Para todo i, 0 <= i < vc.size() se cumple
+  vc[i].ID > 0;
+  \li Para todo i, 0 <= i <= D.dic.size()-1 se cumple
+  vc[i].ID< vc[i+1].ID
+
+  */
 
 //  declaracion del operator<< como metodo amigo
   friend ostream &  operator << ( ostream & sal, const conjunto & D);
@@ -314,17 +325,58 @@ private:
 	friend class iterator;
 	friend class const_iterator;
 
- 
+
 
 };
 
 
-/** @brief imprime todas las entradas del conjunto 
-@post  No se modifica el conjunto.
-@todo implementar esta funcion
-	*/
+/** @brief imprime todas las entradas del conjunto
+@post  No se modifica el conjunto.*/
 ostream &  operator << ( ostream & sal, const conjunto & D);
 
 #include "conjunto.hxx"
+
+// ============================== arrest_iterator ===============================
+//Iterador sobre los delitos que implicaron un arresto (Arrest==true)
+
+/**   @brief devolver primera posicion del elemento implia un arresto
+@return un iterador que apunta a la primera posicion de delito que implica arresto
+*/
+arrest_iterator dbegin();
+
+/**   @brief devolver fin del conjunto
+@return un iterador que apunta a la posicion final
+*/
+arrest_iterator  dend( );
+
+/** @brief class description_iterator
+* forward iterador constante sobre el diccionario, Lectura
+*  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
+ * esta clase itera sobre todos los elementos que impliquen un arresto
+* */
+class description_iterator {
+public:
+arrest_iterator();
+arrest_iterator(const arrest_iterator & it);
+
+const conjunto::entrada & operator*() const;
+arrest_iterator operator++( int );
+arrest_iterator & operator++();
+arrest_iterator operator--(int);
+arrest_iterator & operator--();
+bool operator==(const arrest_iterator & it);
+bool operator!=(const arrest_iterator & it);
+private:
+string descr;  // la descripcion se asigna en con el metodo dbegin
+vector<entrada>::arrest_iterator c_itv;
+conjunto *ptr;
+friend class diccionario;
+friend class conjunto;
+};
+
+private:
+vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
+
+
 
 #endif
