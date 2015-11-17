@@ -368,9 +368,6 @@ conjunto::description_iterator  conjunto::dbegin(const string & descr){
 			return d_it;
 		}
 	}while(d_it.ptr->vc.end() != d_it.c_itv);
-	// if(d_it.ptr->vc.end() == d_it.c_itv){
-	// 	d_it.c_itv--;
-	//}
 	return d_it;
 }
 
@@ -453,11 +450,22 @@ bool conjunto::description_iterator::operator!=(const description_iterator & it)
 /////////////////// ARREST_ITERATOR ////////////////////////////////////////////
 
 //Estos 2 van fuera de la clase arrest, son metodos que no estan dentro de ninguna clase
-conjunto::arrest_iterator dbegin(){
-
+conjunto::arrest_iterator abegin(){
+	conjunto::arrest_iterator a_it;
+	a_it.ptr = this;
+	a_it.c_itv = this->vc.begin();
+	size_t found;
+	do{
+		 if(a_it.c_itv->getArrest()==true)
+		 			return a_it;
+		else
+			a_it.c_itv++;
+		}
+	}while(a_it.ptr->vc.end() != a_it.c_itv);
+	return a_it;
 }
 
-conjunto::arrest_iterator  dend(){
+conjunto::arrest_iterator  aend(){
 
 }
 
