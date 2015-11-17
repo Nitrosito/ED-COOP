@@ -377,7 +377,7 @@ arrest_iterator  dend( );
 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
  * esta clase itera sobre todos los elementos que impliquen un arresto
 * */
-
+};
 
 
 #include "conjunto.hxx"
