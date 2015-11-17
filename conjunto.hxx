@@ -490,10 +490,10 @@ conjunto::arrest_iterator & conjunto::arrest_iterator::operator--(){
 
 }
 
-bool arrest_iterator::operator==(const arrest_iterator & it){
+bool conjunto::arrest_iterator::operator==(const arrest_iterator & it){
 
 }
 
-bool arrest_iterator::operator!=(const arrest_iterator & it){
+bool conjunto::arrest_iterator::operator!=(const arrest_iterator & it){
 
 }
