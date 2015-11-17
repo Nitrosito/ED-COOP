@@ -195,23 +195,23 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	 *  iterator() ,operator*(), operator++, operator++(int) operator=, operator==, operator!=
 	 * */
     class iterator {
-	    public:
-	       iterator();
-	       iterator (const iterator & it);
+    public:
+       iterator();
+       iterator (const iterator & it);
 
-	       const conjunto::entrada & operator*() const;
+       const conjunto::entrada & operator*() const;
 
-	       iterator operator++( int );
-	       iterator & operator++();
-	       iterator operator--(int);
-	       iterator & operator--();
-	       bool operator==(const iterator & it);
-	       bool operator!=(const iterator & it);
+       iterator operator++( int );
+       iterator & operator++();
+       iterator operator--(int);
+       iterator & operator--();
+       bool operator==(const iterator & it);
+       bool operator!=(const iterator & it);
 
-        private:
+       private:
            friend class conjunto;
            vector<entrada>::iterator itv;
-	};
+};
 
  	/** @brief
          @return Devuelve el const_iterator a la primera posición del conjunto.
@@ -365,19 +365,19 @@ vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos d
 /**   @brief devolver primera posicion del elemento implia un arresto
 @return un iterador que apunta a la primera posicion de delito que implica arresto
 */
-arrest_iterator abegin();
+arrest_iterator dbegin();
 
 /**   @brief devolver fin del conjunto
 @return un iterador que apunta a la posicion final
 */
-arrest_iterator  aend( );
+arrest_iterator  dend( );
 
 /** @brief class arrest_iterator
 * forward iterador constante sobre el diccionario, Lectura
 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
  * esta clase itera sobre todos los elementos que impliquen un arresto
 * */
-};
+
 
 
 #include "conjunto.hxx"
