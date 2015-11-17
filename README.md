@@ -1,7 +1,8 @@
 # ED-COOP
 REPO ED PRACTICA COOP
-![Iterators]: (./iterators.jpg)
-Carlos Martín
-Ismael Sanchez
-Juan Fajardo
+![Iterators](https://github.com/Nitrosito/ED-COOP/blob/ismael/iterators.jpg)
+<br>
+Carlos Martín<br>
+Ismael Sanchez<br>
+Juan Fajardo<br>
 Nicolas
