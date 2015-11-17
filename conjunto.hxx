@@ -453,17 +453,42 @@ bool conjunto::description_iterator::operator!=(const description_iterator & it)
 /////////////////// ARREST_ITERATOR ////////////////////////////////////////////
 
 //Estos 2 van fuera de la clase arrest, son metodos que no estan dentro de ninguna clase
-arrest_iterator dbegin();
-arrest_iterator  dend();
+conjunto::arrest_iterator dbegin();
+conjunto::arrest_iterator  dend();
 
 
-arrest_iterator();
-arrest_iterator(const arrest_iterator & it);
+conjunto::arrest_iterator(){
 
-const conjunto::entrada & operator*() const;
-arrest_iterator operator++( int );
-arrest_iterator & operator++();
-arrest_iterator operator--(int);
-arrest_iterator & operator--();
-bool operator==(const arrest_iterator & it);
-bool operator!=(const arrest_iterator & it);
+}
+
+conjunto::arrest_iterator(const arrest_iterator & it){
+
+}
+
+const conjunto::entrada & operator*() const{
+
+}
+
+conjunto::arrest_iterator operator++( int ){
+
+}
+
+conjunto::arrest_iterator & operator++(){
+
+}
+
+conjunto::arrest_iterator operator--(int){
+
+}
+
+conjunto::arrest_iterator & operator--(){
+
+}
+
+bool conjunto::arrest_iterator::operator==(const arrest_iterator & it){
+
+}
+
+bool conjunto::arrest_iterator::operator!=(const arrest_iterator & it){
+
+}

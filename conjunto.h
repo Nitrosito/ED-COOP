@@ -334,27 +334,12 @@ private:
 @post  No se modifica el conjunto.*/
 ostream &  operator << ( ostream & sal, const conjunto & D);
 
-#include "conjunto.hxx"
+
 
 // ============================== arrest_iterator ===============================
 //Iterador sobre los delitos que implicaron un arresto (Arrest==true)
 
-/**   @brief devolver primera posicion del elemento implia un arresto
-@return un iterador que apunta a la primera posicion de delito que implica arresto
-*/
-arrest_iterator dbegin();
-
-/**   @brief devolver fin del conjunto
-@return un iterador que apunta a la posicion final
-*/
-arrest_iterator  dend( );
-
-/** @brief class description_iterator
-* forward iterador constante sobre el diccionario, Lectura
-*  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
- * esta clase itera sobre todos los elementos que impliquen un arresto
-* */
-class description_iterator {
+class arrest_iterator {
 public:
 arrest_iterator();
 arrest_iterator(const arrest_iterator & it);
@@ -368,7 +353,7 @@ bool operator==(const arrest_iterator & it);
 bool operator!=(const arrest_iterator & it);
 private:
 string descr;  // la descripcion se asigna en con el metodo dbegin
-vector<entrada>::arrest_iterator c_itv;
+vector<entrada>::const_iterator c_itv;
 conjunto *ptr;
 friend class diccionario;
 friend class conjunto;
@@ -377,6 +362,23 @@ friend class conjunto;
 private:
 vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
 
+/**   @brief devolver primera posicion del elemento implia un arresto
+@return un iterador que apunta a la primera posicion de delito que implica arresto
+*/
+arrest_iterator dbegin();
+
+/**   @brief devolver fin del conjunto
+@return un iterador que apunta a la posicion final
+*/
+arrest_iterator  dend( );
+
+/** @brief class arrest_iterator
+* forward iterador constante sobre el diccionario, Lectura
+*  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
+ * esta clase itera sobre todos los elementos que impliquen un arresto
+* */
 
 
+
+#include "conjunto.hxx"
 #endif
