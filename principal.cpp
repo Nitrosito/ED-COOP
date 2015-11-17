@@ -106,8 +106,10 @@ int main()
 		cout << "Primer Arr+1 :" ;
 		ait++;
 		cout << *ait << endl;
-		ait++;
+		ait--;
 		cout << *ait << endl;
+		cout << "es igual? " << (ait==a_it2) << endl;
+		cout << "son distintos? " << (ait!=a_it2) << endl;
 
    return 0;
 }

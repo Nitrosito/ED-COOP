@@ -508,17 +508,32 @@ conjunto::arrest_iterator & conjunto::arrest_iterator::operator++(){
 }
 
 conjunto::arrest_iterator conjunto::arrest_iterator::operator--(int){
+	conjunto::arrest_iterator aux;
+	aux = *this;
 
+	do{
+			c_itv--;
+			if(c_itv->getArrest()==true)
+				return aux;
+	}	while(c_itv != ptr->vc.begin());
+	return aux;
 }
 
 conjunto::arrest_iterator & conjunto::arrest_iterator::operator--(){
-
+	c_itv--;
+	return *this;
 }
 
 bool conjunto::arrest_iterator::operator==(const arrest_iterator & it){
-
+	if(c_itv == it.c_itv)
+		return true;
+	else
+		return false;
 }
 
 bool conjunto::arrest_iterator::operator!=(const arrest_iterator & it){
-
+	if(c_itv != it.c_itv)
+		return true;
+	else
+		return false;
 }
