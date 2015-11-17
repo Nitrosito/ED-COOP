@@ -34,8 +34,8 @@ int ini = 0;
 		}
 	}
 	if(aux)
-		sal.itv = vc.begin()+medio; 
-	else 
+		sal.itv = vc.begin()+medio;
+	else
 		sal.itv =vc.end();
 
 	return sal;
@@ -62,8 +62,8 @@ conjunto::const_iterator  conjunto::find( const long int & id) const{
 			}
 		}
 		if(aux)
-			sal.c_itv = vc.begin()+medio; 
-		else 
+			sal.c_itv = vc.begin()+medio;
+		else
 			sal.c_itv = vc.end();
 
 		return sal;
@@ -251,7 +251,7 @@ const conjunto::entrada & conjunto::iterator::operator*() const{
 conjunto::iterator  conjunto::iterator::operator++(int){		//Post incremento
 	conjunto::iterator aux;
 	aux = *this;
-	++itv;													
+	++itv;
 	return aux;
 }
 
@@ -319,7 +319,7 @@ const conjunto::entrada & conjunto::const_iterator::operator*() const{
 conjunto::const_iterator conjunto::const_iterator::operator++( int ){
 	conjunto::const_iterator aux;
 	aux = *this;
-	++c_itv;													
+	++c_itv;
 	return aux;
 }
 conjunto::const_iterator & conjunto::const_iterator::operator++(){
@@ -352,8 +352,8 @@ bool conjunto::const_iterator::operator!=(const conjunto::const_iterator & it){
 
 
 // ============================== description iterator ===============================
-	 
-conjunto::description_iterator  conjunto::dbegin(const string & descr){	
+
+conjunto::description_iterator  conjunto::dbegin(const string & descr){
 	conjunto::description_iterator d_it;
 	d_it.descr = descr;
 	d_it.ptr = this;
@@ -388,7 +388,7 @@ conjunto::description_iterator::description_iterator(const description_iterator 
 	descr = it.descr;
   	c_itv = it.c_itv;
 }
-     
+
 const conjunto::entrada & conjunto::description_iterator::operator*() const{
   	return *c_itv;																		//NO SE SI ES ESO LO QUE HAY QUE PONER
 }
@@ -398,7 +398,7 @@ conjunto::description_iterator conjunto::description_iterator::operator++( int )
   	conjunto::description_iterator aux;
   	aux = *this;
 	size_t found;
-	do{	
+	do{
 		c_itv++;
 		found = (c_itv->getDescription()).find(descr);
 		if(found == string::npos){
@@ -406,7 +406,7 @@ conjunto::description_iterator conjunto::description_iterator::operator++( int )
 		}
 		else{
 			return aux;
-		}	
+		}
 	}while(ptr->vc.end() != c_itv);
 
   	return aux;
@@ -427,7 +427,7 @@ conjunto::description_iterator conjunto::description_iterator::operator--(int){
 		}
 		else{
 			return aux;
-		}	
+		}
 	}while(ptr->vc.begin() != c_itv);
 
   	return aux;
@@ -448,3 +448,22 @@ bool conjunto::description_iterator::operator!=(const description_iterator & it)
   	else
   		return false;
 }
+
+
+/////////////////// ARREST_ITERATOR ////////////////////////////////////////////
+
+//Estos 2 van fuera de la clase arrest, son metodos que no estan dentro de ninguna clase
+arrest_iterator dbegin();
+arrest_iterator  dend();
+
+
+arrest_iterator();
+arrest_iterator(const arrest_iterator & it);
+
+const conjunto::entrada & operator*() const;
+arrest_iterator operator++( int );
+arrest_iterator & operator++();
+arrest_iterator operator--(int);
+arrest_iterator & operator--();
+bool operator==(const arrest_iterator & it);
+bool operator!=(const arrest_iterator & it);
