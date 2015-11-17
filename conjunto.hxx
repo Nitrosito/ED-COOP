@@ -479,11 +479,11 @@ conjunto::arrest_iterator  conjunto::aend(){
 
 
 conjunto::arrest_iterator::arrest_iterator(){
-
 }
 
 conjunto::arrest_iterator::arrest_iterator(const conjunto::arrest_iterator & it){
-
+	c_itv = it.c_itv;
+	ptr = it.ptr;
 }
 
 const conjunto::entrada & conjunto::arrest_iterator::operator*() const{
@@ -491,11 +491,20 @@ const conjunto::entrada & conjunto::arrest_iterator::operator*() const{
 }
 
 conjunto::arrest_iterator conjunto::arrest_iterator::operator++( int ){
+	conjunto::arrest_iterator aux;
+	aux = *this;
 
+	do{
+			c_itv++;
+			if(c_itv->getArrest()==true)
+				return aux;
+	}	while(c_itv != ptr->vc.end());
+	return aux;
 }
 
 conjunto::arrest_iterator & conjunto::arrest_iterator::operator++(){
-
+	c_itv++;
+	return *this;
 }
 
 conjunto::arrest_iterator conjunto::arrest_iterator::operator--(int){

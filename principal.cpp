@@ -99,5 +99,15 @@ int main()
 		ait = ChicagoDB.aend();
 		cout << "Ultimo arrest: " << *ait << endl;
 
+		conjunto::arrest_iterator a_it2(ait);
+		cout << "Ultimo arrest, copiado a otro it : " << *a_it2 << endl;
+
+		ait=ChicagoDB.abegin();
+		cout << "Primer Arr+1 :" ;
+		ait++;
+		cout << *ait << endl;
+		ait++;
+		cout << *ait << endl;
+
    return 0;
 }
