@@ -387,7 +387,7 @@ conjunto::description_iterator::description_iterator(const description_iterator 
 }
 
 const conjunto::entrada & conjunto::description_iterator::operator*() const{
-  	return *c_itv;																		//NO SE SI ES ESO LO QUE HAY QUE PONER
+  	return *c_itv;
 }
 
 conjunto::description_iterator conjunto::description_iterator::operator++( int ){
@@ -450,7 +450,7 @@ bool conjunto::description_iterator::operator!=(const description_iterator & it)
 /////////////////// ARREST_ITERATOR ////////////////////////////////////////////
 
 //Estos 2 van fuera de la clase arrest, son metodos que no estan dentro de ninguna clase
-conjunto::arrest_iterator abegin(){
+conjunto::arrest_iterator conjunto::abegin(){
 	conjunto::arrest_iterator a_it;
 	a_it.ptr = this;
 	a_it.c_itv = this->vc.begin();
@@ -460,48 +460,80 @@ conjunto::arrest_iterator abegin(){
 		 			return a_it;
 		else
 			a_it.c_itv++;
-		}
 	}while(a_it.ptr->vc.end() != a_it.c_itv);
 	return a_it;
 }
 
-conjunto::arrest_iterator  aend(){
+conjunto::arrest_iterator  conjunto::aend(){
+	conjunto::arrest_iterator a_it;
+	a_it.c_itv = vc.end();
 
+	while(a_it.c_itv != vc.begin()){
+		if(a_it.c_itv->getArrest()==true)
+			return a_it;
+		else
+			a_it.c_itv--;
+	}
+	return a_it;
 }
 
 
 conjunto::arrest_iterator::arrest_iterator(){
-
 }
 
 conjunto::arrest_iterator::arrest_iterator(const conjunto::arrest_iterator & it){
-
+	c_itv = it.c_itv;
+	ptr = it.ptr;
 }
 
 const conjunto::entrada & conjunto::arrest_iterator::operator*() const{
-
+	return *c_itv;
 }
 
 conjunto::arrest_iterator conjunto::arrest_iterator::operator++( int ){
+	conjunto::arrest_iterator aux;
+	aux = *this;
 
+	do{
+			c_itv++;
+			if(c_itv->getArrest()==true)
+				return aux;
+	}	while(c_itv != ptr->vc.end());
+	return aux;
 }
 
 conjunto::arrest_iterator & conjunto::arrest_iterator::operator++(){
-
+	c_itv++;
+	return *this;
 }
 
 conjunto::arrest_iterator conjunto::arrest_iterator::operator--(int){
+	conjunto::arrest_iterator aux;
+	aux = *this;
 
+	do{
+			c_itv--;
+			if(c_itv->getArrest()==true)
+				return aux;
+	}	while(c_itv != ptr->vc.begin());
+	return aux;
 }
 
 conjunto::arrest_iterator & conjunto::arrest_iterator::operator--(){
-
+	c_itv--;
+	return *this;
 }
 
 bool conjunto::arrest_iterator::operator==(const arrest_iterator & it){
-
+	if(c_itv == it.c_itv)
+		return true;
+	else
+		return false;
 }
 
 bool conjunto::arrest_iterator::operator!=(const arrest_iterator & it){
-
+	if(c_itv != it.c_itv)
+		return true;
+	else
+		return false;
 }

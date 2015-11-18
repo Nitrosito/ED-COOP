@@ -5,7 +5,7 @@
 #include <fstream>
 
 using namespace std;
-	
+
 	/** @brief lee un fichero de delitos, linea a linea
 	@param[in] s nombre del fichero
         @param[in,out] C conjunto sobre el que se lee
@@ -18,7 +18,7 @@ bool load(conjunto &  C, const string & s) {
 
  cout << "Abrimos "<< s << endl;
  fe.open(s.c_str(), ifstream::in);
- if (fe.fail())    
+ if (fe.fail())
  {
    cerr << "Error al abrir el fichero " << s << endl;
  } else {
@@ -52,11 +52,11 @@ bool load(conjunto &  C, const string & s) {
 int main()
 {
     conjunto ChicagoDB;
-    
-    
+
+
     fecha f;
     long int n= 10222792;
-    
+
 
     load(ChicagoDB, "crimenes.csv");
     cout << ChicagoDB.empty() << endl;
@@ -79,7 +79,7 @@ int main()
     cout << *dit << endl << endl << endl << endl;
 
     cout << "b" << endl;
-    
+
     conjunto::const_iterator it(D.cend());
     --it;
     crimen a = (*D.cbegin()) ;
@@ -90,6 +90,26 @@ int main()
       --it;
     }
     cout << (it == D.cend()) << endl;
+
+		cout << "PROBANDO ADRESS ITERATOR" << endl;
+		conjunto::arrest_iterator ait;
+		ait = ChicagoDB.abegin();
+		cout << "Primer arrest: " << *ait << endl;
+
+		ait = ChicagoDB.aend();
+		cout << "Ultimo arrest: " << *ait << endl;
+
+		conjunto::arrest_iterator a_it2(ait);
+		cout << "Ultimo arrest, copiado a otro it : " << *a_it2 << endl;
+
+		ait=ChicagoDB.abegin();
+		cout << "Primer Arr+1 :" ;
+		ait++;
+		cout << *ait << endl;
+		ait--;
+		cout << *ait << endl;
+		cout << "es igual? " << (ait==a_it2) << endl;
+		cout << "son distintos? " << (ait!=a_it2) << endl;
 
    return 0;
 }
