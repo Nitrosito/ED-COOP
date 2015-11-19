@@ -59,16 +59,16 @@ int main()
 
 
     load(ChicagoDB, "crimenes.csv");
-    // cout << ChicagoDB.empty() << endl;
-    // cout << ChicagoDB.size() << endl;
-    // cout << ChicagoDB.erase(n) << endl;
-    // cout << ChicagoDB.size() << endl;
-    // cout << "crimen a borrar: " << d << endl;
-    // cout << ChicagoDB.erase(d) << endl;
-    // cout << ChicagoDB.size() << endl;
     conjunto D(ChicagoDB);
     conjunto::description_iterator dit;
+    conjunto::iterator it2 = D.begin();
     cout << "a" << endl;
+    cout << "begin(): "<< *it2 << endl;
+    //it2++;
+    cout << "begin()++: "<< *it2++ << endl;
+    //++it2;
+    cout << "++begin(): "<< *++it2 << endl;
+
     dit = D.dbegin("DOMESTIC BATTERY SIMPLE");
 
     cout << "dbegin(): "<< *dit << endl << endl << endl << endl;
