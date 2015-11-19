@@ -141,26 +141,31 @@ bool conjunto::insert( const conjunto::entrada & e){
 }
 
 bool conjunto::erase(const long int & id){
-	int ini = 0;
-	int fin = vc.size()-1;
-	int medio;
-	bool esta = false;
-	//conjunto aux;
-	while(fin >= ini){
-		medio  = (fin+ini)/2;
-		//buqueda binaria
-		if(vc.at(medio).getID() == id){
-			esta = true;
-			vc.erase(vc.begin()+medio);
-		}
-		else if(vc.at(medio).getID() < id){
-			ini = medio +1;
-		}
-		else{
-			fin = medio -1;
-		}
-	}
-	return esta;
+	// int ini = 0;
+	// int fin = vc.size()-1;
+	// int medio;
+	// bool esta = false;
+	// //conjunto aux;
+	// while(fin >= ini){
+	// 	medio  = (fin+ini)/2;
+	// 	//buqueda binaria
+	// 	if(vc.at(medio).getID() == id){
+	// 		esta = true;
+	// 		vc.erase(vc.begin()+medio);
+	// 		return esta;
+	// 	}
+	// 	else if(vc.at(medio).getID() < id){
+	// 		ini = medio +1;
+	// 	}
+	// 	else{
+	// 		fin = medio -1;
+	// 	}
+	// }
+	// return esta;
+
+	// vc.erase(vc.begin());
+	// cout << "end(): " << *end() << endl;
+	// return true;
 }
 
 
@@ -176,6 +181,7 @@ bool conjunto::erase(const  conjunto::entrada & e){
 		if(vc.at(medio).getID() == e.getID()){
 			esta = true;
 			vc.erase(vc.begin()+medio);
+			return esta;
 		}
 		else if(vc.at(medio).getID() < e.getID()){
 			ini = medio +1;
@@ -185,6 +191,10 @@ bool conjunto::erase(const  conjunto::entrada & e){
 		}
 	}
 	return esta;
+
+	// vc.erase(vc.begin());
+	// cout << "end(): " << *end() << endl;
+	// return true;
 }
 
 conjunto & conjunto::operator=( const conjunto & org){
@@ -361,12 +371,9 @@ conjunto::description_iterator  conjunto::dbegin(const string & descr){
 	size_t found;
 	do{
 		found = (d_it.c_itv->getDescription()).find(descr);
-		if(found == string::npos){
-			d_it.c_itv++;
-		}
-		else{
+		if(!(found == string::npos))
 			return d_it;
-		}
+		d_it.c_itv++;
 	}while(d_it.ptr->vc.end() != d_it.c_itv);
 	return d_it;
 }
@@ -375,6 +382,7 @@ conjunto::description_iterator  conjunto::dbegin(const string & descr){
 conjunto::description_iterator  conjunto::dend( ){
 	conjunto::description_iterator d_it;
 	d_it.c_itv = vc.end();
+	//d_it.ptr = this;			//Es necesario hacerlo, o sólo necesitamos conocer c_itv?;
 	return d_it;
 }
 
@@ -384,6 +392,7 @@ conjunto::description_iterator::description_iterator(){
 conjunto::description_iterator::description_iterator(const description_iterator & it){
 	descr = it.descr;
   	c_itv = it.c_itv;
+  	ptr = it.ptr;
 }
 
 const conjunto::entrada & conjunto::description_iterator::operator*() const{
@@ -394,14 +403,11 @@ conjunto::description_iterator conjunto::description_iterator::operator++( int )
 
   	conjunto::description_iterator aux;
   	aux = *this;
-	size_t found;
-	do{
+	size_t found;	
+	do{	
 		c_itv++;
 		found = (c_itv->getDescription()).find(descr);
-		if(found == string::npos){
-			c_itv++;
-		}
-		else{
+		if(!(found == string::npos)){
 			return aux;
 		}
 	}while(ptr->vc.end() != c_itv);
@@ -416,13 +422,11 @@ conjunto::description_iterator conjunto::description_iterator::operator--(int){
 	conjunto::description_iterator aux;
   	aux = *this;
 	size_t found;
+	
 	do{
 		c_itv--;
 		found = (c_itv->getDescription()).find(descr);
-		if(found == string::npos){
-			c_itv--;
-		}
-		else{
+		if(!(found == string::npos)){
 			return aux;
 		}
 	}while(ptr->vc.begin() != c_itv);
@@ -456,24 +460,24 @@ conjunto::arrest_iterator conjunto::abegin(){
 	a_it.c_itv = this->vc.begin();
 	size_t found;
 	do{
-		 if(a_it.c_itv->getArrest()==true)
-		 			return a_it;
-		else
-			a_it.c_itv++;
-	}while(a_it.ptr->vc.end() != a_it.c_itv);
+		if(a_it.c_itv->getArrest()==true)
+		 	return a_it;
+		a_it.c_itv++;
+	}while(a_it.ptr->vc.end() != a_it.c_itv);		//no sería necesario hacer eso, bastaría con hacer: vc.end() != a_it.c_itv?
 	return a_it;
 }
 
 conjunto::arrest_iterator  conjunto::aend(){
 	conjunto::arrest_iterator a_it;
+	//a_it.ptr = this;					igual que en description?
 	a_it.c_itv = vc.end();
 
-	while(a_it.c_itv != vc.begin()){
-		if(a_it.c_itv->getArrest()==true)
-			return a_it;
-		else
-			a_it.c_itv--;
-	}
+	// while(a_it.c_itv != vc.begin()){
+	// 	if(a_it.c_itv->getArrest()==true)
+	// 		return a_it;									CARLOS: que posición se devuelve, vc.end() o la ultima posición que tiene arrest a true?
+	// 	else
+	// 		a_it.c_itv--;
+	// }
 	return a_it;
 }
 

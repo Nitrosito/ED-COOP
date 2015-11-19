@@ -59,57 +59,58 @@ int main()
 
 
     load(ChicagoDB, "crimenes.csv");
-    cout << ChicagoDB.empty() << endl;
-    cout << ChicagoDB.size() << endl;
-    cout << ChicagoDB.erase(n) << endl;
-    cout << ChicagoDB.size() << endl;
-    cout << "crimen: " << d << endl;
-    cout << ChicagoDB.erase(d) << endl;
-    cout << ChicagoDB.size() << endl;
+    // cout << ChicagoDB.empty() << endl;
+    // cout << ChicagoDB.size() << endl;
+    // cout << ChicagoDB.erase(n) << endl;
+    // cout << ChicagoDB.size() << endl;
+    // cout << "crimen a borrar: " << d << endl;
+    // cout << ChicagoDB.erase(d) << endl;
+    // cout << ChicagoDB.size() << endl;
     conjunto D(ChicagoDB);
     conjunto::description_iterator dit;
     cout << "a" << endl;
     dit = D.dbegin("DOMESTIC BATTERY SIMPLE");
 
-    cout << *dit << endl << endl << endl << endl;
+    cout << "dbegin(): "<< *dit << endl << endl << endl << endl;
     dit++;
-    cout << *dit << endl << endl << endl << endl;
-
+    cout << "dit++: "<< *dit << endl << endl << endl << endl;
+    dit = D.dend();
+    //cout << "Ultimo desc: " << *dit << endl;
     dit--;
-    cout << *dit << endl << endl << endl << endl;
-
-    cout << "b" << endl;
+    cout << "dit--: "<< *dit << endl << endl << endl << endl;
 
     conjunto::const_iterator it(D.cend());
     --it;
     crimen a = (*D.cbegin()) ;
     D.erase( a);
+    cout << "Hemos borrado cbegin(): crimen: " << a  << "size(): "<< endl << endl;
     cout << D.size() << endl;
-    for(int i = D.size(); i >0 ; i--){
-      cout << *it << endl;
-      --it;
-    }
+    cout << D << endl;
     cout << (it == D.cend()) << endl;
 
-		cout << "PROBANDO ADRESS ITERATOR" << endl;
-		conjunto::arrest_iterator ait;
-		ait = ChicagoDB.abegin();
-		cout << "Primer arrest: " << *ait << endl;
+		// cout << "PROBANDO ADRESS ITERATOR" << endl;
+  //   dit = D.dend();
+		// conjunto::arrest_iterator ait;
+  //   ait = ChicagoDB.aend();
+  //   cout << "Ultimo arrest: " << *ait << endl;
+     cout << "Ultimo desc: " << *dit << endl;
+     cout << "Ultimo desc: " << (*D.end()) << endl;
+		// ait = ChicagoDB.abegin();
+		// cout << "Primer arrest: " << *ait << endl;
 
-		ait = ChicagoDB.aend();
-		cout << "Ultimo arrest: " << *ait << endl;
+		
 
-		conjunto::arrest_iterator a_it2(ait);
-		cout << "Ultimo arrest, copiado a otro it : " << *a_it2 << endl;
+		// conjunto::arrest_iterator a_it2(ait);
+		// cout << "Ultimo arrest, copiado a otro it : " << *a_it2 << endl;
 
-		ait=ChicagoDB.abegin();
-		cout << "Primer Arr+1 :" ;
-		ait++;
-		cout << *ait << endl;
-		ait--;
-		cout << *ait << endl;
-		cout << "es igual? " << (ait==a_it2) << endl;
-		cout << "son distintos? " << (ait!=a_it2) << endl;
+		// ait=ChicagoDB.abegin();
+		// cout << "Primer Arr+1 :" ;
+		// ait++;
+		// cout << *ait << endl;
+		// ait--;
+		// cout << *ait << endl;
+		// cout << "es igual? " << (ait==a_it2) << endl;
+		// cout << "son distintos? " << (ait!=a_it2) << endl;
 
    return 0;
 }
