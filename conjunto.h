@@ -199,7 +199,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
        iterator();
        iterator (const iterator & it);
 
-       const conjunto::entrada & operator*() const;
+       conjunto::entrada & operator*();
 
        iterator operator++( int );
        iterator & operator++();
@@ -240,7 +240,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	  const_iterator operator++( int );
 	  const_iterator & operator++();
  	  const_iterator operator--(int);
-          const_iterator & operator--();
+      const_iterator & operator--();
 	  bool operator==(const const_iterator & it);
 	  bool operator!=(const const_iterator & it);
 	private:
@@ -273,7 +273,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	  description_iterator();
 	  description_iterator(const description_iterator & it);
 
-	  const conjunto::entrada & operator*() const;
+	  const conjunto::entrada & operator*();
 	  description_iterator operator++( int );
 	  description_iterator & operator++();
  	  description_iterator operator--(int);
@@ -284,6 +284,46 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 	  string descr;  // la descripcion se asigna en con el metodo dbegin
 	  vector<entrada>::const_iterator c_itv;
 	  conjunto *ptr;
+	  friend class diccionario;
+	  friend class conjunto;
+	};
+
+
+	    // ============================== Const description iterator ===============================
+
+	/**   @brief devolver primera posicion del elemento que empareja con la descripcion descr
+	@param[in] descr descripcion de buscamos
+	@return un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito.
+	*/
+	const_description_iterator  dcbegin(const string & descr)const;
+
+	 /**   @brief devolver fin del conjunto
+
+	@return un iterador que apunta a la posicion final
+	*/
+	const_description_iterator  dcend( )const;
+
+	/** @brief class description_iterator
+	 * forward iterador constante sobre el diccionario, Lectura
+	 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
+         * esta clase itera sobre todos los elementos que emparejan con una descripcion
+	 * */
+	class const_description_iterator {
+	public:
+	  const_description_iterator();
+	  const_description_iterator(const const_description_iterator & it);
+
+	  const conjunto::entrada & operator*()const;
+	  const_description_iterator operator++( int );
+	  const_description_iterator & operator++();
+ 	  const_description_iterator operator--(int);
+          const_description_iterator & operator--();
+	  bool operator==(const const_description_iterator & it);
+	  bool operator!=(const const_description_iterator & it);
+	private:
+	  string descr;  // la descripcion se asigna en con el metodo dbegin
+	  vector<entrada>::const_iterator c_itv;
+	  const conjunto *ptr;
 	  friend class diccionario;
 	  friend class conjunto;
 	};
@@ -314,7 +354,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
   arrest_iterator();
   arrest_iterator(const arrest_iterator & it);
 
-  const conjunto::entrada & operator*() const;
+  const conjunto::entrada & operator*();
   arrest_iterator operator++( int );
   arrest_iterator & operator++();
   arrest_iterator operator--(int);
@@ -328,6 +368,44 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
   friend class conjunto;
 };
 
+
+// ============================== Const arrest iterator ===============================
+
+	/**   @brief devolver primera posicion del elemento que empareja con la descripcion descr
+	@param[in] descr descripcion de buscamos
+	@return un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito.
+	*/
+	const_arrest_iterator  acbegin()const;
+
+	 /**   @brief devolver fin del conjunto
+
+	@return un iterador que apunta a la posicion final
+	*/
+	const_arrest_iterator  acend( )const;
+
+	/** @brief class description_iterator
+	 * forward iterador constante sobre el diccionario, Lectura
+	 *  const_iterator ,operator*, operator++, operator++(int) operator=, operator==, operator!=
+         * esta clase itera sobre todos los elementos que emparejan con una descripcion
+	 * */
+	class const_arrest_iterator {
+	public:
+	  const_arrest_iterator();
+	  const_arrest_iterator(const const_arrest_iterator & it);
+
+	  const conjunto::entrada & operator*()const;
+	  const_arrest_iterator operator++( int );
+	  const_arrest_iterator & operator++();
+ 	  const_arrest_iterator operator--(int);
+          const_arrest_iterator & operator--();
+	  bool operator==(const const_arrest_iterator & it);
+	  bool operator!=(const const_arrest_iterator & it);
+	private:
+	  vector<entrada>::const_iterator c_itv;
+	  const conjunto *ptr;
+	  friend class diccionario;
+	  friend class conjunto;
+	};
   private:
   vector<crimen> vc; // vector ORDENADO por crimen.id que almacena los elementos del conjunto
 

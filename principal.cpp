@@ -23,24 +23,16 @@ bool load(conjunto &  C, const string & s) {
    cerr << "Error al abrir el fichero " << s << endl;
  } else {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
-   cout << cadena << endl;
    crimen aux;
    int i = 0;
     while ( /*!fe.eof()*/i<100 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
-	   //cout << "leo:: "<< cadena << endl <<endl << endl;
-	    //Convertir cadena a crimen
             aux.setCrimen(cadena);
-            //Insertar cadena en el conjunto
-
             C.insert(aux);
             i++;
-            //cout << C << endl;
          }
-
      }
-     cout << C << endl;
      d = aux;
     fe.close();
     return true;
@@ -59,58 +51,75 @@ int main()
 
 
     load(ChicagoDB, "crimenes.csv");
-    conjunto D(ChicagoDB);
-    conjunto::description_iterator dit;
-    conjunto::iterator it2 = D.begin();
-    cout << "a" << endl;
-    cout << "begin(): "<< *it2 << endl;
-    //it2++;
-    cout << "begin()++: "<< *it2++ << endl;
-    //++it2;
-    cout << "++begin(): "<< *++it2 << endl;
+    conjunto::iterator it = ChicagoDB.begin();
+    conjunto::const_iterator cit = ChicagoDB.cbegin();
+    conjunto::description_iterator dit = ChicagoDB.dbegin("OVER $500");
+    conjunto::const_description_iterator dcit = ChicagoDB.dcbegin("SIMPLE");
+    conjunto::arrest_iterator ait = ChicagoDB.abegin();
+    conjunto::const_arrest_iterator acit = ChicagoDB.acbegin();
 
-    dit = D.dbegin("DOMESTIC BATTERY SIMPLE");
 
-    cout << "dbegin(): "<< *dit << endl << endl << endl << endl;
-    dit++;
-    cout << "dit++: "<< *dit << endl << endl << endl << endl;
-    dit = D.dend();
-    //cout << "Ultimo desc: " << *dit << endl;
+    conjunto::const_arrest_iterator acit_aux;
+
+    while(it != ChicagoDB.end()){
+      cout << "it: " << *it << endl;
+      it++;
+    }
+    it--;
+    cout << "--it" << *--it << endl;
+
+    cout << (it == ChicagoDB.begin()) << endl;
+
+    while(cit != ChicagoDB.cend()){
+      cout << "cit: " << *cit << endl;
+      cit++;
+    }
+
+    cit--;
+    cout << "--cit" << *--cit << endl;
+
+    cout << (cit == ChicagoDB.cbegin()) << endl;
+
+    while(dit != ChicagoDB.dend()){
+      cout << "dit: " << *dit << endl;
+      dit++;
+    }
+
     dit--;
-    cout << "dit--: "<< *dit << endl << endl << endl << endl;
+    cout << "--dit" << *--dit << endl;
 
-    conjunto::const_iterator it(D.cend());
-    --it;
-    crimen a = (*D.cbegin()) ;
-    D.erase( a);
-    cout << "Hemos borrado cbegin(): crimen: " << a  << "size(): "<< endl << endl;
-    cout << D.size() << endl;
-    cout << D << endl;
-    cout << (it == D.cend()) << endl;
+    cout << (dit == ChicagoDB.dbegin("OVER $500")) << endl;
 
-		// cout << "PROBANDO ADRESS ITERATOR" << endl;
-  //   dit = D.dend();
-		// conjunto::arrest_iterator ait;
-  //   ait = ChicagoDB.aend();
-  //   cout << "Ultimo arrest: " << *ait << endl;
-     cout << "Ultimo desc: " << *dit << endl;
-     cout << "Ultimo desc: " << (*D.end()) << endl;
-		// ait = ChicagoDB.abegin();
-		// cout << "Primer arrest: " << *ait << endl;
+    while(dcit != ChicagoDB.dcend()){
+      cout << "dcit: " << *dcit << endl;
+      dcit++;
+    }
 
-		
+    dcit--;
+    cout << "--dcit" << *--dcit << endl;
 
-		// conjunto::arrest_iterator a_it2(ait);
-		// cout << "Ultimo arrest, copiado a otro it : " << *a_it2 << endl;
+    cout << (dcit == ChicagoDB.dcbegin("SIMPLE")) << endl;
 
-		// ait=ChicagoDB.abegin();
-		// cout << "Primer Arr+1 :" ;
-		// ait++;
-		// cout << *ait << endl;
-		// ait--;
-		// cout << *ait << endl;
-		// cout << "es igual? " << (ait==a_it2) << endl;
-		// cout << "son distintos? " << (ait!=a_it2) << endl;
+    while(ait != ChicagoDB.aend()){
+      cout << "ait: " << *ait << endl;
+      ++ait;
+    }
 
+    ait--;
+    cout << "--ait" << *--ait << endl;
+
+    cout << (ait == ChicagoDB.abegin()) << endl;
+
+    while(acit != ChicagoDB.acend()){
+      cout << "acit: " << *acit << endl;
+      acit++;
+    }
+
+    acit--;
+    cout << "--acit" << *--acit << endl;
+    acit_aux = acit;
+
+    cout << (acit == acit_aux) << endl;
+      
    return 0;
 }
