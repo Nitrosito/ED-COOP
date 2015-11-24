@@ -39,10 +39,6 @@ if (!agresion.empty()){
  @todo Implementa esta clase, junto con su documentación asociada
  */
 
-Mayor<int> mayor;
-
-
-
 template <typename CMP>
 class conjunto{
 public:
@@ -248,7 +244,8 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
   */
 
 //  declaracion del operator<< como metodo amigo
-  friend ostream &  operator << ( ostream & sal, const conjunto & D);
+  template <typename T>
+   friend ostream &  operator << ( ostream & sal, const conjunto<T> & D);
 
 // Clases amigas  ....
     friend class iterator;
@@ -263,6 +260,7 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
 
 /** @brief imprime todas las entradas del conjunto
 @post  No se modifica el conjunto.*/
+template <typename CMP>
 ostream &  operator << ( ostream & sal, const conjunto<CMP> & D);
 
 

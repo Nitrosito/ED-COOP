@@ -5,14 +5,14 @@
 #include <fstream>
 
 using namespace std;
-
 	/** @brief lee un fichero de delitos, linea a linea
 	@param[in] s nombre del fichero
         @param[in,out] C conjunto sobre el que se lee
 	@return true si la lectura ha sido correcta, false en caso contrario
-	*/
+// 	*/
 crimen d;
-bool load(conjunto &  C, const string & s) {
+template <typename T>
+bool load(conjunto<T>  &  C, const string & s) {
  ifstream fe;
  string cadena;
 
@@ -43,7 +43,8 @@ bool load(conjunto &  C, const string & s) {
 
 int main()
 {
-    conjunto ChicagoDB;
+    //ComparacionPorFecha fecha;
+    conjunto<greater<crimen>> ChicagoDB;
 
 
     fecha f;
@@ -51,75 +52,78 @@ int main()
 
 
     load(ChicagoDB, "crimenes.csv");
-    conjunto::iterator it = ChicagoDB.begin();
-    conjunto::const_iterator cit = ChicagoDB.cbegin();
-    conjunto::description_iterator dit = ChicagoDB.dbegin("OVER $500");
-    conjunto::const_description_iterator dcit = ChicagoDB.dcbegin("SIMPLE");
-    conjunto::arrest_iterator ait = ChicagoDB.abegin();
-    conjunto::const_arrest_iterator acit = ChicagoDB.acbegin();
+    cout << ChicagoDB << endl;
 
-
-    conjunto::const_arrest_iterator acit_aux;
-
-    while(it != ChicagoDB.end()){
-      cout << "it: " << *it << endl;
-      it++;
-    }
-    it--;
-    cout << "--it" << *--it << endl;
-
-    cout << (it == ChicagoDB.begin()) << endl;
-
-    while(cit != ChicagoDB.cend()){
-      cout << "cit: " << *cit << endl;
-      cit++;
-    }
-
-    cit--;
-    cout << "--cit" << *--cit << endl;
-
-    cout << (cit == ChicagoDB.cbegin()) << endl;
-
-    while(dit != ChicagoDB.dend()){
-      cout << "dit: " << *dit << endl;
-      dit++;
-    }
-
-    dit--;
-    cout << "--dit" << *--dit << endl;
-
-    cout << (dit == ChicagoDB.dbegin("OVER $500")) << endl;
-
-    while(dcit != ChicagoDB.dcend()){
-      cout << "dcit: " << *dcit << endl;
-      dcit++;
-    }
-
-    dcit--;
-    cout << "--dcit" << *--dcit << endl;
-
-    cout << (dcit == ChicagoDB.dcbegin("SIMPLE")) << endl;
-
-    while(ait != ChicagoDB.aend()){
-      cout << "ait: " << *ait << endl;
-      ++ait;
-    }
-
-    ait--;
-    cout << "--ait" << *--ait << endl;
-
-    cout << (ait == ChicagoDB.abegin()) << endl;
-
-    while(acit != ChicagoDB.acend()){
-      cout << "acit: " << *acit << endl;
-      acit++;
-    }
-
-    acit--;
-    cout << "--acit" << *--acit << endl;
-    acit_aux = acit;
-
-    cout << (acit == acit_aux) << endl;
-      
-   return 0;
 }
+//     conjunto::iterator it = ChicagoDB.begin();
+//     conjunto::const_iterator cit = ChicagoDB.cbegin();
+//     conjunto::description_iterator dit = ChicagoDB.dbegin("OVER $500");
+//     conjunto::const_description_iterator dcit = ChicagoDB.dcbegin("SIMPLE");
+//     conjunto::arrest_iterator ait = ChicagoDB.abegin();
+//     conjunto::const_arrest_iterator acit = ChicagoDB.acbegin();
+//
+//
+//     conjunto::const_arrest_iterator acit_aux;
+//
+//     while(it != ChicagoDB.end()){
+//       cout << "it: " << *it << endl;
+//       it++;
+//     }
+//     it--;
+//     cout << "--it" << *--it << endl;
+//
+//     cout << (it == ChicagoDB.begin()) << endl;
+//
+//     while(cit != ChicagoDB.cend()){
+//       cout << "cit: " << *cit << endl;
+//       cit++;
+//     }
+//
+//     cit--;
+//     cout << "--cit" << *--cit << endl;
+//
+//     cout << (cit == ChicagoDB.cbegin()) << endl;
+//
+//     while(dit != ChicagoDB.dend()){
+//       cout << "dit: " << *dit << endl;
+//       dit++;
+//     }
+//
+//     dit--;
+//     cout << "--dit" << *--dit << endl;
+//
+//     cout << (dit == ChicagoDB.dbegin("OVER $500")) << endl;
+//
+//     while(dcit != ChicagoDB.dcend()){
+//       cout << "dcit: " << *dcit << endl;
+//       dcit++;
+//     }
+//
+//     dcit--;
+//     cout << "--dcit" << *--dcit << endl;
+//
+//     cout << (dcit == ChicagoDB.dcbegin("SIMPLE")) << endl;
+//
+//     while(ait != ChicagoDB.aend()){
+//       cout << "ait: " << *ait << endl;
+//       ++ait;
+//     }
+//
+//     ait--;
+//     cout << "--ait" << *--ait << endl;
+//
+//     cout << (ait == ChicagoDB.abegin()) << endl;
+//
+//     while(acit != ChicagoDB.acend()){
+//       cout << "acit: " << *acit << endl;
+//       acit++;
+//     }
+//
+//     acit--;
+//     cout << "--acit" << *--acit << endl;
+//     acit_aux = acit;
+//
+//     cout << (acit == acit_aux) << endl;
+//
+//    return 0;
+// }
