@@ -1,12 +1,43 @@
 
 using namespace std;
 
-class ComparacionPorFecha {
+class FechaCreciente {
  public:
    bool operator()(const crimen &a, const crimen &b) {
      return (a.getDate() < b.getDate()); // devuelve verdadero si el crimen a precede a b en el tiempo
  }
 };
+
+class FechaDecreciente {
+ public:
+   bool operator()(const crimen &a, const crimen &b) {
+     return (a.getDate() > b.getDate()); // devuelve verdadero si el crimen a precede a b en el tiempo
+ }
+};
+
+
+class IdCreciente {
+ public:
+   bool operator()(const crimen &a, const crimen &b) {
+     return (a.getID() < b.getID()); // devuelve verdadero si el crimen a precede a b en el tiempo
+ }
+};
+
+class IdDecreciente {
+ public:
+   bool operator()(const crimen &a, const crimen &b) {
+     return (a.getID() > b.getID()); // devuelve verdadero si el crimen a precede a b en el tiempo
+ }
+};
+
+class CrecienteIUCR{
+public:
+  bool operator()(const crimen &a, const crimen &b) {
+    return (a.getIucr() < b.getIucr()); // devuelve verdadero si el crimen a precede a b en el tiempo
+  }
+};
+
+
 
 
 /*
@@ -106,7 +137,7 @@ conjunto<CMP> conjunto<CMP>::findDESCR( const string & descr) const{
 }
 
 template <typename CMP>
-bool conjunto<CMP>::insert( const tconjunto<CMP>::entrada & e){
+bool conjunto<CMP>::insert( const conjunto<CMP>::entrada & e){
   if(find(e.getID()).itv == vc.end()) {
     int posicion = vc.size();
     int i = 0;

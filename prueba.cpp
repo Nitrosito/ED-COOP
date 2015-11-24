@@ -25,7 +25,7 @@ bool load(conjunto<T>  &  C, const string & s) {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
    crimen aux;
    int i = 0;
-    while ( /*!fe.eof()*/i<100 )
+    while ( /*!fe.eof()*/i<1000 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
             aux.setCrimen(cadena);
@@ -43,12 +43,11 @@ bool load(conjunto<T>  &  C, const string & s) {
 
 int main()
 {
-    //ComparacionPorFecha fecha;
-    conjunto<greater<crimen>> ChicagoDB;
+    conjunto<FechaDecreciente> ChicagoDB;
 
 
-    fecha f;
-    long int n= 10222792;
+    //fecha f;
+    //long int n= 10222792;
 
 
     load(ChicagoDB, "crimenes.csv");
