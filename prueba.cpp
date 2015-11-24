@@ -23,23 +23,16 @@ bool load(conjunto &  C, const string & s) {
    cerr << "Error al abrir el fichero " << s << endl;
  } else {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
-   //cout << cadena << endl;
    crimen aux;
    int i = 0;
-    while ( /*!fe.eof()*/i<5000 )
+    while ( /*!fe.eof()*/i<100 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
-	   //cout << "leo:: "<< cadena << endl <<endl << endl;
-	    //Convertir cadena a crimen
             aux.setCrimen(cadena);
-            //Insertar cadena en el conjunto
-
             C.insert(aux);
             i++;
-            //cout << C << endl;
          }
-
-     }cout << C << endl;
+     }
      d = aux;
     fe.close();
     return true;
@@ -50,22 +43,83 @@ bool load(conjunto &  C, const string & s) {
 
 int main()
 {
-    conjunto ChicagoDB, D;
+    conjunto ChicagoDB;
+
 
     fecha f;
-    long int n= 10223659;
+    long int n= 10222792;
 
 
     load(ChicagoDB, "crimenes.csv");
-    cout << ChicagoDB.empty() << endl;
-    cout << ChicagoDB.size() << endl;
-    cout << "hola" << endl;
-    cout << "a " << ChicagoDB.erase(n) << "b" << endl;
-    cout << ChicagoDB.size() << endl;
-    cout << "crimen: " << d << endl;
-    cout << ChicagoDB.erase(d) << endl;
-    cout << ChicagoDB.size() << endl;
+    conjunto::iterator it = ChicagoDB.begin();
+    conjunto::const_iterator cit = ChicagoDB.cbegin();
+    conjunto::description_iterator dit = ChicagoDB.dbegin("OVER $500");
+    conjunto::const_description_iterator dcit = ChicagoDB.dcbegin("SIMPLE");
+    conjunto::arrest_iterator ait = ChicagoDB.abegin();
+    conjunto::const_arrest_iterator acit = ChicagoDB.acbegin();
 
 
+    conjunto::const_arrest_iterator acit_aux;
+
+    while(it != ChicagoDB.end()){
+      cout << "it: " << *it << endl;
+      it++;
+    }
+    it--;
+    cout << "--it" << *--it << endl;
+
+    cout << (it == ChicagoDB.begin()) << endl;
+
+    while(cit != ChicagoDB.cend()){
+      cout << "cit: " << *cit << endl;
+      cit++;
+    }
+
+    cit--;
+    cout << "--cit" << *--cit << endl;
+
+    cout << (cit == ChicagoDB.cbegin()) << endl;
+
+    while(dit != ChicagoDB.dend()){
+      cout << "dit: " << *dit << endl;
+      dit++;
+    }
+
+    dit--;
+    cout << "--dit" << *--dit << endl;
+
+    cout << (dit == ChicagoDB.dbegin("OVER $500")) << endl;
+
+    while(dcit != ChicagoDB.dcend()){
+      cout << "dcit: " << *dcit << endl;
+      dcit++;
+    }
+
+    dcit--;
+    cout << "--dcit" << *--dcit << endl;
+
+    cout << (dcit == ChicagoDB.dcbegin("SIMPLE")) << endl;
+
+    while(ait != ChicagoDB.aend()){
+      cout << "ait: " << *ait << endl;
+      ++ait;
+    }
+
+    ait--;
+    cout << "--ait" << *--ait << endl;
+
+    cout << (ait == ChicagoDB.abegin()) << endl;
+
+    while(acit != ChicagoDB.acend()){
+      cout << "acit: " << *acit << endl;
+      acit++;
+    }
+
+    acit--;
+    cout << "--acit" << *--acit << endl;
+    acit_aux = acit;
+
+    cout << (acit == acit_aux) << endl;
+      
    return 0;
 }
