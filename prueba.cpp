@@ -63,6 +63,54 @@ int main()
     cout << ChicagoDBMayoraMenor << endl;
     cout << "---------------------------------------------------------" << endl;
 
+    conjunto<less<crimen> >::iterator it = ChicagoDBmenoraMayor.begin();
+
+    it++;
+    it++;
+    crimen micrimen=*it;
+    it++;
+    it++;
+    conjunto<less<crimen> >beginico (it,ChicagoDBmenoraMayor.end());
+    cout << beginico;
+    cout << "---------------------------------------------------------" << endl;
+    cout << endl << endl << "-----------------PROBANDO FIND --------------------------" << endl;
+
+    if(it==beginico.end())
+        cout << "No se encuentra" << endl;
+    else
+      cout << "Encontrado " << *it << endl;
+
+    it = beginico.find(micrimen);
+
+    if(it==beginico.end())
+        cout << "No se encuentra" << endl;
+    else
+    cout << *it << endl;
+
+    cout << endl << endl << "-----------------PROBANDO FIND  POR ID ---------------------" << endl;
+    it = beginico.find(10231208);
+    if(it==beginico.end())
+      cout << "No se encuentra" << endl;
+    else
+    cout << "Encontrado " << *it << endl;
+
+
+    cout << endl << endl << "-----------------PROBANDO lower_bound ---------------------" << endl;
+    cout << "MICRIMEN: " << micrimen << endl;
+    it = beginico.lower_bound(micrimen);
+    if(it==beginico.end())
+      cout << "No se encuentra" << endl;
+    else
+    cout << "Encontrado " << *it << endl;
+
+    micrimen = *(++it);
+    cout << endl << endl << "-----------------PROBANDO upper_bound ---------------------" << endl;
+    cout << "MICRIMEN: " << micrimen << endl;
+    it = beginico.upper_bound(micrimen);
+    if(it==beginico.end())
+      cout << "No se encuentra" << endl;
+    else
+    cout << "Encontrado " << *it << endl;
 
 }
 //     conjunto::iterator it = ChicagoDB.begin();

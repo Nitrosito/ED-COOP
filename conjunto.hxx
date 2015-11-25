@@ -332,7 +332,7 @@ bool conjunto<CMP>::iterator::operator!=(const conjunto<CMP>::iterator & it){
 template <typename CMP>
 typename conjunto<CMP>::iterator conjunto<CMP>::lower_bound (const entrada & x){
     conjunto::iterator it;
-    it=this.begin();
+    it=begin();
 
     while(it!=end()){
         if(!comp(*it,x))
@@ -340,7 +340,7 @@ typename conjunto<CMP>::iterator conjunto<CMP>::lower_bound (const entrada & x){
 
         it++;
     }
-    return this.end();
+    return end();
 
 }
 
