@@ -1,19 +1,19 @@
-/* 
+/*
  * meteorito.h
- * 
+ *
  * Copyright  (C) Juan F. Huete
 */
 #ifndef __CRIMEN_H
 #define __CRIMEN_H
 
 
-#include <iostream> 
+#include <iostream>
 
 #include "fecha.h"
-//! Clase crimen, asociada a la definición de un crimen 
+//! Clase crimen, asociada a la definición de un crimen
 /*! crimen::crimen,  .....
  * Descripción contiene toda la información asociada a un crimen.
- 
+
  @todo Implementa esta clase, junto con su documentación asociada
 
 */
@@ -23,7 +23,7 @@ class crimen {
  public:
   /**
    * @brief Constructor sin parametros
-   * */ 
+   * */
   crimen();
 
   /**
@@ -72,7 +72,7 @@ class crimen {
    * @brief Asigna si es domestico
    * @param d Valor a asignar
    */
-  void setDomestic(bool d); 
+  void setDomestic(bool d);
 
   void setLatitude(double & lat);
 
@@ -85,7 +85,7 @@ class crimen {
   void setCrimen(string & cadena);
 
 
-  
+
   /**
    * @brief Obtiene el ID de un caso
    * @return ID del caso
@@ -122,17 +122,19 @@ class crimen {
 
   /**
    * @brief Operador de asignacion
-   * @param 
+   * @param
    */
    crimen & operator=(const crimen & c);
    bool operator==(const crimen & x) const;
 
    bool operator<(const crimen & x) const;
+   bool operator>(const crimen & x) const;
+
 
  private:
    friend ostream& operator<< ( ostream& , const crimen& );
-  
-   //Atributos 
+
+   //Atributos
    long int ID;             // Identificador del delito
    string casenumber;       // Código del caso
    fecha date;              // Fecha en formato mm/dd/aaaa hh:mm:ss AM/PM

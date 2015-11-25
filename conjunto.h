@@ -55,6 +55,7 @@ public:
     class iterator;
     class const_iterator;
 
+    conjunto<CMP> (iterator ini, iterator fin);
     /** @brief constructor de copia
     @param[in] d conjunto a copiar
     */

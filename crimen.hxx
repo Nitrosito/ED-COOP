@@ -259,11 +259,19 @@ using namespace std;
   }
 
   bool crimen::operator<(const crimen & x) const{
-    if(date < x.date)
+    if(ID < x.getID())
       return true;
     else
       return false;
   }
+
+  bool crimen::operator>(const crimen & x) const{
+    if(ID > x.getID())
+      return true;
+    else
+      return false;
+  }
+
 
   ostream& operator<< ( ostream &os , const crimen& c){
     os << c.ID << "," << c.casenumber << "," << c.date << "," << c.iucr << "," << c.primarytype << "," << c.description << "," << c.location_descrip << "," << c.arrest << "," << c.domestic << "," << c.latitude << "," << c.longitude;

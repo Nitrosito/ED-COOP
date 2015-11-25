@@ -25,7 +25,7 @@ bool load(conjunto<T>  &  C, const string & s) {
    getline(fe,cadena,'\n'); //leo la cabecera del fichero
    crimen aux;
    int i = 0;
-    while ( /*!fe.eof()*/i<1000 )
+    while ( /*!fe.eof()*/i<10 )
       { getline(fe,cadena,'\n');
        	if (!fe.eof()) {
             aux.setCrimen(cadena);
@@ -43,15 +43,26 @@ bool load(conjunto<T>  &  C, const string & s) {
 
 int main()
 {
-    conjunto<FechaDecreciente> ChicagoDB;
+    conjunto<greater<crimen>> ChicagoDBMayoraMenor;
+    conjunto<less<crimen>> ChicagoDBmenoraMayor;
+
 
 
     //fecha f;
     //long int n= 10222792;
 
 
-    load(ChicagoDB, "crimenes.csv");
-    cout << ChicagoDB << endl;
+    load(ChicagoDBmenoraMayor, "crimenes.csv");
+    load(ChicagoDBMayoraMenor, "crimenes.csv");
+
+    cout << "---------------- MENOR A MAYOR POR ID ----------------" << endl;
+    cout << ChicagoDBmenoraMayor << endl;
+    cout << "---------------------------------------------------------" << endl;
+
+    cout << endl << "---------------- MAYOR A MENOR POR ID ----------------" << endl;
+    cout << ChicagoDBMayoraMenor << endl;
+    cout << "---------------------------------------------------------" << endl;
+
 
 }
 //     conjunto::iterator it = ChicagoDB.begin();
