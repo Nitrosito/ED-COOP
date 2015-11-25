@@ -74,13 +74,15 @@ typename conjunto<CMP>::const_iterator  conjunto<CMP>::find( const long int & id
   return sal;
 }
 
-iterator conjunto<CMP>::find(const crimen & c){             //Busqueda binaria y devuelve un iterador a la posicion o end()
+template <typename CMP>
+typename conjunto<CMP>::iterator conjunto<CMP>::find(const crimen & c){             //Busqueda binaria y devuelve un iterador a la posicion o end()
     conjunto<CMP>::iterator sal;
 
     int sup=vc.size()-1;
+    int medio;
     int inf = 0;
     while (sup > inf) {
-      medio = (inf+sup)/2;
+       medio = (inf+sup)/2;
       if (!comp(vc[medio],c) && !comp(c,vc[medio]) ){// comparamos igualdad entre crimen
         sal.itv = vc.begin()+medio;
         return sal;
@@ -94,11 +96,13 @@ iterator conjunto<CMP>::find(const crimen & c){             //Busqueda binaria y
     return sal;
 }
 
-const_iterator conjunto<CMP>::find(const crimen & c)const{
+template <typename CMP>
+typename conjunto<CMP>::const_iterator conjunto<CMP>::find(const crimen & c)const{
     conjunto<CMP>::const_iterator sal;
 
     int sup=vc.size()-1;
     int inf = 0;
+    int medio;
     while (sup > inf) {
       medio = (inf+sup)/2;
       if (!comp(vc[medio],c) && !comp(c,vc[medio]) ){// comparamos igualdad entre crimen
@@ -326,32 +330,32 @@ bool conjunto<CMP>::iterator::operator!=(const conjunto<CMP>::iterator & it){
 }
 
 template <typename CMP>
-conjunto<CMP>::iterator conjunto<CMP>::lower_bound (const entrada & x) const{
+typename conjunto<CMP>::iterator conjunto<CMP>::lower_bound (const entrada & x){
     conjunto::iterator it;
-    it=conjunto.begin();
+    it=this.begin();
 
-    while(it!=conjunto.end()){
-        if(!comp(*it,c))
+    while(it!=end()){
+        if(!comp(*it,x))
         return it;
 
         it++;
     }
-    return conjunto.end();
+    return this.end();
 
 }
 
 template <typename CMP>
-conjunto<CMP>::iterator conjunto<CMP>::upper_bound (const entrada & x){
+typename conjunto<CMP>::iterator conjunto<CMP>::upper_bound (const entrada & x){
     conjunto::iterator it;
-    it=conjunto.begin();
+    it=begin();
 
-    while(it!=conjunto.end()){
-        if(comp(*cit,c))
+    while(it!=end()){
+        if(comp(*it,x))
         return it;
 
         it++;
     }
-    return conjunto.end();
+    return end();
 
 }
 
@@ -427,32 +431,32 @@ bool conjunto<CMP>::const_iterator::operator==(const conjunto<CMP>::const_iterat
 }
 
 template <typename CMP>
-conjunto<CMP>::const_iterator conjunto<CMP>::lower_bound (const entrada & x) const{ //PREGUNTAR
+typename conjunto<CMP>::const_iterator conjunto<CMP>::lower_bound (const entrada & x) const{ //PREGUNTAR
     conjunto::const_iterator cit;
-    cit=conjunto.begin();
+    cit=begin();
 
-    while(cit!=conjunto.end()){
-        if(!comp(*cit,c))
+    while(cit!=end()){
+        if(!comp(*cit,x))
         return cit;
 
         cit++;
     }
-    return conjunto.end();
+    return end();
 
 }
 
 template <typename CMP>
-conjunto<CMP>::const_iterator conjunto<CMP>::upper_bound (const entrada & x) const{
+typename conjunto<CMP>::const_iterator conjunto<CMP>::upper_bound (const entrada & x) const{
     conjunto::const_iterator cit;
-    cit=conjunto.begin();
+    cit=begin();
 
-    while(cit!=conjunto.end()){
-        if(comp(*cit,c))
+    while(cit!=end()){
+        if(comp(*cit,x))
         return cit;
 
         cit++;
     }
-    return conjunto.end();
+    return end();
 }
 
 

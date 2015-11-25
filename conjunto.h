@@ -55,6 +55,13 @@ public:
     class iterator;
     class const_iterator;
 
+    iterator find(const crimen & c);
+    const_iterator find(const crimen & c)const;
+    iterator upper_bound (const entrada & x);
+    iterator lower_bound (const entrada & x);
+    const_iterator upper_bound (const entrada & x) const;
+    const_iterator lower_bound (const entrada & x) const;
+
     conjunto<CMP> (iterator ini, iterator fin);
     /** @brief constructor de copia
     @param[in] d conjunto a copiar
@@ -216,6 +223,8 @@ Busca la entrada con id en el conjunto (o e.getID() en el segundo caso) y si la 
       const_iterator & operator--();
       bool operator==(const const_iterator & it);
       bool operator!=(const const_iterator & it);
+
+
     private:
       friend class conjunto;
       vector<entrada>::const_iterator c_itv;
