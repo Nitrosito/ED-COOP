@@ -331,32 +331,44 @@ bool conjunto<CMP>::iterator::operator!=(const conjunto<CMP>::iterator & it){
 
 template <typename CMP>
 typename conjunto<CMP>::iterator conjunto<CMP>::lower_bound (const entrada & x){
-    conjunto::iterator it;
-    it=begin();
-
-    while(it!=end()){
-        if(!comp(*it,x))
-        return it;
-
-        it++;
+  conjunto<CMP>::iterator sal;
+  int sup=vc.size()-1;
+  int medio;
+  int inf = 0;
+  while (sup > inf) {
+     medio = (inf+sup)/2;
+    if (!comp(vc[medio],x)){
+      sal.itv=vc.begin()+medio;
+      return sal;
     }
-    return end();
-
+    else if (comp(vc[medio],x)) // comparamos menor entre crimen
+      inf = medio+1;
+    else
+      sup = medio-1;
+  }
+  sal.itv=vc.end();
+  return sal;
 }
 
 template <typename CMP>
 typename conjunto<CMP>::iterator conjunto<CMP>::upper_bound (const entrada & x){
-    conjunto::iterator it;
-    it=begin();
-
-    while(it!=end()){
-        if(comp(*it,x))
-        return it;
-
-        it++;
+  conjunto<CMP>::iterator sal;
+  int sup=vc.size()-1;
+  int medio;
+  int inf = 0;
+  while (sup > inf) {
+     medio = (inf+sup)/2;
+    if (comp(vc[medio],x)){
+      sal.itv=vc.begin()+medio;
+      return sal;
     }
-    return end();
-
+    else if (!comp(vc[medio],x)) // comparamos menor entre crimen
+      inf = medio+1;
+    else
+      sup = medio-1;
+  }
+  sal.itv=vc.end();
+  return sal;
 }
 
 /*
@@ -423,7 +435,7 @@ typename conjunto<CMP>::const_iterator & conjunto<CMP>::const_iterator::operator
 }
 
 template <typename CMP>
-bool conjunto<CMP>::const_iterator::operator==(const conjunto<CMP>::const_iterator & it){       //esto seria const typename conjunto<CMP>::const_iterator & it???????
+bool conjunto<CMP>::const_iterator::operator==(const typename conjunto<CMP>::const_iterator & it){       //esto seria const typename conjunto<CMP>::const_iterator & it???????
   if(c_itv == it.c_itv)
     return true;
   else

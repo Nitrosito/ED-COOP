@@ -46,12 +46,6 @@ int main()
     conjunto<greater<crimen>> ChicagoDBMayoraMenor;
     conjunto<less<crimen>> ChicagoDBmenoraMayor;
 
-
-
-    //fecha f;
-    //long int n= 10222792;
-
-
     load(ChicagoDBmenoraMayor, "crimenes.csv");
     load(ChicagoDBMayoraMenor, "crimenes.csv");
 
@@ -113,75 +107,3 @@ int main()
     cout << "Encontrado " << *it << endl;
 
 }
-//     conjunto::iterator it = ChicagoDB.begin();
-//     conjunto::const_iterator cit = ChicagoDB.cbegin();
-//     conjunto::description_iterator dit = ChicagoDB.dbegin("OVER $500");
-//     conjunto::const_description_iterator dcit = ChicagoDB.dcbegin("SIMPLE");
-//     conjunto::arrest_iterator ait = ChicagoDB.abegin();
-//     conjunto::const_arrest_iterator acit = ChicagoDB.acbegin();
-//
-//
-//     conjunto::const_arrest_iterator acit_aux;
-//
-//     while(it != ChicagoDB.end()){
-//       cout << "it: " << *it << endl;
-//       it++;
-//     }
-//     it--;
-//     cout << "--it" << *--it << endl;
-//
-//     cout << (it == ChicagoDB.begin()) << endl;
-//
-//     while(cit != ChicagoDB.cend()){
-//       cout << "cit: " << *cit << endl;
-//       cit++;
-//     }
-//
-//     cit--;
-//     cout << "--cit" << *--cit << endl;
-//
-//     cout << (cit == ChicagoDB.cbegin()) << endl;
-//
-//     while(dit != ChicagoDB.dend()){
-//       cout << "dit: " << *dit << endl;
-//       dit++;
-//     }
-//
-//     dit--;
-//     cout << "--dit" << *--dit << endl;
-//
-//     cout << (dit == ChicagoDB.dbegin("OVER $500")) << endl;
-//
-//     while(dcit != ChicagoDB.dcend()){
-//       cout << "dcit: " << *dcit << endl;
-//       dcit++;
-//     }
-//
-//     dcit--;
-//     cout << "--dcit" << *--dcit << endl;
-//
-//     cout << (dcit == ChicagoDB.dcbegin("SIMPLE")) << endl;
-//
-//     while(ait != ChicagoDB.aend()){
-//       cout << "ait: " << *ait << endl;
-//       ++ait;
-//     }
-//
-//     ait--;
-//     cout << "--ait" << *--ait << endl;
-//
-//     cout << (ait == ChicagoDB.abegin()) << endl;
-//
-//     while(acit != ChicagoDB.acend()){
-//       cout << "acit: " << *acit << endl;
-//       acit++;
-//     }
-//
-//     acit--;
-//     cout << "--acit" << *--acit << endl;
-//     acit_aux = acit;
-//
-//     cout << (acit == acit_aux) << endl;
-//
-//    return 0;
-// }
